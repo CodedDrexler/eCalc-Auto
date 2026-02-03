@@ -1,0 +1,625 @@
+<!DOCTYPE html><html lang="en"><head>
+    <title>eCalc - reliable electric drive simulations</title>
+    <link rel="shortcut icon" href="favicon.ico">
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">    
+    <meta name="viewport" content="width=device-width-160, initial-scale=1">
+    <meta name="description" content="get your electric rc drive right ✓ fast &amp; reliable simulation - no more guessing ✓ most comprehensive motor database ☆ prevents mispurchase since 2004">    
+    <meta name="keywords" content="eCalc, e-calc, xCalc, Calc, eflight, eMobilität, eMobility, EV, BEV, Electric Vehicle, Car, Auto, Fahrzeug, eCar, eAuto, Range, Reichweite, Consumption, Verbrauch, Energy, Energie, propCalc, xcopterCalc, heliCalc, fanCalc, Antrieb,Setup, Drive, Rechner, Calc, Calculator, Simulate, Simulation, RC, Remote Control, Modellbau, MotoCalc, Airplane, Plane, Flugzeug, Luftschraube, Propeller, Jet, Impeller, Ducted Fan, EDF, Helikopter, Helicopter, Multikopter, Multicopter,, Multirotor Elektro, electric, Motor, Regler, ESC, Batterie, Battery, Akku, Accu">
+    <meta name="google-site-verification" content="93lKuPv4ojX_-em6sG26eAeoffVcy3iueNt9LnFSogE">
+    <link rel="stylesheet" href="calcinclude/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="calcinclude/bootstrap/css/glyphicons.css">
+    <link rel="canonical" href="https://www.ecalc.ch">
+	<script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=gapi_iframes_style_bubble/exm=auth,ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_2?le=scs,fedcm_migration_mod" async=""></script><script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=auth/exm=ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_1?le=scs,fedcm_migration_mod" async=""></script><script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_0?le=scs,fedcm_migration_mod" async=""></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-5ZBPF41B9X"></script><script> window.google_analytics_uacct = "UA-accountnumber-propertyindex"; </script>
+	
+
+
+    <script language="javascript" type="text/javascript" src="./calcinclude/google_analytics.js"></script>
+
+
+    <style type="text/css">
+.auto-style3 {
+	font-weight: bold;
+}
+</style>
+
+<!-- force reload -->
+  <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0">
+  <meta http-equiv="cache-control" content="max-age=0">
+  <meta http-equiv="expires" content="0">
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+  <meta http-equiv="pragma" content="no-cache">
+
+
+
+    <!-- deutsch sprachige systeme bei externem aufruf von www.ecalc.ch auf die deutsche homepage weiterleiten -->
+    <script language="javascript">
+       var cVersion = ""; // avoid error in customer.js
+    </script>
+    <script language="javascript" type="text/javascript" src="./calcinclude/customer.js"></script>
+    <script language="javascript">
+       if (isSysLanguage("de") && document.referrer.indexOf("ecalc.ch") == -1) location.replace("./index_d.htm");
+    </script>
+
+  <style>.gc-bubbleDefault{background-color:transparent!important;text-align:left;padding:0!important;margin:0!important;border:0!important;table-layout:auto!important}.gc-reset{background-color:transparent!important;border:0!important;padding:0!important;margin:0!important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc!important}.pls-contentLeft,.pls-topTail,.pls-vertShimLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif)!important}.pls-topTail{background-repeat:repeat-x!important;background-position:bottom!important}.pls-vertShim{background-color:#fff!important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5!important}.pls-vertShimLeft{background-repeat:repeat-y!important;background-position:100%!important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2!important}.pls-contentWrap{background-color:#fff!important;position:relative!important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:100%;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png)!important;background-repeat:repeat-y!important;vertical-align:top}.pls-dropBL,.pls-dropTR .pls-dropBR,.pls-tailleft,.pls-vert,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png)!important;background-repeat:repeat-x!important;width:100%;vertical-align:top}.pls-topLeft{background:inherit!important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit!important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit!important;text-align:right}.pls-bottomRight{background:inherit!important;text-align:left;vertical-align:top}.pls-tailbottom,.pls-tailleft,.pls-tailright,.pls-tailtop{display:none;position:relative}.pls-dropBL,.pls-dropBR,.pls-dropTR,.pls-tailbottom,.pls-tailleft,.pls-tailright,.pls-tailtop{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png)!important;background-repeat:no-repeat}.tbl-grey .pls-dropBL,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropTR,.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailleft,.tbl-grey .pls-tailright,.tbl-grey .pls-tailtop{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png)!important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-tailbottom,.pls-topLeft img,.pls-topRight img{vertical-align:bottom}.bubbleDropTR,.pls-bottomLeft,.pls-bottomLeft img,.pls-dropBottom img,.pls-dropBottomL img,.pls-dropBottomR img{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacerbottom,.pls-spacerleft,.pls-spacerright,.pls-spacertop{position:static!important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0}</style></head>
+
+  <body>
+
+  
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.htm">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-home"></span>&nbsp;eCalc&nbsp;&nbsp;&nbsp;</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.htm">&nbsp;english&nbsp;</a></li>
+              <li><a href="index_d.htm">&nbsp;deutsch&nbsp;</a></li>
+	          <li class="hidden-xs hidden-sm"><a href="partner.htm">&nbsp;Partner&nbsp;</a></li>            
+	    	  <li><a href="testimonials.htm">&nbsp;Testimonials&nbsp;</a></li>
+	    	  <li><a href="release.htm">&nbsp;Release Notes&nbsp;</a></li>
+	        </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="calcmember/update.php">&nbsp;<span class="glyphicon glyphicon-user"></span>&nbsp;Profile&nbsp;</a></li>
+              <li><a href="calcmember/signup.php">&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;Sign-up&nbsp;</a></li>
+              <li><script type="text/javascript">document.write("<a href='calcmember/login.php?"+document.location+"'>");</script><a href="calcmember/login.php?https://www.ecalc.ch/?loggedout=1">&nbsp;<span class="glyphicon glyphicon-log-in"></span>&nbsp;Login&nbsp;</a></li>        
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+  <center>
+  <table><tbody><tr><td valign="top">
+	
+    <div class="container">
+      <div class="col-xs-12 col-sm-12" align="center">
+		<p><big>&nbsp;</big><br>&nbsp;</p>
+		  <script language="JavaScript">
+            thePicNbr = new Date().getTime();
+            thePicNbr = thePicNbr  % 8;
+            theHomePic = "<img src='calcinclude/logo/ecalc_home"+thePicNbr+".png' class='img-responsive img-rounded' alt='eCalc - home of reliable electric drive simulation' width='100%'>";
+            document.write(theHomePic)
+          </script><img src="calcinclude/logo/ecalc_home6.png" class="img-responsive img-rounded" alt="eCalc - home of reliable electric drive simulation" width="100%">
+		  <img style="position:absolute;top:60px;left:25px;" alt="eCalc - electric drive simulation and calculation" height="53" src="calcinclude/logo/p_ecalclogo.gif" width="150">
+      </div>
+      <div class="col-xs-12 col-sm-12" align="center">
+        <h3>reliable electric drive simulations</h3>
+      </div>
+    </div>
+    
+    <div class="container">
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="index.htm">&nbsp;&nbsp;&nbsp;Calculator&nbsp;&nbsp;&nbsp;</a></li>
+	    <li><a href="solution.htm">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-wrench"></span>&nbsp;Trouble Shooting&nbsp;&nbsp;&nbsp;</a></li>
+	    <li><a href="calcmember/signup.php">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>&nbsp;<b>Sign-up now</b>&nbsp;&nbsp;&nbsp;</a></li>
+	  </ul>
+	</div>
+    
+    <div class="container">
+      <div class="row">
+
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+	         <i><font color="#FF0000">prop</font><b>Calc</b></i><br>
+	         <a href="motorcalc.php"><img src="calcinclude/logo/p_propcalc.jpg" class="img-responsive img-rounded" alt="propCalc for fixed wing aircraft" width="100">for Airplane</a>
+	      </center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+			 <i><font color="#FF0000">setup</font><b>Finder</b></i><br>
+	         <a href="setupfinder.php"><img src="calcinclude/logo/p_propcalc.jpg" class="img-responsive img-rounded" alt="propCalc for fixed wing aircraft" width="100">for Airplane</a>
+			 <br><span lang="de-ch">&nbsp;</span></center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i><font color="#FF0000"><span lang="de-ch">perf</span></font><b>Calc</b></i><br>
+	         <a href="perfcalc.php">
+				  <img src="calcinclude/logo/p_perfcalc.png" class="img-responsive img-rounded" alt="performance calculation" width="100">Performance</a>
+				  <br>&nbsp;</center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i><font color="#FF0000"><span lang="de-ch">cg</span></font><b>Calc</b></i><br>
+	         <a href="cgcalc.php">
+				  <img src="calcinclude/logo/p_cgcalc.jpg" class="img-responsive img-rounded" alt="center of gravity calculation" width="100">Center 
+				  of Gravity</a></center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i><font color="#FF0000"><span lang="de-ch">w&amp;b</span></font><b>Calc</b></i><br>
+	         <a href="wbcalc.php">
+				  <img src="calcinclude/logo/p_wbcalc.png" class="img-responsive img-rounded" alt="Weight and Balance calculation" width="82">Weight &amp; Balance</a></center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				<i><font color="#FF0000">blade</font><b>Calc</b></i><br>
+	              <a href="bladecalc.php"><img src="calcinclude/logo/p_bladecalc.png" class="img-responsive img-rounded" alt="propeller blade calculation" width="90">
+	              <span lang="de-ch">Prop Performance</span></a></center>
+	    </div>
+
+
+      </div>
+      <div class="row">
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+	         	 <i><font color="#FF0000">xcopter</font><b>Calc</b></i><br>
+	         <a href="xcoptercalc.php"><img src="calcinclude/logo/p_xcoptercalc.jpg" class="img-responsive img-rounded" alt="xcopterCalc for multicopter and drone calculation" width="100">for Multirotor</a>
+	      </center>
+	    </div>
+
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i><font color="#FF0000">heli</font><b>Calc</b></i><br>
+	         <a href="helicalc.php"><img src="calcinclude/logo/p_helicalc.jpg" class="img-responsive img-rounded" alt="heliCalc for helicoopter calculation" width="100">for Helicopter</a>
+				  </center>
+	    </div>
+	    
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i>
+				<font color="#FF0000">fan</font><b>Calc</b></i><br>
+	         <a href="fancalc.php"><img src="calcinclude/logo/p_fancalc.jpg" class="img-responsive img-rounded" alt="fanCalc for electric jet calculation" width="100">for EDF Jets</a></center>
+	    </div>
+
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+	         	 <i><font color="#FF0000">torque</font><b>Calc</b></i><br>
+	         <a href="torquecalc.php"><img src="calcinclude/logo/p_torquecalc.jpg" class="img-responsive img-rounded" alt="torqueCalc for industrial design" width="85">for 
+				  industry</a>
+	      </center>
+	    </div>
+
+<!--
+        <div class="col-xs-4 col-sm-2" >     
+           <center>
+				  <i><font color="#FF0000">car</font><b>Calc</b></i><br>
+	         <a href="helicalc.php"><img style="opacity: 0.3;" src="calcinclude/logo/p_carcalc.png" class="img-responsive img-rounded"  alt="carCalc for RC car calculation" width="100">for RC Cars</a>
+           <br>&nbsp;</center>
+	    </div>
+
+        <div class="xs-hidden col-sm-1" >     
+ 	    </div>
+-->
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+				  <i>
+				  <font color="#FF0000">ev</font><b>Calc</b></i><br>
+	         <a href="evcalc.php"><img src="calcinclude/logo/p_evcalc.png" class="img-responsive img-rounded" alt="evCalc for electric cars" width="100">
+				  electric cars</a>
+				  <br>&nbsp;<br>&nbsp;</center>
+	    </div>
+	    
+        <div class="col-xs-4 col-sm-2">     
+           <center>
+	         	  <i>
+				  <font color="#FF0000">charge</font><b>Calc</b></i><br>
+	               <a href="chargecalc.php"><img src="calcinclude/logo/p_evcalc.png" class="img-responsive img-rounded" alt="chargeCalc for EVs" width="100">charging EVs</a>
+				  <br>&nbsp;<br>&nbsp;</center>
+	    </div>
+<!--
+        <div class="col-xs-4 col-sm-2" >     
+           <center>
+				  <i>
+				  <font color="#FF0000">charge</font><b>Index</b></i><br>
+	               <a href="chargeindex.php"><img  src="calcinclude/logo/p_evcalc.png" class="img-responsive img-rounded" alt="chargeIndex for EVs" width="100" >compare charging</a><br></center>
+	    </div>
+
+
+        <div class="col-xs-4 col-sm-2" >     
+           <center>
+	         	  <i>
+				  <font color="#FF0000">charge</font><b>Index</b></i><br>
+	               <a href="chargeindex.php"><img  src="calcinclude/logo/p_evcalc.png" class="img-responsive img-rounded" alt="chargeIndex for EVs" width="100" >compare charging</a></center>
+	    </div>
+-->
+
+<!--
+        <div class="xs-hidden col-sm-1" >     
+ 	    </div>
+-->
+
+	  </div>
+    </div>
+    
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div style="background-color:#FFFFCC; border-radius: 15px;">
+ 		    <h3><span class="glyphicon glyphicon-pushpin"></span>&nbsp;news<small> 
+			- <span lang="de-ch">January 20th</span></small></h3>
+			  <p><span lang="de-ch"><strong>1/20/26 - eCalc updated to V7.40:
+			  </strong>for details see <a href="release.htm">release notes</a></span></p>
+			  
+			  <p>
+			  <span lang="de-ch"><strong>&nbsp;1/14/26 - Motor Database:</strong> 
+			  FlashHobby, iFlight XING-E, MAD X4229</span></p><p>
+			  <span lang="de-ch"><strong>&nbsp;1/14/26 - Battery Database:</strong> 
+			  new LiFe</span></p><p>
+			  <span lang="de-ch"><strong>12/29/25 - Motor Database:</strong> 
+			  Hacker E40</span></p><p>
+			  <span lang="de-ch"><strong>11/29/25 - EV Database:</strong> 
+			  Tesla Y (2025) updated</span></p><p>
+			  <span lang="de-ch"><strong>11/21/25 - Motor Database:</strong> 
+			  MEPS updated</span></p><p>
+			  <span lang="de-ch"><strong>11/4/25 - Motor Database:</strong> 
+			  MAD updated</span></p><p>
+			  <span lang="de-ch"><strong>10/3/25 - Motor Database:</strong> 
+			  HobyWing Platinum Motor Series</span></p><p>
+			  <span lang="de-ch"><strong>9/29/25 - 15mio visitors since 2010</strong></span></p><p>
+			  <span lang="de-ch"><strong>9/24/25 - Motor Database:</strong> 
+			  SunnySky Helicopter Series, TBS Chupito, MAD AM Series, Xnova</span></p><p>
+			  <span lang="de-ch"><strong>9/20/25</strong> - 500mio Drive 
+			  Simulations and counting...</span></p><p>
+			  <span lang="de-ch"><span class="auto-style3">8/28/24 - 
+			  eCalc V7.32 for RC simulations &amp; torqueCalc, bladeCalc V1.0&nbsp; available</span> -
+			  <a href="https://ecalc.ch/release.htm">see details...</a></span></p><p>
+			  <span lang="de-ch"><strong>8/21/25</strong> - Membership system 
+			  updated</span></p><p>
+			  <span lang="de-ch"><strong>8/13/25 - Motor Database: &nbsp;</strong>Tenshock 
+			  GDM15xx <strong>/ ESC:</strong> YGE 185A &amp; 265A</span></p><p>
+			  <span lang="de-ch"><strong>8/11/25 - Motor Database: </strong>&nbsp;Hacker 
+			  B50-7S Comp.,<strong> </strong>Leomotion 5022-0560, Surpass Hobby 
+			  C63xx, HobbyWing XRotor 28xx, 31xx</span></p><p>
+			  <span lang="de-ch"><strong>7/6/25 - wingDesigner </strong>deleted, 
+			  use <a href="cgcalc.php">cgCalc</a></span></p><p>
+			  <span lang="de-ch"><strong>6/29/25 - Motor Database: </strong>
+			  minor updates</span></p><p>
+			  <span lang="de-ch"><strong>6/8/25 - Motor Database: </strong>
+			  DarwinFPV</span></p><p>
+			  <span lang="de-ch"><strong>5/18/25 - Motor Database: </strong>AXI 
+			  22xx V3</span></p><p>
+			  <span lang="de-ch"><strong>4/30/25 - Motor Database: </strong>
+			  T-Motor F30</span></p></div>
+
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <center>
+
+<!--
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Nov 30, 2019 09:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>       
+
+ <h2><span id="countdown"></span><br><small><span lang="de-ch">remaining to get 
+ your </span>Black Friday </small><a href="calcmember/signup.php">
+ <span lang="de-ch"><span class="auto-style3">discount...</span></span></a></h2>  
+
+-->          
+          
+          <div align="center">	
+              <br>	  
+	          <a href="https://www.facebook.com/groups/eCalc" target="_blank">
+			  <img alt="" src="../calcinclude/logo/f_follow.jpg" border="0" height="20"></a>&nbsp;
+			  <a href="https://twitter.com/intent/user?screen_name=eCalc_e" target="_blank">
+			  <img alt="" src="../calcinclude/logo/t_follow.jpg" border="0" height="20"></a>
+			  <p><script src="https://apis.google.com/js/platform.js" gapi_processed="true"></script>
+		      </p><div id="___ytsubscribe_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 121px; height: 24px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 121px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1769195294120" name="I0_1769195294120" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UCNbWYxm8Ihzi1Pqs-854etA&amp;layout=default&amp;count=default&amp;origin=https%3A%2F%2Fwww.ecalc.ch&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1769195294120&amp;_gfid=I0_1769195294120&amp;parent=https%3A%2F%2Fwww.ecalc.ch&amp;pfname=&amp;rpctoken=12651856" data-gapiattached="true"></iframe></div>   
+	      </div>
+          
+          <h2>Still guessing...?<br></h2>
+          
+          
+          <h2><small>
+		  <a href="calcmember/signup.php">Sign-up now</a> and get instant access!
+          </small></h2>
+		  <h2><small><small>
+          <b>✓ affordable and less than a <span lang="de-ch">single
+		  </span>wrong prop!<br>
+          ✓ Reliable Predictions since 2004<br>
+          ✓ calculating more than 20'000 setups a day<br>
+		  ✓ over <span lang="de-ch">475</span>mio drives calculates so far</b></small></small></h2>
+	     </center>
+	        <p><strong>available in 1<span lang="de-ch">9</span> languages</strong>: <small>
+			العربية<span lang="de-ch"> ,</span>中文, čeština, deutsch, english, español, français,
+			hrvatski, italiano, 日本語, 한국어, Nederlands, فارسی, polski, português, русский,
+			românesc, svenska, 
+			türk</small></p>
+        <center>
+        	System Status: <!-- limegreen, orange -->
+            <span style="background-color:limegreen" ;=""><strong><font color="white">&nbsp;normal&nbsp;</font></strong></span>
+			<br>
+        </center>
+          <h3><span class="glyphicon glyphicon-user"></span>&nbsp;membership</h3>      
+          <p><span lang="de-ch">The membership for full functionality is not 
+		  only <strong>affordable</strong> but <strong>&nbsp;pays off</strong> 
+		  with a single wrong propeller and <strong>safes your money</strong>.</span><br>The restricted <strong>Demoversion</strong> with reduced 
+		  functionality and 20% random database is for free. <a href="calcmember/signup.php">Sign-up now</a> and become an <i><font color="#FF0000">e</font><b>Calc</b></i> 
+		  Member today with <strong>instant access to the full funcionality</strong> and over 
+		  <span lang="de-ch">15'0</span>00 predefined components.</p>
+			<p>We apprecite your scan's of <strong>any article about </strong><i><font color="#FF0000">e</font><b>Calc</b></i> 
+			you read in your prefered RC Magazine - info[at]ecalc.ch</p>      
+
+            <h3><span class="glyphicons glyphicons-electrical-plug"></span><em><font color="#FF0000">ev</font><b>Calc</b> − #r<strong><font color="#FF0000">EV</font></strong>olution</em></h3>
+            <div align="center">
+	            <strong>very first
+				multi-brand EV Range Simulation<br><br></strong>
+				  <i>
+				  <font color="#FF0000">charge</font><b>Index</b></i><br>
+	               <a href="chargeindex.php"><img src="calcinclude/logo/p_evcalc.png" class="img-responsive img-rounded" alt="chargeIndex for EVs" width="100">compare charging</a>				</div>
+
+
+
+        </div>
+
+
+        <div class="col-xs-12 col-sm-4">
+
+            <h3><span class="glyphicon glyphicon-thumbs-up"></span> companies trust in eCalc</h3>
+            <div class="col-xs-12">
+            
+            <a href="partner.htm">
+            <div style="float:left;width:28%">
+	            <img src="https://upload.wikimedia.org/wikipedia/als/4/43/Airbus_Logo.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:38%">
+	            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Boeing_full_logo.svg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:33%">
+	            <img src="https://aurora.aero/wp-content/uploads/2019/04/Aurora_logo.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:66%">
+	            <img src="https://www.bgc-jena.mpg.de/farm/BGC/MPI-BGC_logo_DE.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+
+            <div style="float:left;width:50%">
+	            <img src="https://www.baesystems.com/cs/BAE-Static/latest/img/logo_baesystems_borderless.svg?v=3.19.8" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:50%">
+	            <img src="https://upload.wikimedia.org/wikipedia/de/8/8a/Embraer-Logo.svg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:45%">
+	            <img src="calcinclude/logo/dualsky.jpg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:45%">
+	            <img src="calcinclude/logo/neumotors.jpg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:33%">
+	            <img src="https://www.oaklins.com/api/deal-party-images/100648/ch/de/deal-parties.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:66%">
+	            <img src="calcinclude/logo/leomotion.jpg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:27%">
+	            <img src="calcinclude/logo/hacker.jpg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:36%">
+	            <img src="calcinclude/logo/kontronik.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:36%">
+	            <img src="calcinclude/logo/epproduct.png" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:33%">
+	            <img src="https://www.lindinger.at/media/37/6b/9e/1602597500/LOGO_Lindinger-2020s.svg" class="img-responsive img-rounded img-fluid">
+	        </div>
+	        <div style="float:left;width:36%">
+	            <img src="https://www.qinetiq.com/-/media/Qinetiq-Media/Images/Header/logo.svg" class="img-responsive img-rounded img-fluid">
+	        </div>
+
+	        <div align="center" width="100%">
+	            ...and more...<br>&nbsp;
+	        </div></a>
+
+	        </div>
+            
+            <h3><span class="glyphicon glyphicon-eye-open"></span> Direct Advertising</h3>  
+            <p>We support <a href="advertising.htm">direct advertisement on eCalc</a> to maximize your advertising return with a unique, strong and focused target audience.</p>  
+
+                  
+            <h3><span class="glyphicon glyphicon-cog"></span> toolbox</h3>    
+			<p>These tools may further support you by calculating RC-<span lang="de-ch"> 
+			and EV-</span>related 
+			tasks:</p>
+			<ul>
+				<li>Explanatory videos on 
+			  <a href="https://www.youtube.com/channel/UCNbWYxm8Ihzi1Pqs-854etA">eCalc YouTube 
+			  Channel</a> and published articles (see below).</li>
+				<li><span lang="de-ch">
+				get the <a href="toolbox/Plug-inHybrid_e.xlsx" target="_blank">
+				Real World Consumption</a> of a Plug-in Hybrid (PHEV)</span></li>
+				<li><a id="lblTco" href="/toolbox/TotalCostOwnership.xlsx" target="_blank">Total Cost of Ownership and CO<sub>2</sub>-Analysis</a> of an EV</li>
+				<li><a href="cgcalc.php">cgCalc</a>: Calculate, evaluate or verify the<strong> 
+				Center of Gravity (CG)</strong>, Neutral Point (NP) and Aerodynamic 
+				Center (AC) of your airplan before maiden. The only CG 
+				Calculator for <strong>upto 5 wing panels</strong>.</li>
+				<li><a href="toolbox/rudermoment.xls">control surface moment</a>: 
+				calculate the required <strong>torque of your servo</strong>.</li>
+				<li><a href="toolbox/ewd.xls">decalage</a>: static evaluation with 
+				some easy measurments on the table. dynamic decalage correction 
+				based on out of neutral trim.</li>
+				<li><span lang="de-ch"><a href="toolbox/decalage-v-tail.pdf">How 
+				to measure the decalage of V-Tails</a> for the above evaluation 
+				(Google translated from german)</span></li>
+				<li><a href="toolbox/LiPo_TRUE_C.xls">TRUE C Rating</a>: 
+				calculate the true perfomance of your battery.</li>
+				<li><a href="xcopterdesigner.htm">xcopterDesigner</a>: optimise 
+				and visualises your copter design.</li>
+			</ul>
+        </div>
+
+
+      </div>
+    </div> 
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4"><a name="article"></a>    
+        	<h3><span class="glyphicon glyphicon-book"></span> published articles</h3>
+			<ul>
+				<li>check out <a href="https://www.youtube.com/watch?v=dulTuy0LSZM" target="_blank"> our interview</a> by NowYouKnow</li>
+			</ul>
+			<p>sorry <span lang="de-ch">these are </span>german only<span lang="de-ch">:</span></p>
+			<ul>
+				<li><span lang="de-ch">
+				<a href="http://www.s4a.ch/eflight/docs/aufwind_24_3_20Jahre.pdf">
+				20 years eCalc - How it started and evolved</a></span></li>
+				<li>
+				<a href="http://www.s4a.ch/eflight/docs/MFI_19_3.pdf" target="_blank">eCalc - Berechnungsprogramm für die Antriebsauslegung&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/ModelleAuslegen-1.pdf" target="_blank">Elektrische Modell optimal auslegen I&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/ModelleAuslegen-2.pdf" target="_blank">Elektrische Modell optimal auslegen II&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_14_4.pdf" target="_blank">Auslegung I - Modellart&nbsp;t&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_14_5.pdf" target="_blank">Auslegung II - Rahmenbedingungen&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_14_6.pdf" target="_blank">Auslegung III - Berechnunsbeispiel&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_1.pdf" target="_blank">Auslegung IV - Berechnung im Detail&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_2.pdf" target="_blank">Auslegung V - Schwerpunkt ermitteln&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_3.pdf" target="_blank">Auslegung VI - Schwerpunkt mit cgCalc&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_5.pdf" target="_blank">Auslegung VII - Saga von der EWD&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_6.pdf">Auslegung VIII - Edge V3 (Teil 1, Evaluation)&nbsp; <span class="glyphicon glyphicon-new-window"></span></a>  <br></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_18_1.pdf">Auslegung IX - Edge V3 (Teil 2, Auslegung &amp; Bau)&nbsp; <span class="glyphicon glyphicon-new-window"></span></a>  <br></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_18_2.pdf">Auslegung X - Edge V3 (Teil 3, Verifikation und Erstflug)&nbsp; <span class="glyphicon glyphicon-new-window"></span></a>  </li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_18_3.pdf" target="_blank">Auslegung XI - setupFinder - Einfach Antriebe finden&nbsp;</a> <span class="glyphicon glyphicon-new-window"></span></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_18_4.pdf" target="_blank">Auslegung XII - BEC-Backup - Einfach und effektiv&nbsp;</a> <span class="glyphicon glyphicon-new-window"></span></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_2.pdf" target="_blank">Technik I - Brushless Motor&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_2.pdf" target="_blank">Technik II - Motorenkonstanten&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_3.pdf" target="_blank">Technik III - Regler bei Vollast&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_4.pdf" target="_blank">Technik IV - Regler bei Teillast&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_5.pdf" target="_blank">Technik V - Timing&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_3.pdf" target="_blank">Technik VI - Tödliche Kabelverlängerung&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_6.pdf" target="_blank">Technik VII - Batterieübersicht&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_1.pdf" target="_blank">Technik VIII - Lithium-Akku&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_5.pdf" target="_blank">Technik IX - Servo und BEC dimensionieren&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_17_4.pdf" target="_blank">Technik X - Getriebe- oder Direkt-Antrieb?&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_19_2.pdf" target="_blank">Technik XI - Luftschrauben, schneller als die Pitch erlaubt&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_21_5.pdf" target="_blank">Technik XII - Sch<span lang="de-ch">w</span>erpunkt ausmessen, elegant Blei vermeiden&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_15_6.pdf" target="_blank">Antriebe - F5J&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_4.pdf" target="_blank">Antriebe - Hotliner&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+				<li><a href="http://www.s4a.ch/eflight/docs/aufwind_16_1.pdf" target="_blank">Antriebe - Elektro-Jet-Power&nbsp;&nbsp; <span class="glyphicon glyphicon-new-window"></span></a></li>
+			</ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">    
+          <h1><small><span class="glyphicon glyphicon-paperclip"></span> about eCalc - drive calculator</small></h1>    
+            
+            <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/YdFGhk8aWmg?rel=0&amp;autoplay=0" frameborder="0" allowfullscreen=""></iframe>           
+            </div>
+
+            <p><strong>Since 2004 </strong> <i><font color="#FF0000">e</font><b>Calc</b></i> provides web-based quality services to 
+			simulate, calculate, evaluate and design
+            electric brushless motor drives for RC pilots of airplane, multi rotor, UAV, helicopter and EDF jets.<br>
+			<i><font color="#FF0000">e</font><b>Calc</b></i>'s 
+			motor database is the most comprehensive on the web.</p>
+		  <p><strong>Follow us</strong> on <a href="https://twitter.com/intent/user?screen_name=eCalc_e">Twitter @eCalc_e</a>, <a href="https://www.facebook.com/groups/eCalc/">Facebook 
+		  Group eCalc</a> or the
+		  <a href="https://www.youtube.com/channel/UCNbWYxm8Ihzi1Pqs-854etA">
+		  eCalc YouTube Channel</a> to get the latest 
+		  news.</p>
+		  <p><strong>Is my Motor available?</strong><br>Wondering your motor is in the Database? ...check the<a href="calcmember/components.htm"> 
+		  full motor list</a>. If you motor is missung just provide us
+		  <a href="calcmember/submitmotor.htm">with the specifications...</a></p>
+			<p><strong>You are a motor manufacurer?</strong><br>Please send us 
+			your specifications or fill in<a href="calcmember/SubmitMotorData.xlsx"> 
+			this form</a> and we will update our database with your motors. 
+			Thereafter all visitors may use your motors for calculation. This 
+			will <strong>increase your visibility on the market </strong>considerable.</p>
+		  <p><strong>Did you find a bug or data error?</strong> <br>please report to
+            info[at]ecalc.ch with detailed discription and screen shot - Thank you.</p>
+		  <p><strong>Missing your Language?</strong><br>We are looking for 
+		  experienced RC Pilots willing to translate <i><font color="#FF0000">e</font><b>Calc</b></i> from english or 
+		  german to any other 
+		  language. Please contact us info[at]ecalc.ch.</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">        
+            <h3><span class="glyphicon glyphicon-file"></span> terms &amp; conditions</h3>
+            <p>The <b>private use </b>is granted without restrictions. The
+            copyright applies.</p>
+            <p>The <b>commercial use</b> without any contract with Solution for
+            All Markus Mueller is expressly prohibited. For the contracted&nbsp;
+            commercial users the 
+			<a href="calcmember/agb_ecalc_en.pdf" target="_blank">Terms
+            &amp; Conditions</a> applies.&nbsp;</p><p>Interested in a commercial
+            use? Please contact us by email: info[at]ecalc.ch.
+          </p></div>
+        <div class="col-xs-12 col-sm-4">    
+          <h3><span class="glyphicon glyphicon-copyright-mark"></span> copyright &amp; author's right</h3>    
+          <p>All source codes, data, texts, pictures and graphs and their arrangements are subject to copyright and are the intellectual property of Solution for All Markus
+            Mueller. They may neither be copied for forwarding nor used in an amended form or on other websites or servers or any kind of electronic device.</p>      
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-12" align="center">
+          <small>
+
+             <script type="text/javascript" src="/calcinclude/footer.js"></script>             © by Solution for All Markus Müller&nbsp;&nbsp;-&nbsp;&nbsp;www.eCalc.ch&nbsp;&nbsp;-&nbsp;&nbsp;info[at]eCalc.ch             <br>             <a href="/impressum.htm">Impressum</a> | <a href="/calcmember/agb_ecalc_en.pdf">Terms &amp; Condtions</a> | <a href="/eprivacy.htm">Privacy</a> | <a href="/eprivacy.htm">Cookie</a> | <a href="/advertising.htm">Advertising</a>			<script type="text/javascript">				function setCookieExpires(){					var exdate=new Date();					exdate.setDate(exdate.getDate() + 15);					return exdate.toUTCString();			    }			</script>
+<script type="text/javascript" id="cookieinfo" src="/calcinclude/cookieinfo.min.js" data-bg="#645862" data-fg="#FFFFFF" data-link="#F1D600" data-cookie="eCalcCookieInfo" data-text-align="left" data-close-text="Got it!" data-expires="setCookieExpires">
+</script>
+
+
+          </small>
+          <br><img src="https://www.easycounter.com/counter.php?s4a,eCalc" border="0" alt="Website Hit Counter"><br>
+
+        </div>
+      </div>
+    </div>
+
+
+    
+  </td>
+
+  <td valign="top" nowrap="" class="hidden-xs">
+
+
+  </td>
+  </tr></tbody></table>
+  <!-- fremdsprachig Propeller, Multikopter, Helikopter, Impeller -->
+ <small><small><font color="white">螺旋桨计算器, 多旋翼计算器, 直升机计算器, 涵道风扇计算器,
+ Vrtule, Multikoptéry, Vrtulníky, Dmychadla, Impeller, Ducted Fan, EDF, Helices, Multicopteros, Helicopteros, Turbinas eléctrico, Hélice, Multicopter, Helicopter, Aerei ad elica, Multicotteri, Elicotteri, Ventole intubate
+ プロペラ機, マルチコプター, ヘリコプター, 電動ダクテッドファン
+ 프로펠러, 멀티콥터, 헬리콥터, 덕트팬
+ ملخ, مولتیکوپتر, هلی کوپتر, داکتدفنالکتریک
+ Śmigła, Wielowirnikowce, Helikoptery, Hélices, Multicópteros, Helicópteros, Turbinas
+ Пропеллер, Мультикоптер, Вертолет, Импеллер
+ </font>/<small></small>
+  </small></small></center><small><small>
+
+    <script src="calcinclude/flot/jquery.min.js"></script>
+    <script src="calcinclude/bootstrap/js/bootstrap.min.js"></script>
+  
+
+</small></small><iframe name="oauth2relay855401030" id="oauth2relay855401030" src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=https%3A%2F%2Fwww.ecalc.ch&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#rpctoken=442681475&amp;forcesecure=1" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div style="display: block; visibility: hidden; position: absolute; width: 106px; left: -1000px; top: -1000px;"><table cellpadding="0" cellspacing="0" dir="ltr" style="width:106px;" frame="void" rules="none" class=" gc-bubbleDefault pls-container"><tbody><tr class="gc-reset"><td class="pls-topLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td><td class="pls-topTail gc-reset"><img class="pls-tailbottom gc-reset" style="width:15px !important; height:9px !important; max-width: 15px !important; max-height: 9px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerbottom gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-topRight gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td></tr><tr class="gc-reset"><td class="pls-vertShimLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-vertShim gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-vertShimRight gc-reset"><img class="pls-dropTR gc-reset" style="width:5px !important; height:4px !important; max-width: 5px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-contentLeft gc-reset"><img class="pls-tailright gc-reset" style="width:9px !important; height:15px !important; max-width: 9px !important; max-height: 15px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerright gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-contentWrap gc-reset"><div class="goog-bubble-content gc-reset"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="margin:0px;position:absolute;z-index:1;border-style:none;outline:none;width:100px;" tabindex="0" vspace="0" width="100%" id="I0_1769195294795" name="I0_1769195294795" src="https://www.youtube.com/subscribe_embed?action_card=1&amp;channelid=UCNbWYxm8Ihzi1Pqs-854etA&amp;usegapi=1&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#id=I0_1769195294795&amp;_gfid=I0_1769195294795&amp;parent=https%3A%2F%2Fwww.ecalc.ch&amp;pfname=&amp;rpctoken=39434572"></iframe></div></td><td class="pls-dropRight gc-reset"><img class="pls-tailleft gc-reset" style="width:12px !important; height:19px !important; max-width: 12px !important; max-height: 19px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerleft gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-bottomLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td><td class="gc-reset"><table cellpadding="0" cellspacing="0" style="width:100%" class="gc-reset"><tbody><tr class="gc-reset"><td class="pls-vert gc-reset"><img class="pls-dropBL gc-reset" style="width:4px !important; height:5px !important; max-width: 4px !important; max-height: 5px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-dropBottom gc-reset"><img class="pls-tailtop gc-reset" style="width:19px !important; height:13px !important; max-width: 19px !important; max-height: 13px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacertop gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr></tbody></table></td><td class="pls-vert gc-reset"><img class="pls-dropBR gc-reset" style="width:5px !important; height:5px !important; max-width: 5px !important; max-height: 5px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr></tbody></table></div></body></html>

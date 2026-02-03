@@ -1,0 +1,26 @@
+{
+    "weight": 18000,
+    "wingspan": 3900,
+    "wing_area": 190.3,
+    "speed": 1,
+    "thrust": 5000,
+    "battery_cells": 6,
+    "limit": 20,
+    "esc_model": "max 100A",
+    "battery_model": "LiPo 3300mAh - 45/60C",
+    "flight_plan": "3D - heavy",
+    "flight_time": 3,
+    "elevation": 650,
+    "max_prop_diameter": 20,
+    "prop_blades": 2,
+    "max_motor_weight_pct": 6,
+    "battery_charge_state": "cheia",
+    "analyzed_power": 600,
+    "prop_type": "APC Electric E",
+    "manufacturers_filter": [
+        "T-Motor",
+        "SunnySky",
+        "Scorpion"
+    ],
+    "close_browser": "y"
+}

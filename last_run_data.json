@@ -1,0 +1,993 @@
+{
+    "configuration": {
+        "weight": 18000,
+        "wingspan": 3900,
+        "wing_area": 190.3,
+        "speed": 1,
+        "thrust": 5000,
+        "max_motor_weight_pct": 6,
+        "analyzed_power": 600,
+        "battery_cells": 6,
+        "battery_charge_state": "cheia",
+        "esc_model": "max 100A",
+        "battery_model": "LiPo 3300mAh - 45/60C",
+        "flight_plan": "3D - heavy",
+        "flight_time": 3,
+        "elevation": 650,
+        "max_prop_diameter": 20,
+        "prop_blades": 2,
+        "prop_type": "APC Electric E"
+    },
+    "setups_to_analyze": [
+        {
+            "prop_diam": "20",
+            "prop_pitch": "12.0",
+            "manufacturer_id": "46",
+            "motor_id": "V505-260",
+            "motor_kv": "260",
+            "motor_name": "T-Motor V505-260",
+            "manufacturer": "T-Motor",
+            "drive_weight": "80"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "U7-280 V2",
+            "motor_kv": "280",
+            "motor_name": "T-Motor U7-280 V2",
+            "manufacturer": "T-Motor",
+            "drive_weight": "77"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "73"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "12.0",
+            "manufacturer_id": "46",
+            "motor_id": "U7-280 V2",
+            "motor_kv": "280",
+            "motor_name": "T-Motor U7-280 V2",
+            "manufacturer": "T-Motor",
+            "drive_weight": "82"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN601-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN601-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "81"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "78"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "79"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN601-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN601-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "87"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN601-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN601-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "86"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-300",
+            "motor_kv": "300",
+            "motor_name": "SunnySky X6212S-300",
+            "manufacturer": "SunnySky",
+            "drive_weight": "78"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "83"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "85"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN601-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN601-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "92"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN601-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN601-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "94"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-300",
+            "motor_kv": "300",
+            "motor_name": "SunnySky X6212S-300",
+            "manufacturer": "SunnySky",
+            "drive_weight": "83"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-300",
+            "motor_kv": "300",
+            "motor_name": "SunnySky X6212S-300",
+            "manufacturer": "SunnySky",
+            "drive_weight": "83"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "61"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "75"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "91"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "91"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-340",
+            "motor_kv": "340",
+            "motor_name": "SunnySky X6212S-340",
+            "manufacturer": "SunnySky",
+            "drive_weight": "89"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "1027"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "64"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN701-S KV280",
+            "motor_kv": "280",
+            "motor_name": "T-Motor MN701-S KV280",
+            "manufacturer": "T-Motor",
+            "drive_weight": "62"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-300",
+            "motor_kv": "300",
+            "motor_name": "SunnySky X6212S-300",
+            "manufacturer": "SunnySky",
+            "drive_weight": "89"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "98"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "64"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "82"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-300",
+            "motor_kv": "300",
+            "motor_name": "SunnySky X6212S-300",
+            "manufacturer": "SunnySky",
+            "drive_weight": "96"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-340",
+            "motor_kv": "340",
+            "motor_name": "SunnySky X6212S-340",
+            "manufacturer": "SunnySky",
+            "drive_weight": "95"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "53"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "53"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "67"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN701-S KV280",
+            "motor_kv": "280",
+            "motor_name": "T-Motor MN701-S KV280",
+            "manufacturer": "T-Motor",
+            "drive_weight": "66"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6212S-340",
+            "motor_kv": "340",
+            "motor_name": "SunnySky X6212S-340",
+            "manufacturer": "SunnySky",
+            "drive_weight": "96"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "1084"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "56"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "68"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "86"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "88"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN4120-400",
+            "motor_kv": "400",
+            "motor_name": "T-Motor MN4120-400",
+            "manufacturer": "T-Motor",
+            "drive_weight": "68"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN701-S KV280",
+            "motor_kv": "280",
+            "motor_name": "T-Motor MN701-S KV280",
+            "manufacturer": "T-Motor",
+            "drive_weight": "69"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "70"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "52"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "53"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "57"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "72"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "75"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN705-S KV260",
+            "motor_kv": "260",
+            "motor_name": "T-Motor MN705-S KV260",
+            "manufacturer": "T-Motor",
+            "drive_weight": "53"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "74"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "71"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "95"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN705-S KV260",
+            "motor_kv": "260",
+            "motor_name": "T-Motor MN705-S KV260",
+            "manufacturer": "T-Motor",
+            "drive_weight": "54"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4035-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "1134"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6215S-350",
+            "motor_kv": "350",
+            "motor_name": "SunnySky X6215S-350",
+            "manufacturer": "SunnySky",
+            "drive_weight": "78"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN4120-400",
+            "motor_kv": "400",
+            "motor_name": "T-Motor MN4120-400",
+            "manufacturer": "T-Motor",
+            "drive_weight": "75"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "74"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "12.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN701-S KV280",
+            "motor_kv": "280",
+            "motor_name": "T-Motor MN701-S KV280",
+            "manufacturer": "T-Motor",
+            "drive_weight": "73"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "80"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "56"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "56"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "60"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN505-S KV380",
+            "motor_kv": "380",
+            "motor_name": "T-Motor MN505-S KV380",
+            "manufacturer": "T-Motor",
+            "drive_weight": "95"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "61"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "76"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "80"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6215S-350",
+            "motor_kv": "350",
+            "motor_name": "SunnySky X6215S-350",
+            "manufacturer": "SunnySky",
+            "drive_weight": "83"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "8",
+            "motor_id": "HK5-4026-385",
+            "motor_kv": "385",
+            "motor_name": "Scorpion HK5-4026-385",
+            "manufacturer": "Scorpion",
+            "drive_weight": "62"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "79"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "65"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "76"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "12.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN705-S KV260",
+            "motor_kv": "260",
+            "motor_name": "T-Motor MN705-S KV260",
+            "manufacturer": "T-Motor",
+            "drive_weight": "56"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4035-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "1176"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6215S-350",
+            "motor_kv": "350",
+            "motor_name": "SunnySky X6215S-350",
+            "manufacturer": "SunnySky",
+            "drive_weight": "83"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4035-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "1176"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "8",
+            "motor_id": "HK5-4030-355",
+            "motor_kv": "355",
+            "motor_name": "Scorpion HK5-4030-355",
+            "manufacturer": "Scorpion",
+            "drive_weight": "63"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "86"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "59"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN4120-400",
+            "motor_kv": "400",
+            "motor_name": "T-Motor MN4120-400",
+            "manufacturer": "T-Motor",
+            "drive_weight": "82"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "65"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6215S-350",
+            "motor_kv": "350",
+            "motor_name": "SunnySky X6215S-350",
+            "manufacturer": "SunnySky",
+            "drive_weight": "89"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "86"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4035-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "51"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "8",
+            "motor_id": "HK5-4030-355",
+            "motor_kv": "355",
+            "motor_name": "Scorpion HK5-4030-355",
+            "manufacturer": "Scorpion",
+            "drive_weight": "65"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "HK5-4030-355",
+            "motor_kv": "355",
+            "motor_name": "Scorpion HK5-4030-355",
+            "manufacturer": "Scorpion",
+            "drive_weight": "67"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "63",
+            "motor_id": "X4130-380 V3",
+            "motor_kv": "380",
+            "motor_name": "SunnySky X4130-380 V3",
+            "manufacturer": "SunnySky",
+            "drive_weight": "1201"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "85"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "8.0",
+            "manufacturer_id": "8",
+            "motor_id": "HK5-4026-385",
+            "motor_kv": "385",
+            "motor_name": "Scorpion HK5-4026-385",
+            "manufacturer": "Scorpion",
+            "drive_weight": "68"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "11.0",
+            "manufacturer_id": "46",
+            "motor_id": "AT4130-300 (Long Shaft)",
+            "motor_kv": "300",
+            "motor_name": "T-Motor AT4130-300 (Long Shaft)",
+            "manufacturer": "T-Motor",
+            "drive_weight": "62"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN605-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN605-S KV320",
+            "manufacturer": "T-Motor",
+            "drive_weight": "81"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4035-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "51"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "9.0",
+            "manufacturer_id": "63",
+            "motor_id": "X6215S-350",
+            "motor_kv": "350",
+            "motor_name": "SunnySky X6215S-350",
+            "manufacturer": "SunnySky",
+            "drive_weight": "90"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "7.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4035-380",
+            "motor_kv": "380",
+            "motor_name": "Scorpion SII-4035-380",
+            "manufacturer": "Scorpion",
+            "drive_weight": "1217"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "12.0",
+            "manufacturer_id": "46",
+            "motor_id": "F1000-300",
+            "motor_kv": "300",
+            "motor_name": "T-Motor F1000-300",
+            "manufacturer": "T-Motor",
+            "drive_weight": "90"
+        },
+        {
+            "prop_diam": "19",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "P60-340",
+            "motor_kv": "340",
+            "motor_name": "T-Motor P60-340",
+            "manufacturer": "T-Motor",
+            "drive_weight": "93"
+        },
+        {
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "46",
+            "motor_id": "MN4120-400",
+            "motor_kv": "400",
+            "motor_name": "T-Motor MN4120-400",
+            "manufacturer": "T-Motor",
+            "drive_weight": "88"
+        },
+        {
+            "prop_diam": "20",
+            "prop_pitch": "10.0",
+            "manufacturer_id": "8",
+            "motor_id": "SII-4025-330",
+            "motor_kv": "330",
+            "motor_name": "Scorpion SII-4025-330",
+            "manufacturer": "Scorpion",
+            "drive_weight": "69"
+        }
+    ]
+}

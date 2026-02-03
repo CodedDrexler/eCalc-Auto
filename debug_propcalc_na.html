@@ -1,0 +1,1400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="https://www.w3.org/1999/xhtml" translate="no"><head>
+<meta name="google" content="notranslate">
+<meta content="de-ch" http-equiv="Content-Language">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta http-equiv="X-UA-Compatible" content="IE=9"> <!-- force compatibility mode um Problem mit flot & IE9 zu umgehen -->
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="author" content="Markus Mueller, Solution for All, www.s4a.ch">
+<meta name="description" content="get the best drive for your RC airplane! ✓ fast &amp; reliable simulation - no more guessing ✓ most comprehensive motor database ☆ over 1 million calculations per month">    
+<meta name="keywords" content="eCalc, e-calc, xCalc, Calc, eflight, propCalc, xcopterCalc, heliCalc, fanCalc, Antrieb,Setup, Drive, Rechner, Calc, Calculator, RC, Remote Control, Modellbau, Airplane, Plane, Flugzeug, Luftschraube, Propeller, Jet, Impeller, Ducted Fan, EDF, Helikopter, Helicopter, Multikopter, Multicopter,, Multirotor Elektro, electric, Motor, Regler, ESC, Batterie, Battery, Akku, Accu">
+<title>eCalc - propCalc - the most reliable Propeller Calculator on the Web</title>
+
+
+<link rel="stylesheet" href="calcinclude/bootstrap/css/bootstrap.min.css">
+<script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=gapi_iframes_style_bubble/exm=auth,ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_2?le=scs,fedcm_migration_mod" async=""></script><script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=auth/exm=ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_1?le=scs,fedcm_migration_mod" async=""></script><script src="https://apis.google.com/_/scs/abc-static/_/js/k=gapi.lb.pt_BR.JCOyDvgYZIc.O/m=ytsubscribe/rt=j/sv=1/d=1/ed=1/rs=AHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg/cb=gapi.loaded_0?le=scs,fedcm_migration_mod" async=""></script><script type="text/javascript" async="" src="https://www.ecalc.ch/slpw/checklogout.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-5ZBPF41B9X"></script><script language="javascript" type="text/javascript" src="calcinclude/flot/jquery.min.js?7.40.001"></script>
+<script src="calcinclude/bootstrap/js/bootstrap.min.js"></script>
+
+<script> window.google_analytics_uacct = "UA-accountnumber-propertyindex"; </script>
+
+<!--
+<script src="calcinclude/autosave/autosaveform.js?7.40.001"></script>
+
+<script>
+// if preselectComponents() overwrite autosave on load
+// see autosaveform.js line 100
+
+var formsave1=new autosaveform({
+	formid: 'theForm',
+	savingmsg: "",
+	pause: 1500 //<--no comma following last option!
+});
+</script>
+-->
+
+<script language="javascript" type="text/javascript" src="calcinclude/flot/gauge.min.js?7.40.001"></script> <!-- Gauges Plug-in -->
+
+<script language="JavaScript">var cVersion ="?7.40.001" </script>
+<script language="JavaScript">var cDate ="21" </script>
+
+
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="calcinclude/flot/excanvas.min.js?7.40.001"></script><![endif]-->
+
+<!--  <script language="javascript" type="text/javascript" src="calcinclude/flot/jquery.min.js?7.40.001"></script> -->
+<script language="javascript" type="text/javascript" src="calcinclude/flot/jquery.flot.min.js?7.40.001"></script> 
+<script language="javascript" type="text/javascript" src="calcinclude/flot/jquery.flot.threshold.min.js?7.40.001"></script>
+
+<!--
+<link rel="stylesheet" href="calcinclude/bootstrap/css/bootstrap.min.css" />
+<script src="calcinclude/bootstrap/js/bootstrap.min.js"></script>
+-->
+<!--
+<link rel="stylesheet" type="text/css" href="calcinclude/w2ui/w2ui.min.css" />
+<script language="javascript" type="text/javascript" src="calcinclude/w2ui/w2ui.min.js?7.40.001"></script>
+-->
+
+<script language="javascript" type="text/javascript" src="calcinclude/customer.js?7.40.001"></script>
+
+<script language="JavaScript">document.write(theLanguage)</script><script language="javascript" type="text/javascript" src="./calcinclude/lang/lang_pt.js?7.40.001"></script>
+<script language="JavaScript">document.write(theCells)</script><script language="javascript" type="text/javascript" src="./calcinclude/data/cell.js?7.40.001"></script>
+<script language="JavaScript">document.write(theESC)</script><script language="javascript" type="text/javascript" src="./calcinclude/data/esc.js?7.40.001"></script>
+<script language="javascript" type="text/javascript" src="calcinclude/data/motor.js?7.40.001"></script>
+<script language="JavaScript">document.write(thePropeller)</script><script language="javascript" type="text/javascript" src="./calcinclude/data/propeller.js?7.40.001"></script>
+
+<script language="javascript" type="text/javascript" src="calcinclude/elibrary.js?7.40.001"></script>
+
+<script language="javascript" type="text/javascript" src="calcinclude/propcalc.js?7.40.001"></script>
+
+<script language="javascript" type="text/javascript" src="calcinclude/preselect.js?7.40.001"></script>
+<script language="javascript" type="text/javascript" src="calcinclude/plotgraph.js?7.40.001"></script>
+<script language="javascript" type="text/javascript" src="calcinclude/plottemp.js?7.40.001"></script>
+<script language="javascript" type="text/javascript" src="calcinclude/export.js?7.40.001"></script>
+
+      <script language="javascript" type="text/javascript" src="calcinclude/fullversion.js?7.40.001"></script>
+
+
+<script language="JavaScript">document.write(theCSS)</script><link rel="stylesheet" type="text/css" href="calcinclude/css/ecalc.css?7.40.001">
+<link rel="stylesheet" type="text/css" href="calcinclude/css/dialogbox.css?7.40.001">
+
+<script type="text/javascript">
+
+   //Verzweigung auf Basic View bei kleinen bildschirmen
+   if (screen.width < 768 && document.referrer.indexOf("motorcalc_mobile.php") == -1 && document.referrer.indexOf("motorcalc.php") == -1 && document.referrer.indexOf("calcmember/login.php") == -1)  {
+	   if (confirm(msgUseEasyView)){
+	     location.replace("./motorcalc_mobile.php"+location.search);
+	   }
+   }
+</script>
+
+
+
+<script language="javascript" type="text/javascript" src="./calcinclude/google_analytics.js"></script>
+
+
+      <script language="JavaScript">
+		var slInactivityTime=0;
+		var slLogoutPage='';
+		var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://www.ecalc.ch/slpw/checklogout.js'; //hard coded as PHP cals not work within JS Files
+        var x = document.getElementsByTagName('script')[0];
+        if (isFullVersion && !isServicePayed) x.parentNode.insertBefore(s, x);
+      </script>
+
+
+
+
+
+
+
+<style>.gc-bubbleDefault{background-color:transparent!important;text-align:left;padding:0!important;margin:0!important;border:0!important;table-layout:auto!important}.gc-reset{background-color:transparent!important;border:0!important;padding:0!important;margin:0!important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc!important}.pls-contentLeft,.pls-topTail,.pls-vertShimLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif)!important}.pls-topTail{background-repeat:repeat-x!important;background-position:bottom!important}.pls-vertShim{background-color:#fff!important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5!important}.pls-vertShimLeft{background-repeat:repeat-y!important;background-position:100%!important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2!important}.pls-contentWrap{background-color:#fff!important;position:relative!important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:100%;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png)!important;background-repeat:repeat-y!important;vertical-align:top}.pls-dropBL,.pls-dropTR .pls-dropBR,.pls-tailleft,.pls-vert,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png)!important;background-repeat:repeat-x!important;width:100%;vertical-align:top}.pls-topLeft{background:inherit!important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit!important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit!important;text-align:right}.pls-bottomRight{background:inherit!important;text-align:left;vertical-align:top}.pls-tailbottom,.pls-tailleft,.pls-tailright,.pls-tailtop{display:none;position:relative}.pls-dropBL,.pls-dropBR,.pls-dropTR,.pls-tailbottom,.pls-tailleft,.pls-tailright,.pls-tailtop{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png)!important;background-repeat:no-repeat}.tbl-grey .pls-dropBL,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropTR,.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailleft,.tbl-grey .pls-tailright,.tbl-grey .pls-tailtop{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png)!important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-tailbottom,.pls-topLeft img,.pls-topRight img{vertical-align:bottom}.bubbleDropTR,.pls-bottomLeft,.pls-bottomLeft img,.pls-dropBottom img,.pls-dropBottomL img,.pls-dropBottomR img{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacerbottom,.pls-spacerleft,.pls-spacerright,.pls-spacertop{position:static!important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0}</style></head>
+
+<body class="">
+<center>
+<!-- JS Enabled Check -->
+<span id="javascriptCheck"></span>
+<script type="text/javascript">
+   document.getElementById("javascriptCheck").innerHTML = "";
+</script>
+<!-- END JS Enabled Check -->
+
+<!-- Header -->
+
+    <big><b>526'807'141 calculated drives</b> - the most used setup tool</big>
+	<script type="text/javascript">
+		//if (displayAds) document.write(headerAds);
+		   if (!isServicePayed) {
+		   	  document.write("<br/><small>Visit our ads partners or <a href='https://www.ecalc.ch/advertising.htm'>advertise</a> on eCalc</small><br/>");
+		      document.write(headerAds);
+		   }
+    </script><br><small>Visit our ads partners or <a href="https://www.ecalc.ch/advertising.htm">advertise</a> on eCalc</small><br><div id="ad-container" style="height:100px;"><a href="http://shop.dualsky.com?ecalc" target="_blank" rel="nofollow"><img src="/ads/banner/dualsky_970x90.jpg?1769116379292" alt="Dualsky" height="90" onclick="javascript: gtag('event', 'evt_Ads', {e_Advertiser: 'Dualsky', e_Ads_File: 'motorcalc.php', e_visit: true});ga('send', 'event', 'Ads_Dualsky', 'Click', 'C from motorcalc.php -&gt; http://shop.dualsky.com?ecalc',1);"></a></div>
+        <script language="javascript" type="text/javascript" src="/ads/rc_adsdata.js?1769116378"></script>
+        <script language="javascript" type="text/javascript" src="/ads/rotor.js?7.40.001"></script>
+
+<!-- END Header -->
+
+
+	<table cellpadding="2" cellspacing="0">
+		<tbody><tr>
+	        <td class="ads hidden-print" rowspan="2">
+
+				&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;<br>
+			    <!-- Begin Google Adsense -->
+	        
+				<script type="text/javascript"><!--
+				if (displayAds && wideScreen){
+				   google_ad_client = "ca-pub-8870605705552247";
+                   /* Vertical600wide */
+				   google_ad_slot = "9417276335";
+				   google_ad_width = 160;
+				   google_ad_height = 600;
+				   google_call="<script type='text/javascript' src='https://pagead2.googlesyndication.com/pagead/show_ads.js'> <\/script>";
+				}
+				//-->
+				</script>
+				<script type="text/javascript">
+				  if (displayAds && wideScreen) document.write(google_call);
+				</script>
+	        
+			    <!-- End Google Adsense -->
+	        </td>
+	        <td class="ads hidden-print" rowspan="2">&nbsp;&nbsp;</td>
+			<td>
+			<table style="width: 100%" cellspacing="0">
+				<tbody><tr>
+					<td class="header">
+					<span id="headerLeft">
+					
+					   <script language="JavaScript">document.write(theShopLogo)</script><a href="http://www.s4a.ch" target="_blank"><img border="0" src="./calcinclude/logo/p_s4alogo.gif" width="81" height="45"></a><p>
+					   
+					   					      <b><big><span id="txtFullVersion">Versão Completa para Assinantes</span></big></b></p><p>
+					     <input class="calcTitel" name="inProject" id="inProject" size="35" value="...insert your project name..." onchange="javascriptCheck:document.title=this.value+'  -  eCalc - propCalc'"><br>
+					                       
+                    
+					</p></span></td><td class="titel">
+					<a href="index.htm" target="_top">
+					<img alt="eCalc - the most reliable RC Calculatoron on the Web" src="calcinclude/logo/p_propcalc.jpg" border="0"></a></td>
+					<td class="header">
+					<span id="headerRight">
+
+				   		<a href="https://www.facebook.com/groups/eCalc" target="_blank">
+					    <img alt="" src="calcinclude/logo/f_follow.jpg" border="0" height="24" style="margin-bottom: 18px;"></a>&nbsp;&nbsp;&nbsp;
+				   		<a href="https://twitter.com/intent/user?screen_name=eCalc_e" target="_blank">
+					    <img alt="" src="calcinclude/logo/t_follow.jpg" border="0" height="24" style="margin-bottom: 18px;"></a>&nbsp;&nbsp;&nbsp;
+	                    <script src="https://apis.google.com/js/platform.js" gapi_processed="true"></script>
+      					<div id="___ytsubscribe_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 121px; height: 24px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 121px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1769116380525" name="I0_1769116380525" src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UCNbWYxm8Ihzi1Pqs-854etA&amp;layout=default&amp;count=default&amp;origin=https%3A%2F%2Fwww.ecalc.ch&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1769116380525&amp;_gfid=I0_1769116380525&amp;parent=https%3A%2F%2Fwww.ecalc.ch&amp;pfname=&amp;rpctoken=31361877" data-gapiattached="true"></iframe></div>
+      					<p>
+					
+				       					      <!-- User is correct logged in -->
+					      					      <span id="txtWelcome">Bem vindo</span> Juliana</p><p>
+					      <span id="txtExpDate">Validade da assinatura:</span> 31/12/26</p><p>
+					      <a href="/motorcalc.php?sitelokaction=logout"><span id="txtLogout">Logoff</span></a> - <a href="calcmember/update.php"><span id="txtProfile">Os dados do usuário</span></a></p><p>
+					   
+					   					
+					
+					</p></span></td>
+				</tr>
+				<tr>
+					<td class="accuracy"><span id="lblAccuracy">todos os dados sem garantia - Precisão:</span> 
+					+/-10%</td>
+					<td class="titel"><em><font style="color:red">prop</font><strong>Calc</strong> 
+					- <span id="lblPropCalc">Calculadora de Hélices</span></em></td>
+					<td class="language">
+					<a href="index.htm#news">News</a>&nbsp;|&nbsp;
+					<a href="index.htm#toolbox">Toolbox</a>&nbsp;|&nbsp;
+					<a id="easyLink" href="motorcalc_mobile.php" onclick="javascript:this.href = this.href + createParameters();">Easy View</a>&nbsp;|&nbsp;
+					<a href="calcinclude/help/propcalchelp.htm" target="_blank">
+					Help</a>&nbsp;|&nbsp;
+					<script type="text/javascript">
+					   if (isFullList && !isServicePayed) document.write("<a href='calcmember/submitmotor.htm' target='_blank'>Submit Specs</a>&nbsp;|&nbsp;");
+					</script><a href="calcmember/submitmotor.htm" target="_blank">Submit Specs</a>&nbsp;|&nbsp;   
+					Language: <select class="input" name="lang" id="lang" onchange="javascript:changeLanguage(this)"> 
+                      <script language="JavaScript">document.write(theLanguages)</script><option value="ar">العربية</option><option value="cn">中文</option><option value="cz">čeština</option><option value="de">deutsch</option><option selected="" value="en">english</option><option value="es">español</option><option value="fr">français</option><option value="hr">hrvatski</option><option value="it">italiano</option><option value="jp">日本語</option><option value="kr">한국어</option><option value="nl">Nederlands</option><option value="ps">فارسی</option><option value="pl">polski</option><option value="pt">português</option><option value="ru">русский</option><option value="ro">românesc</option><option value="se">svenska</option><option value="tr">türk</option>
+                    </select></td>
+				</tr>
+			</tbody></table>
+			</td>
+			<td class="ads hidden-print" rowspan="2">&nbsp;&nbsp;</td>
+			<td class="ads hidden-print" rowspan="2">&nbsp;<br>
+			
+			    <!-- Begin Google Adsense -->
+				
+				<script type="text/javascript"><!--
+				
+				if (displayAds){
+				   google_ad_client = "ca-pub-8870605705552247";
+				   /* Vertical240 */
+				   google_ad_slot = "3222522221";
+				   google_ad_width = 120;
+				   google_ad_height = 240;
+				   google_call="<script type='text/javascript' src='https://pagead2.googlesyndication.com/pagead/show_ads.js'> <\/script>";
+				}
+				//-->
+				</script>
+				<script type="text/javascript">
+				  if (displayAds) document.write(google_call);
+				</script>
+				
+				
+				
+				<br>&nbsp;<br>
+				
+				
+				<script type="text/javascript"><!--
+				if (displayAds){
+				   google_ad_client = "ca-pub-8870605705552247";
+				   /* Vertical600 */
+				   google_ad_slot = "0138122881";
+				   google_ad_width = 120;
+				   google_ad_height = 600;
+				   google_call="<script type='text/javascript' src='https://pagead2.googlesyndication.com/pagead/show_ads.js'> <\/script>";
+				}
+				//-->
+				</script>
+				<script type="text/javascript">
+				  if (displayAds) document.write(google_call);
+				</script>
+				
+
+				<br>&nbsp;<br>
+
+				<script type="text/javascript"><!--
+				if (displayAds && !wideScreen){
+				   google_ad_client = "ca-pub-8870605705552247";
+                   /* Vertical600wide */
+				   google_ad_slot = "9417276335";
+				   google_ad_width = 160;
+				   google_ad_height = 600;
+				   google_call="<script type='text/javascript' src='https://pagead2.googlesyndication.com/pagead/show_ads.js'> <\/script>";
+				}
+				//-->
+				</script>
+				<script type="text/javascript">
+				  if (displayAds && !wideScreen) document.write(google_call);
+				</script>
+			    <!-- End Google Adsense -->
+			    
+			
+			</td>
+		</tr>
+		<tr>
+			<td class="calculator">
+<!-- Frame Anfang -->	
+
+		
+
+<form name="theForm" id="theForm">
+    <hr class="line">
+	<table cellpadding="3" cellspacing="0" style="width: 100%">
+		<tbody><tr>
+			<td class="inputGeneral"><strong><span id="lblGGeneral">Geral</span></strong></td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral">
+			  <span id="lblGModelWeight">Peso do aeromodelo:</span><br>
+			  <input type="text" class="input" name="inGWeight" id="inGWeight" size="4" value="850" onchange="javascript:isPositiveNumber(this);g2oz(document.theForm.inGWeight.value,document.theForm.inGWeightOz)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGModelWeight">g</span>&nbsp;&nbsp;
+			  <select class="input" size="1" name="inGWeightCalc" id="inGWeightCalc" style="color: rgb(0, 0, 0);">
+                <option value="AUW" selected="">com componentes</option>
+                <option value="BAT">sem bateria</option>
+                <option value="SUM">sem componentes</option>
+              </select><br>
+			  <input type="text" class="input" name="inGWeightOz" id="inGWeightOz" size="4" value="30" onchange="javascript:isPositiveNumber(this);oz2g(document.theForm.inGWeightOz.value,document.theForm.inGWeight)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGModelWeightOz">oz</span>
+			
+			</td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGMotors">Nº de motores:</span><br>
+			  <input type="text" class="input" name="inGMotors" id="inGMotors" size="4" value="1" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);"><br><span id="lblGMotors2">(na mesma Bateria)</span></td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGWingSpan">Envergadura:</span><br>
+			  <input type="text" class="input" name="inGWingSpan" id="inGWingSpan" size="4" value="1270" onchange="javascript:isPositiveNumber(this);mm2inch(document.theForm.inGWingSpan.value,document.theForm.inGWingSpanIn)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGWingSpan">mm</span><br>
+			  <input type="text" class="input" name="inGWingSpanIn" id="inGWingSpanIn" size="4" value="50" onchange="javascript:isPositiveNumber(this);inch2mm(document.theForm.inGWingSpanIn.value,document.theForm.inGWingSpan)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGWingSpanIn">pol.</span>
+			</td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGWingArea">Área da asa:</span><br>
+			  <input type="text" class="input" name="inGWingArea" id="inGWingArea" size="4" value="50" onchange="javascript:isPositiveNumber(this);sq_dm2sq_in(document.theForm.inGWingArea.value,document.theForm.inGWingAreaIn)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGModelWingArea">dm²</span><br>
+			  <input type="text" class="input" name="inGWingAreaIn" id="inGWingAreaIn" size="4" value="775" onchange="javascript:isPositiveNumber(this);sq_in2sq_dm(document.theForm.inGWingAreaIn.value,document.theForm.inGWingArea)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGModelWingAreaIn">in²</span>
+			</td>
+			
+			
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGDrag">Arrasto:</span><br>
+			   <select class="input" name="inGDrag" id="inGDrag" onchange="javascript:configDrag()" style="color: rgb(0, 0, 0);">
+			      <option value="0" selected="">padrão</option>
+			      <option value="1">coeficiente</option>
+			   </select>
+			   <br>
+			   <input type="text" class="input" name="inGDragCd" id="inGDragCd" size="4" value="0.06" onchange="javascript:isPositiveNumber(this)" disabled="true" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGDragCd">Cd</span></td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGElevation">Elevação:</span><br>
+			  <input type="text" class="input" name="inGElevation" id="inGElevation" size="4" value="500" onchange="javascript: isNumber(this);m2ft(document.theForm.inGElevation.value,document.theForm.inGElevationFt)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGElevation">m ASL</span><br>
+			  <input type="text" class="input" name="inGElevationFt" id="inGElevationFt" size="4" value="1640" onchange="javascript:isNumber(this);ft2m(document.theForm.inGElevationFt.value,document.theForm.inGElevation)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGElevationFt">pés ASL</span>
+			</td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGTemp">Temperatura do ar:</span><br>
+			 <input type="text" class="input" name="inGTemp" id="inGTemp" size="4" value="25" onchange="javascript:isNumber(this);c2f(document.theForm.inGTemp.value,document.theForm.inGTempF)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGTemp">°C</span><br>
+			  <input type="text" class="input" name="inGTempF" id="inGTempF" size="4" value="77" onchange="javascript:isNumber(this);f2c(document.theForm.inGTempF.value,document.theForm.inGTemp)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGTempF">°F</span></td>
+			<td class="inputGeneral">&nbsp;</td>
+			<td class="inputGeneral"><span id="lblGPressure">Pressão (QNH):</span><br>
+			  <input type="text" class="input" name="inGPressure" id="inGPressure" size="4" value="1013" onchange="javascript:isPositiveNumber(this);hPa2inHg(document.theForm.inGPressure.value,document.theForm.inGPressureInHg)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGPressure">hPa</span><br>
+			  <input type="text" class="input" name="inGPressureInHg" id="inGPressureInHg" size="4" value="29.91" onchange="javascript:isPositiveNumber(this);inHg2hPa(document.theForm.inGPressureInHg.value,document.theForm.inGPressure)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uGPressureInHg">polHg</span>			
+			</td>
+		</tr>
+		<tr>
+			<td class="inputBattery"><strong><span id="lblBBattery">Célula de bateria</span></strong></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBCell">Tipo (C cont. / C máx) - condição de carga:</span><br>
+            <select class="input" name="inBCell" id="inBCell" onchange="javascript:configBattery()" style="color: rgb(0, 0, 0);"> 
+              
+            <option value="0" selected="">personalizar</option><option value="LiPo 150mAh - 80/120C">LiPo 150mAh - 80/120C</option><option value="LiPo 300mAh - 80/120C">LiPo 300mAh - 80/120C</option><option value="LiPo 450mAh - 80/120C">LiPo 450mAh - 80/120C</option><option value="LiPo 850mAh - 80/120C">LiPo 850mAh - 80/120C</option><option value="LiPo 1200mAh - 80/120C">LiPo 1200mAh - 80/120C</option><option value="LiPo 1600mAh - 80/120C">LiPo 1600mAh - 80/120C</option><option value="LiPo 1800mAh - 80/120C">LiPo 1800mAh - 80/120C</option><option value="LiPo 2200mAh - 80/120C">LiPo 2200mAh - 80/120C</option><option value="LiPo 2500mAh - 80/120C">LiPo 2500mAh - 80/120C</option><option value="LiPo 2700mAh - 80/120C">LiPo 2700mAh - 80/120C</option><option value="LiPo 3000mAh - 80/120C">LiPo 3000mAh - 80/120C</option><option value="LiPo 3300mAh - 80/120C">LiPo 3300mAh - 80/120C</option><option value="LiPo 3700mAh - 80/120C">LiPo 3700mAh - 80/120C</option><option value="LiPo 4000mAh - 80/120C">LiPo 4000mAh - 80/120C</option><option value="LiPo 4200mAh - 80/120C">LiPo 4200mAh - 80/120C</option><option value="LiPo 4500mAh - 80/120C">LiPo 4500mAh - 80/120C</option><option value="LiPo 5000mAh - 80/120C">LiPo 5000mAh - 80/120C</option><option value="LiPo 6000mAh - 80/120C">LiPo 6000mAh - 80/120C</option><option value="LiPo 8000mAh - 80/120C">LiPo 8000mAh - 80/120C</option><option value="LiPo 10000mAh - 80/120C">LiPo 10000mAh - 80/120C</option><option value="LiPo 12000mAh - 80/120C">LiPo 12000mAh - 80/120C</option><option value="LiPo 14000mAh - 80/120C">LiPo 14000mAh - 80/120C</option><option value="LiPo 16000mAh - 80/120C">LiPo 16000mAh - 80/120C</option><option value="LiPo 22000mAh - 80/120C">LiPo 22000mAh - 80/120C</option><option value="LiPo 150mAh - 65/100C">LiPo 150mAh - 65/100C</option><option value="LiPo 300mAh - 65/100C">LiPo 300mAh - 65/100C</option><option value="LiPo 450mAh - 65/100C">LiPo 450mAh - 65/100C</option><option value="LiPo 850mAh - 65/100C">LiPo 850mAh - 65/100C</option><option value="LiPo 1200mAh - 65/100C">LiPo 1200mAh - 65/100C</option><option value="LiPo 1600mAh - 65/100C">LiPo 1600mAh - 65/100C</option><option value="LiPo 1800mAh - 65/100C">LiPo 1800mAh - 65/100C</option><option value="LiPo 2200mAh - 65/100C">LiPo 2200mAh - 65/100C</option><option value="LiPo 2500mAh - 65/100C">LiPo 2500mAh - 65/100C</option><option value="LiPo 2700mAh - 65/100C">LiPo 2700mAh - 65/100C</option><option value="LiPo 3000mAh - 65/100C">LiPo 3000mAh - 65/100C</option><option value="LiPo 3300mAh - 65/100C">LiPo 3300mAh - 65/100C</option><option value="LiPo 3700mAh - 65/100C">LiPo 3700mAh - 65/100C</option><option value="LiPo 4000mAh - 65/100C">LiPo 4000mAh - 65/100C</option><option value="LiPo 4200mAh - 65/100C">LiPo 4200mAh - 65/100C</option><option value="LiPo 4500mAh - 65/100C">LiPo 4500mAh - 65/100C</option><option value="LiPo 5000mAh - 65/100C">LiPo 5000mAh - 65/100C</option><option value="LiPo 6000mAh - 65/100C">LiPo 6000mAh - 65/100C</option><option value="LiPo 8000mAh - 65/100C">LiPo 8000mAh - 65/100C</option><option value="LiPo 10000mAh - 65/100C">LiPo 10000mAh - 65/100C</option><option value="LiPo 12000mAh - 65/100C">LiPo 12000mAh - 65/100C</option><option value="LiPo 14000mAh - 65/100C">LiPo 14000mAh - 65/100C</option><option value="LiPo 16000mAh - 65/100C">LiPo 16000mAh - 65/100C</option><option value="LiPo 22000mAh - 65/100C">LiPo 22000mAh - 65/100C</option><option value="LiPo 150mAh - 55/80C">LiPo 150mAh - 55/80C</option><option value="LiPo 300mAh - 55/80C">LiPo 300mAh - 55/80C</option><option value="LiPo 450mAh - 55/80C">LiPo 450mAh - 55/80C</option><option value="LiPo 850mAh - 55/80C">LiPo 850mAh - 55/80C</option><option value="LiPo 1200mAh - 55/80C">LiPo 1200mAh - 55/80C</option><option value="LiPo 1600mAh - 55/80C">LiPo 1600mAh - 55/80C</option><option value="LiPo 1800mAh - 55/80C">LiPo 1800mAh - 55/80C</option><option value="LiPo 2200mAh - 55/80C">LiPo 2200mAh - 55/80C</option><option value="LiPo 2500mAh - 55/80C">LiPo 2500mAh - 55/80C</option><option value="LiPo 2700mAh - 55/80C">LiPo 2700mAh - 55/80C</option><option value="LiPo 3000mAh - 55/80C">LiPo 3000mAh - 55/80C</option><option value="LiPo 3300mAh - 55/80C">LiPo 3300mAh - 55/80C</option><option value="LiPo 3700mAh - 55/80C">LiPo 3700mAh - 55/80C</option><option value="LiPo 4000mAh - 55/80C">LiPo 4000mAh - 55/80C</option><option value="LiPo 4200mAh - 55/80C">LiPo 4200mAh - 55/80C</option><option value="LiPo 4500mAh - 55/80C">LiPo 4500mAh - 55/80C</option><option value="LiPo 5000mAh - 55/80C">LiPo 5000mAh - 55/80C</option><option value="LiPo 6000mAh - 55/80C">LiPo 6000mAh - 55/80C</option><option value="LiPo 8000mAh - 55/80C">LiPo 8000mAh - 55/80C</option><option value="LiPo 10000mAh - 55/80C">LiPo 10000mAh - 55/80C</option><option value="LiPo 12000mAh - 55/80C">LiPo 12000mAh - 55/80C</option><option value="LiPo 14000mAh - 55/80C">LiPo 14000mAh - 55/80C</option><option value="LiPo 16000mAh - 55/80C">LiPo 16000mAh - 55/80C</option><option value="LiPo 22000mAh - 55/80C">LiPo 22000mAh - 55/80C</option><option value="LiPo 150mAh - 45/60C">LiPo 150mAh - 45/60C</option><option value="LiPo 300mAh - 45/60C">LiPo 300mAh - 45/60C</option><option value="LiPo 450mAh - 45/60C">LiPo 450mAh - 45/60C</option><option value="LiPo 850mAh - 45/60C">LiPo 850mAh - 45/60C</option><option value="LiPo 1200mAh - 45/60C">LiPo 1200mAh - 45/60C</option><option value="LiPo 1600mAh - 45/60C">LiPo 1600mAh - 45/60C</option><option value="LiPo 1800mAh - 45/60C">LiPo 1800mAh - 45/60C</option><option value="LiPo 2200mAh - 45/60C">LiPo 2200mAh - 45/60C</option><option value="LiPo 2500mAh - 45/60C">LiPo 2500mAh - 45/60C</option><option value="LiPo 2700mAh - 45/60C">LiPo 2700mAh - 45/60C</option><option value="LiPo 3000mAh - 45/60C">LiPo 3000mAh - 45/60C</option><option value="LiPo 3300mAh - 45/60C">LiPo 3300mAh - 45/60C</option><option value="LiPo 3700mAh - 45/60C">LiPo 3700mAh - 45/60C</option><option value="LiPo 4000mAh - 45/60C">LiPo 4000mAh - 45/60C</option><option value="LiPo 4200mAh - 45/60C">LiPo 4200mAh - 45/60C</option><option value="LiPo 4500mAh - 45/60C">LiPo 4500mAh - 45/60C</option><option value="LiPo 5000mAh - 45/60C">LiPo 5000mAh - 45/60C</option><option value="LiPo 6000mAh - 45/60C">LiPo 6000mAh - 45/60C</option><option value="LiPo 8000mAh - 45/60C">LiPo 8000mAh - 45/60C</option><option value="LiPo 10000mAh - 45/60C">LiPo 10000mAh - 45/60C</option><option value="LiPo 12000mAh - 45/60C">LiPo 12000mAh - 45/60C</option><option value="LiPo 14000mAh - 45/60C">LiPo 14000mAh - 45/60C</option><option value="LiPo 16000mAh - 45/60C">LiPo 16000mAh - 45/60C</option><option value="LiPo 22000mAh - 45/60C">LiPo 22000mAh - 45/60C</option><option value="HV-LiPo 150mAh - 45/60C">HV-LiPo 150mAh - 45/60C</option><option value="HV-LiPo 300mAh - 45/60C">HV-LiPo 300mAh - 45/60C</option><option value="HV-LiPo 450mAh - 45/60C">HV-LiPo 450mAh - 45/60C</option><option value="HV-LiPo 850mAh - 45/60C">HV-LiPo 850mAh - 45/60C</option><option value="HV-LiPo 1200mAh - 45/60C">HV-LiPo 1200mAh - 45/60C</option><option value="HV-LiPo 1600mAh - 45/60C">HV-LiPo 1600mAh - 45/60C</option><option value="HV-LiPo 2100mAh - 45/60C">HV-LiPo 2100mAh - 45/60C</option><option value="HV-LiPo 2500mAh - 45/60C">HV-LiPo 2500mAh - 45/60C</option><option value="HV-LiPo 3300mAh - 45/60C">HV-LiPo 3300mAh - 45/60C</option><option value="HV-LiPo 3700mAh - 45/60C">HV-LiPo 3700mAh - 45/60C</option><option value="HV-LiPo 4000mAh - 45/60C">HV-LiPo 4000mAh - 45/60C</option><option value="HV-LiPo 4500mAh - 45/60C">HV-LiPo 4500mAh - 45/60C</option><option value="HV-LiPo 5000mAh - 45/60C">HV-LiPo 5000mAh - 45/60C</option><option value="HV-LiPo 6000mAh - 45/60C">HV-LiPo 6000mAh - 45/60C</option><option value="HV-LiPo 8000mAh - 45/60C">HV-LiPo 8000mAh - 45/60C</option><option value="HV-LiPo 10000mAh - 45/60C">HV-LiPo 10000mAh - 45/60C</option><option value="HV-LiPo 12000mAh - 45/60C">HV-LiPo 12000mAh - 45/60C</option><option value="HV-LiPo 16000mAh - 45/60C">HV-LiPo 16000mAh - 45/60C</option><option value="LiPo 150mAh - 35/50C">LiPo 150mAh - 35/50C</option><option value="LiPo 300mAh - 35/50C">LiPo 300mAh - 35/50C</option><option value="LiPo 450mAh - 35/50C">LiPo 450mAh - 35/50C</option><option value="LiPo 850mAh - 35/50C">LiPo 850mAh - 35/50C</option><option value="LiPo 1200mAh - 35/50C">LiPo 1200mAh - 35/50C</option><option value="LiPo 1600mAh - 35/50C">LiPo 1600mAh - 35/50C</option><option value="LiPo 1800mAh - 35/50C">LiPo 1800mAh - 35/50C</option><option value="LiPo 2200mAh - 35/50C">LiPo 2200mAh - 35/50C</option><option value="LiPo 2500mAh - 35/50C">LiPo 2500mAh - 35/50C</option><option value="LiPo 2700mAh - 35/50C">LiPo 2700mAh - 35/50C</option><option value="LiPo 3000mAh - 35/50C">LiPo 3000mAh - 35/50C</option><option value="LiPo 3300mAh - 35/50C">LiPo 3300mAh - 35/50C</option><option value="LiPo 3700mAh - 35/50C">LiPo 3700mAh - 35/50C</option><option value="LiPo 4000mAh - 35/50C">LiPo 4000mAh - 35/50C</option><option value="LiPo 4200mAh - 35/50C">LiPo 4200mAh - 35/50C</option><option value="LiPo 4500mAh - 35/50C">LiPo 4500mAh - 35/50C</option><option value="LiPo 5000mAh - 35/50C">LiPo 5000mAh - 35/50C</option><option value="LiPo 6000mAh - 35/50C">LiPo 6000mAh - 35/50C</option><option value="LiPo 8000mAh - 35/50C">LiPo 8000mAh - 35/50C</option><option value="LiPo 10000mAh - 35/50C">LiPo 10000mAh - 35/50C</option><option value="LiPo 12000mAh - 35/50C">LiPo 12000mAh - 35/50C</option><option value="LiPo 14000mAh - 35/50C">LiPo 14000mAh - 35/50C</option><option value="LiPo 16000mAh - 35/50C">LiPo 16000mAh - 35/50C</option><option value="LiPo 22000mAh - 35/50C">LiPo 22000mAh - 35/50C</option><option value="LiPo 150mAh - 35/50C">LiPo 150mAh - 35/50C</option><option value="LiPo 300mAh - 35/50C">LiPo 300mAh - 35/50C</option><option value="LiPo 450mAh - 35/50C">LiPo 450mAh - 35/50C</option><option value="LiPo 850mAh - 35/50C">LiPo 850mAh - 35/50C</option><option value="LiPo 1200mAh - 35/50C">LiPo 1200mAh - 35/50C</option><option value="LiPo 1600mAh - 35/50C">LiPo 1600mAh - 35/50C</option><option value="LiPo 1800mAh - 35/50C">LiPo 1800mAh - 35/50C</option><option value="LiPo 2200mAh - 35/50C">LiPo 2200mAh - 35/50C</option><option value="LiPo 2500mAh - 35/50C">LiPo 2500mAh - 35/50C</option><option value="LiPo 2700mAh - 35/50C">LiPo 2700mAh - 35/50C</option><option value="LiPo 3000mAh - 35/50C">LiPo 3000mAh - 35/50C</option><option value="LiPo 3300mAh - 35/50C">LiPo 3300mAh - 35/50C</option><option value="LiPo 3700mAh - 35/50C">LiPo 3700mAh - 35/50C</option><option value="LiPo 4000mAh - 35/50C">LiPo 4000mAh - 35/50C</option><option value="LiPo 4200mAh - 35/50C">LiPo 4200mAh - 35/50C</option><option value="LiPo 4500mAh - 35/50C">LiPo 4500mAh - 35/50C</option><option value="LiPo 5000mAh - 35/50C">LiPo 5000mAh - 35/50C</option><option value="LiPo 6000mAh - 35/50C">LiPo 6000mAh - 35/50C</option><option value="LiPo 8000mAh - 35/50C">LiPo 8000mAh - 35/50C</option><option value="LiPo 10000mAh - 35/50C">LiPo 10000mAh - 35/50C</option><option value="LiPo 12000mAh - 35/50C">LiPo 12000mAh - 35/50C</option><option value="LiPo 14000mAh - 35/50C">LiPo 14000mAh - 35/50C</option><option value="LiPo 16000mAh - 35/50C">LiPo 16000mAh - 35/50C</option><option value="LiPo 22000mAh - 35/50C">LiPo 22000mAh - 35/50C</option><option value="LiPo 150mAh - 30/45C">LiPo 150mAh - 30/45C</option><option value="LiPo 300mAh - 30/45C">LiPo 300mAh - 30/45C</option><option value="LiPo 450mAh - 30/45C">LiPo 450mAh - 30/45C</option><option value="LiPo 850mAh - 30/45C">LiPo 850mAh - 30/45C</option><option value="LiPo 1200mAh - 30/45C">LiPo 1200mAh - 30/45C</option><option value="LiPo 1600mAh - 30/45C">LiPo 1600mAh - 30/45C</option><option value="LiPo 1800mAh - 30/45C">LiPo 1800mAh - 30/45C</option><option value="LiPo 2200mAh - 30/45C">LiPo 2200mAh - 30/45C</option><option value="LiPo 2500mAh - 30/45C">LiPo 2500mAh - 30/45C</option><option value="LiPo 2700mAh - 30/45C">LiPo 2700mAh - 30/45C</option><option value="LiPo 3000mAh - 30/45C">LiPo 3000mAh - 30/45C</option><option value="LiPo 3300mAh - 30/45C">LiPo 3300mAh - 30/45C</option><option value="LiPo 3700mAh - 30/45C">LiPo 3700mAh - 30/45C</option><option value="LiPo 4000mAh - 30/45C">LiPo 4000mAh - 30/45C</option><option value="LiPo 4200mAh - 30/45C">LiPo 4200mAh - 30/45C</option><option value="LiPo 4500mAh - 30/45C">LiPo 4500mAh - 30/45C</option><option value="LiPo 5000mAh - 30/45C">LiPo 5000mAh - 30/45C</option><option value="LiPo 6000mAh - 30/45C">LiPo 6000mAh - 30/45C</option><option value="LiPo 8000mAh - 30/45C">LiPo 8000mAh - 30/45C</option><option value="LiPo 10000mAh - 30/45C">LiPo 10000mAh - 30/45C</option><option value="LiPo 12000mAh - 30/45C">LiPo 12000mAh - 30/45C</option><option value="LiPo 14000mAh - 30/45C">LiPo 14000mAh - 30/45C</option><option value="LiPo 16000mAh - 30/45C">LiPo 16000mAh - 30/45C</option><option value="LiPo 22000mAh - 30/45C">LiPo 22000mAh - 30/45C</option><option value="LiPo 150mAh - 25/35C">LiPo 150mAh - 25/35C</option><option value="LiPo 300mAh - 25/35C">LiPo 300mAh - 25/35C</option><option value="LiPo 450mAh - 25/35C">LiPo 450mAh - 25/35C</option><option value="LiPo 850mAh - 25/35C">LiPo 850mAh - 25/35C</option><option value="LiPo 1200mAh - 25/35C">LiPo 1200mAh - 25/35C</option><option value="LiPo 1600mAh - 25/35C">LiPo 1600mAh - 25/35C</option><option value="LiPo 1800mAh - 25/35C">LiPo 1800mAh - 25/35C</option><option value="LiPo 2200mAh - 25/35C">LiPo 2200mAh - 25/35C</option><option value="LiPo 2500mAh - 25/35C">LiPo 2500mAh - 25/35C</option><option value="LiPo 2700mAh - 25/35C">LiPo 2700mAh - 25/35C</option><option value="LiPo 3000mAh - 25/35C">LiPo 3000mAh - 25/35C</option><option value="LiPo 3300mAh - 25/35C">LiPo 3300mAh - 25/35C</option><option value="LiPo 3700mAh - 25/35C">LiPo 3700mAh - 25/35C</option><option value="LiPo 4000mAh - 25/35C">LiPo 4000mAh - 25/35C</option><option value="LiPo 4200mAh - 25/35C">LiPo 4200mAh - 25/35C</option><option value="LiPo 4500mAh - 25/35C">LiPo 4500mAh - 25/35C</option><option value="LiPo 5000mAh - 25/35C">LiPo 5000mAh - 25/35C</option><option value="LiPo 6000mAh - 25/35C">LiPo 6000mAh - 25/35C</option><option value="LiPo 8000mAh - 25/35C">LiPo 8000mAh - 25/35C</option><option value="LiPo 10000mAh - 25/35C">LiPo 10000mAh - 25/35C</option><option value="LiPo 12000mAh - 25/35C">LiPo 12000mAh - 25/35C</option><option value="LiPo 14000mAh - 25/35C">LiPo 14000mAh - 25/35C</option><option value="LiPo 16000mAh - 25/35C">LiPo 16000mAh - 25/35C</option><option value="LiPo 22000mAh - 25/35C">LiPo 22000mAh - 25/35C</option><option value="LiPo 150mAh - 20/30C">LiPo 150mAh - 20/30C</option><option value="LiPo 300mAh - 20/30C">LiPo 300mAh - 20/30C</option><option value="LiPo 450mAh - 20/30C">LiPo 450mAh - 20/30C</option><option value="LiPo 850mAh - 20/30C">LiPo 850mAh - 20/30C</option><option value="LiPo 1200mAh - 20/30C">LiPo 1200mAh - 20/30C</option><option value="LiPo 1600mAh - 20/30C">LiPo 1600mAh - 20/30C</option><option value="LiPo 1800mAh - 20/30C">LiPo 1800mAh - 20/30C</option><option value="LiPo 2200mAh - 20/30C">LiPo 2200mAh - 20/30C</option><option value="LiPo 2500mAh - 20/30C">LiPo 2500mAh - 20/30C</option><option value="LiPo 2700mAh - 20/30C">LiPo 2700mAh - 20/30C</option><option value="LiPo 3000mAh - 20/30C">LiPo 3000mAh - 20/30C</option><option value="LiPo 3300mAh - 20/30C">LiPo 3300mAh - 20/30C</option><option value="LiPo 3700mAh - 20/30C">LiPo 3700mAh - 20/30C</option><option value="LiPo 4000mAh - 20/30C">LiPo 4000mAh - 20/30C</option><option value="LiPo 4200mAh - 20/30C">LiPo 4200mAh - 20/30C</option><option value="LiPo 4500mAh - 20/30C">LiPo 4500mAh - 20/30C</option><option value="LiPo 5000mAh - 20/30C">LiPo 5000mAh - 20/30C</option><option value="LiPo 6000mAh - 20/30C">LiPo 6000mAh - 20/30C</option><option value="LiPo 8000mAh - 20/30C">LiPo 8000mAh - 20/30C</option><option value="LiPo 10000mAh - 20/30C">LiPo 10000mAh - 20/30C</option><option value="LiPo 12000mAh - 20/30C">LiPo 12000mAh - 20/30C</option><option value="LiPo 14000mAh - 20/30C">LiPo 14000mAh - 20/30C</option><option value="LiPo 16000mAh - 20/30C">LiPo 16000mAh - 20/30C</option><option value="LiPo 22000mAh - 20/30C">LiPo 22000mAh - 20/30C</option><option value="LiPo 10000mAh - 15/25C">LiPo 10000mAh - 15/25C</option><option value="LiPo 12000mAh - 15/25C">LiPo 12000mAh - 15/25C</option><option value="LiPo 14000mAh - 15/25C">LiPo 14000mAh - 15/25C</option><option value="LiPo 16000mAh - 15/25C">LiPo 16000mAh - 15/25C</option><option value="LiPo 22000mAh - 15/25C">LiPo 22000mAh - 15/25C</option><option value="LiteStorm 2100CL - 16/22C">LiteStorm 2100CL - 16/22C</option><option value="Konion - 13/20C">Konion - 13/20C</option><option value="EVE Energy INR21700-40PL - 17C/30C">EVE Energy INR21700-40PL - 17C/30C</option><option value="EVE Energy INR21700-50PL - 25C/36C">EVE Energy INR21700-50PL - 25C/36C</option><option value="Molicel INR18650-P30B - 10C/12C">Molicel INR18650-P30B - 10C/12C</option><option value="Molicel INR21700-P42A - 7C/10C">Molicel INR21700-P42A - 7C/10C</option><option value="Molicel INR21700-P45B - 7C/10C">Molicel INR21700-P45B - 7C/10C</option><option value="Molicel INR21700-P50B - 12C/15C">Molicel INR21700-P50B - 12C/15C</option><option value="Reliance INR21700-RS50 - 10C/14C">Reliance INR21700-RS50 - 10C/14C</option><option value="Panasonic NCR18650GA - 3C/4C">Panasonic NCR18650GA - 3C/4C</option><option value="Panasonic NCR18650B - 1C/2C">Panasonic NCR18650B - 1C/2C</option><option value="Panasonic NCR18650PF - 1C/2C">Panasonic NCR18650PF - 1C/2C</option><option value="Samsung INR18650-20S - 15C/20C">Samsung INR18650-20S - 15C/20C</option><option value="Samsung INR18650-29E - 2C/3C">Samsung INR18650-29E - 2C/3C</option><option value="Samsung INR18650-35E - 2.4C/4C">Samsung INR18650-35E - 2.4C/4C</option><option value="Samsung INR18650-30Q - 3C/4C">Samsung INR18650-30Q - 3C/4C</option><option value="Samsung INR21700-40T - 8C/12C">Samsung INR21700-40T - 8C/12C</option><option value="Samsung INR21700-50E - 2C/3C">Samsung INR21700-50E - 2C/3C</option><option value="Samsung INR21700-50S - 5C/9C">Samsung INR21700-50S - 5C/9C</option><option value="Sanyo NCR20700B - 4C/6C">Sanyo NCR20700B - 4C/6C</option><option value="Sony US18650VTC5 - 8C/12C">Sony US18650VTC5 - 8C/12C</option><option value="Sony US18650VTC6 - 5C/10C">Sony US18650VTC6 - 5C/10C</option><option value="Sony UST180BMVTC6 - 5C/10C">Sony UST180BMVTC6 - 5C/10C</option><option value="A123 2500 - 60/150C">A123 2500 - 60/150C</option><option value="A123 1100 - 30/50C">A123 1100 - 30/50C</option><option value="A123 2300 - 30/50C">A123 2300 - 30/50C</option><option value="A123 1100 - 15/20C">A123 1100 - 15/20C</option><option value="A123 2300 - 15/20C">A123 2300 - 15/20C</option><option value="Headway 38120P - 10/25C">Headway 38120P - 10/25C</option><option value="NiMH 3800 - 50/65C">NiMH 3800 - 50/65C</option><option value="NiMH 4200 - 50/65C">NiMH 4200 - 50/65C</option></select>
+            -
+            <select class="input" name="inBChargeState" id="inBChargeState" style="color: rgb(0, 0, 0);"> 
+               <option value="6">cheia</option>
+               <option value="0" selected="selected">normal</option>
+               <option value="-6">baixa</option>
+            </select>
+<!--
+<br/>
+        <input list="optionsList" id="searchSelect" placeholder="select..." onfocus="javascript: this.click();" />
+        <datalist id="optionsList">
+            <option value="Apple">
+            <option value="Banana">
+            <option value="Cherry">
+            <option value="Dragon Fruit">
+            <option value="Elderberry">
+            <option value="Fig">
+            <option value="Grape">
+            <option value="Kiwi">
+            <option value="Mango">
+            <option value="Orange">
+        </datalist>
+-->        
+        
+            </td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBConfiguration">Configuração:</span><br>
+			<input type="text" class="input" name="inBS" id="inBS" size="3" value="3" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uBS">S</span>&nbsp;&nbsp;&nbsp;
+			<input type="text" class="input" name="inBP" id="inBP" size="3" value="1" onchange="javascript:isPositiveNumber(this);document.theForm.inBCap.value=this.value*document.theForm.inBCellCap.value;" style="color: rgb(0, 0, 0);">&nbsp;<span id="uBP">P</span></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBCellCap">Capacidade da célula:</span><br>
+			<input type="text" class="input" name="inBCellCap" id="inBCellCap" size="4" value="" onchange="javascript:isPositiveNumber(this);document.theForm.inBCap.value=this.value*document.theForm.inBP.value;" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBCellCap">mAh</span><br>
+			<input type="text" class="input" name="inBCap" id="inBCap" size="4" value="" onchange="javascript:isPositiveNumber(this);this.value=document.theForm.inBCellCap.value*document.theForm.inBP.value;" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBCap">mAh total</span><br></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBDisc">descarga máxima:</span><br>
+			   <select class="input" size="1" name="inBDisc" id="inBDisc" style="color: rgb(0, 0, 0);">
+                <option value="0.10">10%</option>
+                <option value="0.15">15%</option>
+                <option value="0.20">20%</option>
+                <option value="0.25">25%</option>
+                <option value="0.30">30%</option>
+                <option value="0.35">35%</option>
+                <option value="0.40">40%</option>
+                <option value="0.45">45%</option>
+                <option value="0.50">50%</option>
+                <option value="0.55">55%</option>
+                <option value="0.60">60%</option>
+                <option value="0.65">65%</option>
+                <option value="0.70">70%</option>
+                <option value="0.75">75%</option>
+                <option value="0.80">80%</option>
+                <option value="0.85" selected="">85%</option>
+                <option value="0.90">90%</option>
+                <option value="0.95">95%</option>
+                <option value="1.00">100%</option>
+              </select></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBRi">Resistência:</span><br>
+			<input type="text" class="input" name="inBRi" id="inBRi" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBRi">Ohm</span></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBVcell">Tensão:</span><br>
+			<input type="text" class="input" name="inBVcell" id="inBVcell" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBVcell">V</span></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBCRate">Taxa C:</span><br>
+			<input type="text" class="input" name="inBCcont" id="inBCcont" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBCcont">C cont.</span><br>
+			<input type="text" class="input" name="inBCmax" id="inBCmax" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBCmax">C máx</span></td>
+			<td class="inputBattery">&nbsp;</td>
+			<td class="inputBattery"><span id="lblBWeight">Peso da célula:</span><br>
+			<input type="text" class="input" name="inBWeight" id="inBWeight" size="4" value="" onchange="javascript:isPositiveNumber(this);g2oz(document.theForm.inBWeight.value,document.theForm.inBWeightOz)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBWeight">g</span><br>
+			<input type="text" class="input" name="inBWeightOz" id="inBWeightOz" size="4" value="" onchange="javascript:isPositiveNumber(this);oz2g(document.theForm.inBWeightOz.value,document.theForm.inBWeight)" disabled="" style="color: rgb(255, 64, 64);">&nbsp;<span id="uBWeightOz">oz</span></td>
+		</tr>
+		<tr>
+			<td class="inputEsc"><strong><span id="lblEController">ESC</span></strong></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEType">Tipo</span> - <span id="lblETiming">Tempo</span>:<br>
+            <select class="input" name="inEType" id="inEType" onchange="javascript:configEsc()" style="color: rgb(0, 0, 0);"> 
+               
+            <option value="0" selected="">personalizar</option><option value="1">max 10A</option><option value="2">max 20A</option><option value="3">max 30A</option><option value="4">max 40A</option><option value="5">max 50A</option><option value="6">max 60A</option><option value="7">max 70A</option><option value="8">max 80A</option><option value="9">max 90A</option><option value="10">max 100A</option><option value="11">max 120A</option><option value="12">max 150A</option><option value="13">max 200A</option><option value="14">max 250A</option><option value="15">max 300A</option><option value="16">APD 40F3</option><option value="17">APD 80F3x</option><option value="18">APD 120F3x</option><option value="19">APD 200F3x</option><option value="20">APD HV Pro 16s</option><option value="21">APD HV Pro 20s</option><option value="22">APD HV Pro 24S</option><option value="23">CC Phoenix Edge 50</option><option value="24">CC Phoenix Edge 75</option><option value="25">CC Phoenix Edge 100</option><option value="26">CC Phoenix Edge 130</option><option value="27">CC Phoenix Edge 200</option><option value="28">CC Phoenix Edge Lite 50</option><option value="29">CC Phoenix Edge Lite 75</option><option value="30">CC Phoenix Edge Lite 100</option><option value="31">CC Phoenix Edge Lite 130</option><option value="32">CC Phoenix Edge Lite 200</option><option value="33">CC Phoenix Edge HV 40</option><option value="34">CC Phoenix Edge HV 60</option><option value="35">CC Phoenix Edge HV 80</option><option value="36">CC Phoenix Edge HV 120</option><option value="37">CC Phoenix Edge HV 160</option><option value="38">CC Phoenix Edge HVF 160</option><option value="39">CC Phoenix Edge HV Lite 40</option><option value="40">CC Phoenix Edge HV Lite 60</option><option value="41">CC Phoenix Edge HV Lite 80</option><option value="42">CC Phoenix Edge HV Lite 120</option><option value="43">CC Phoenix Edge HV Lite 160</option><option value="44">CC Talon 15</option><option value="45">CC Talon 25</option><option value="46">CC Talon 35</option><option value="47">CC Talon 60</option><option value="48">CC Talon 90</option><option value="49">CC Talon 120 HV</option><option value="50">CC Thunderbird 6</option><option value="51">CC Thunderbird 9</option><option value="52">CC Thunderbird 18</option><option value="53">CC Thunderbird 36</option><option value="54">CC Thunderbird 54</option><option value="55">CC QuadPack 25</option><option value="56">CC QuadPack 35</option><option value="57">Dualsky Summit 30X</option><option value="58">Dualsky Summit 30 Slim</option><option value="59">Dualsky Summit 60X</option><option value="60">Dualsky Summit 60 Slim</option><option value="61">Dualsky Summit 70XHV</option><option value="62">Dualsky Summit 100XHV</option><option value="63">Dualsky Summit 130XHV</option><option value="64">Dualsky Summit 160XHV</option><option value="65">Dualsky Summit 180XHV</option><option value="66">Dualsky Summit 220XHV</option><option value="67">Dualsky Summit 100LV light</option><option value="68">Dualsky Summit 100HV F3A</option><option value="69">Dualsky Summit 120HV</option><option value="70">Dualsky Summit 120LV</option><option value="71">EP Aer11</option><option value="72">EP Aer22</option><option value="73">EP Aer33</option><option value="74">EP Aer40</option><option value="75">EP Aer60</option><option value="76">EP Aer80</option><option value="77">EP Aer100</option><option value="78">EP Aer150</option><option value="79">Hobbywing FlyFun 30A-4s</option><option value="80">Hobbywing FlyFun Mini 30A-4s</option><option value="81">Hobbywing FlyFun 40A-6s</option><option value="82">Hobbywing FlyFun 60A-6s</option><option value="83">Hobbywing FlyFun 80A-8s</option><option value="84">Hobbywing FlyFun 110A HV</option><option value="85">Hobbywing FlyFun 120A-8s</option><option value="86">Hobbywing FlyFun 130A HV</option><option value="87">Hobbywing FlyFun 160A HV</option><option value="88">Hobbywing Platinum 25A LV</option><option value="89">Hobbywing Platinum 40A LV</option><option value="90">Hobbywing Platinum Pro 60A LV</option><option value="91">Hobbywing Platinum Pro 80A LV</option><option value="92">Hobbywing Platinum Pro 100A LV</option><option value="93">Hobbywing Platinum Pro 120A LV</option><option value="94">Hobbywing Platinum Pro 130A HV</option><option value="95">Hobbywing Platinum Pro 160A HV</option><option value="96">Hobbywing Platinum Pro 200A HV</option><option value="97">Hobbywing Platinum Pro 260A HV</option><option value="98">IBEX 45LV</option><option value="99">IBEX 55</option><option value="100">IBEX 65</option><option value="101">IBEX 80</option><option value="102">IBEX 85</option><option value="103">IBEX 115</option><option value="104">IBEX 120</option><option value="105">IBEX 130</option><option value="106">IBEX 145</option><option value="107">IBEX 155</option><option value="108">IBEX 200</option><option value="109">IBEX 220</option><option value="110">Kontronik JIVE PRO 80HV</option><option value="111">Kontronik JIVE PRO 120HV</option><option value="112">Kontronik KOLIBRI 140 HV-I</option><option value="113">Kontronik KOLIBRI 140 LV-I</option><option value="114">Kontronik KOLIBRI 60 LV-I</option><option value="115">Kontronik KOLIBRI 90 HV-I</option><option value="116">Kontronik KOLIBRI 90 LV-I</option><option value="117">Kontronik KOLIBRI-X 60 LV</option><option value="118">Kontronik KOLIBRI-X 90 LV</option><option value="119">Kontronik COOL KOSMIK 160 HV</option><option value="120">Kontronik COOL KOSMIK 200 HV</option><option value="121">Kontronik COOL KOSMIK 250 HV-I</option><option value="122">Kontronik KONTROL-X 30LV</option><option value="123">Kontronik KONTROL-X 40LV</option><option value="124">Kontronik KONTROL-X 55LV</option><option value="125">Kontronik DuoCool KOSMIK 300 HV-I</option><option value="126">Kontronik KOSMIK 160 HV</option><option value="127">Kontronik KOSMIK 170 HV-I</option><option value="128">Kontronik KOSMIK 200 HV</option><option value="129">Kontronik KOSMIK 210 HV-I</option><option value="130">Kontronik Water Cool KOSMIK 300 HV-I</option><option value="131">Leomotion LC30 SLIM LV</option><option value="132">Leomotion LC50 SLIM LV</option><option value="133">X-5-Pro</option><option value="134">X-7-Pro</option><option value="135">X-12-Pro</option><option value="136">X-20-Pro</option><option value="137">X-30-Pro</option><option value="138">X-40-SB-Pro</option><option value="139">X-55-SB-Pro</option><option value="140">X-70-SB-Pro</option><option value="141">X-40-opto-Pro</option><option value="142">X-70-opto-Pro</option><option value="143">X-80-opto-Pro</option><option value="144">X-110-opto-Pro</option><option value="145">Master Basic 40-SB</option><option value="146">Master Basic 55-SB</option><option value="147">Master Basic 70-SB</option><option value="148">Master Basic 90 opto</option><option value="149">MEZON EVO 40 BEC LMR</option><option value="150">MEZON EVO 50 BEC</option><option value="151">MEZON EVO 70 BEC LMR</option><option value="152">MEZON EVO 80 BEC</option><option value="153">MEZON EVO 85 Opto</option><option value="154">MEZON 90</option><option value="155">MEZON 90 lite</option><option value="156">MEZON 95 opto</option><option value="157">MEZON 95 opto lite</option><option value="158">MEZON 115 opto</option><option value="159">MEZON 120</option><option value="160">MEZON 120 lite</option><option value="161">MEZON 130</option><option value="162">MEZON 130 lite</option><option value="163">MEZON 135 opto</option><option value="164">MEZON 135 opto lite</option><option value="165">MEZON 160 lite</option><option value="166">MEZON 165 opto lite</option><option value="167">Spin 33 Pro</option><option value="168">Spin 44 Pro</option><option value="169">Spin 55 Pro</option><option value="170">Spin 66 Pro</option><option value="171">Spin 80 Pro</option><option value="172">Spin 100 Pro</option><option value="173">Spin 160 Pro</option><option value="174">Spin 66 Pro opto</option><option value="175">Spin 75 Pro opto</option><option value="176">Spin 99 Pro opto</option><option value="177">Spin 125 Pro opto</option><option value="178">Spin 165 Pro opto</option><option value="179">Spin 200 Pro opto</option><option value="180">Spin 300 Pro opto</option><option value="181">KDE Direct KDEXF-UAS20LV</option><option value="182">KDE Direct KDEXF-UAS35</option><option value="183">KDE Direct KDEXF-UAS55</option><option value="184">KDE Direct KDEXF-UAS55HVC</option><option value="185">KDE Direct KDEXF-UAS75HVC</option><option value="186">KDE Direct KDEXF-UAS95HVC</option><option value="187">XController XC0610BA V2</option><option value="188">XController XC1010BA V2</option><option value="189">XController XC1210BA V2</option><option value="190">XController XC1812BA V2</option><option value="191">XController XC2512BA V2</option><option value="192">XController XC3012BA V2</option><option value="193">XController XC4018BA V2</option><option value="194">XController XC6018BA V2</option><option value="195">XController XC8018BA V2</option><option value="196">XController XC9036HV V2</option><option value="197">XController XC-12-Lite</option><option value="198">XController XC-22-Lite</option><option value="199">XController XC-45-Lite</option><option value="200">XController XC-65-Lite</option><option value="201">Scorpion Commander 11A LBEC V2</option><option value="202">Scorpion Commander 15A LBEC V2</option><option value="203">Scorpion Commander 25A LBEC V2</option><option value="204">Scorpion Commander 35A SBEC V3</option><option value="205">Scorpion Commander 45A SBEC V3</option><option value="206">Scorpion Commander 60A SBEC V3</option><option value="207">Scorpion Commander 90A SBEC V3</option><option value="208">Scorpion Commander 110A SBEC V3</option><option value="209">Scorpion Commander 120A SBEC</option><option value="210">Scorpion Commander 160A SBEC</option><option value="211">Scorpion Commander 90A opto</option><option value="212">Scorpion Commander 130A opto</option><option value="213">Scorpion Commander 160A opto</option><option value="214">Scorpion Tribunus 06-120A</option><option value="215">Scorpion Tribunus 06-120A opto</option><option value="216">Scorpion Tribunus 12-130A</option><option value="217">Scorpion Tribunus 14-200A</option><option value="218">Scorpion Tribunus 14-300A</option><option value="219">Sunrise YEP 7A-2s</option><option value="220">Sunrise YEP 18A-4s</option><option value="221">Sunrise YEP 60A-6s</option><option value="222">Sunrise YEP 90A-6s</option><option value="223">Sunrise YEP 120A-6s</option><option value="224">Sunrise YEP 120A-14s</option><option value="225">Sunrise YEP 180A-14s</option><option value="226">Suppo 10A</option><option value="227">Suppo 20A</option><option value="228">Suppo 30A</option><option value="229">Suppo 40A</option><option value="230">Suppo 50A</option><option value="231">Suppo 60A</option><option value="232">Suppo 70A</option><option value="233">Suppo 80A-HV</option><option value="234">Suppo 100A-LV</option><option value="235">Suppo 100A-HV</option><option value="236">Suppo 200A-LV</option><option value="237">Suppo 200A-HV</option><option value="238">YGE 35 LVT</option><option value="239">YGE 65 LVT</option><option value="240">YGE 95 LVT</option><option value="241">YGE 105 Aureus</option><option value="242">YGE 125 Saphir</option><option value="243">YGE 155 Saphir</option><option value="244">YGE 135 Aureus</option><option value="245">YGE 185 Aureus</option><option value="246">YGE 205HVT Opto</option><option value="247">YGE 255HVT Opto</option><option value="248">YGE 265 Aureus</option><option value="249">KISS ESC 12A</option><option value="250">KISS ESC 18A</option><option value="251">Black Widow 18A (Built-In)</option><option value="252">Black Widow 30A (Built-In)</option><option value="253">Black Widow 40A (Built-In)</option><option value="254">----- discontinued ESCs -----</option><option value="255">CC Phoenix Ice Lite 50</option><option value="256">CC Phoenix Ice Lite 75</option><option value="257">CC Phoenix Ice Lite 100</option><option value="258">CC Phoenix Ice Lite 150</option><option value="259">CC Phoenix Ice Lite 200</option><option value="260">CC Phoenix Ice Lite HV 160</option><option value="261">CC Phoenix Ice 50</option><option value="262">CC Phoenix Ice 75</option><option value="263">CC Phoenix Ice 100</option><option value="264">CC Phoenix Ice 150</option><option value="265">CC Phoenix Ice 200</option><option value="266">CC Phoenix Ice HV 40</option><option value="267">CC Phoenix Ice HV 60</option><option value="268">CC Phoenix Ice HV 80</option><option value="269">CC Phoenix Ice HV 120</option><option value="270">CC Phoenix Ice HV 160</option><option value="271">CC Phoenix 10</option><option value="272">CC Phoenix 25</option><option value="273">CC Phoenix 35</option><option value="274">CC Phoenix 45</option><option value="275">CC Phoenix 60</option><option value="276">CC Phoenix 80</option><option value="277">CC Phoenix 125</option><option value="278">CC Phoenix 180</option><option value="279">CC Phoenix HV 30</option><option value="280">CC Phoenix HV 45</option><option value="281">CC Phoenix HV 85</option><option value="282">CC Pheonix HV 110</option><option value="283">CC Pheonix HV 140</option><option value="284">Kontronik JIVE 80LV</option><option value="285">Kontronik JIVE 100LV</option><option value="286">Kontronik KOBY 40LV</option><option value="287">Kontronik KOBY 55LV</option><option value="288">Kontronik KOBY 70LV</option><option value="289">Kontronik KOBY 90LV</option><option value="290">YGE 135 LVT</option><option value="291">YGE 135 SLIM</option><option value="292">YGE 90 HVT Opto</option><option value="293">YGE 120 HVT Opto</option><option value="294">YGE 165 HVT Opto</option><option value="295">YGE 7 S</option><option value="296">YGE 8 S</option><option value="297">YGE 12 S</option><option value="298">YGE 18</option><option value="299">YGE 30</option><option value="300">YGE 40</option><option value="301">YGE 60</option><option value="302">YGE 90 LV</option><option value="303">YGE 90 HV</option><option value="304">YGE 120 LV</option><option value="305">YGE 120 LV K</option><option value="306">YGE 120 HV</option><option value="307">YGE 120 HV K</option><option value="308">YGE 150 HV FAI</option><option value="309">YGE 160 FAI</option><option value="310">YGE 160 HV </option><option value="311">YGE 160 HV K</option><option value="312">YGE 200 HV FAI</option><option value="313">YGE 320 HV</option></select>
+            -
+            <select class="input" name="inETiming" id="inETiming" style="color: rgb(0, 0, 0);"> 
+               <option value="0.95">baixo</option>
+               <option value="0.98">reduzido</option>
+               <option value="1.0" selected="selected">normal</option>
+               <option value="1.03">aumentado</option>
+               <option value="1.05">alto</option>
+               <!-- <OPTION value=1.09 >maximum</OPTION> -->
+            </select>
+            <!-- Consider PWM (Trottle Setting 1...100%
+            <br/><input type="text" class="input" name="inEPWM" id="inEPWM" size="4" value="100" onchange="javascript:isPositiveNumber(this)"/>&nbsp;<span id="uEPWM">% PWM</span>
+            -->
+            </td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEContCurrent">Corrente:</span><br>
+			<input type="text" class="input" name="inEContCurrent" id="inEContCurrent" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEContCurrent">A  cont.</span><br>
+			<input type="text" class="input" name="inEMaxCurrent" id="inEMaxCurrent" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEMaxCurrent">A  máx.</span></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblERi">Resistência:</span><br>
+			<input type="text" class="input" name="inERi" id="inERi" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uERi">Ohm</span></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEWeight">Peso:</span><br>
+			<input type="text" class="input" name="inEWeight" id="inEWeight" size="4" value="" onchange="javascript:isPositiveNumber(this);g2oz(document.theForm.inEWeight.value,document.theForm.inEWeightOz)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEWeight">g</span><br>
+			<input type="text" class="input" name="inEWeightOz" id="inEWeightOz" size="4" value="" onchange="javascript:isPositiveNumber(this);oz2g(document.theForm.inEWeightOz.value,document.theForm.inEWeight)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEWeightOz">oz</span></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEWireToBat">Bitola do condutor<br>até a bateria:</span><br>
+			  <select class="input" size="1" name="inEWireToBat" id="inEWireToBat" style="color: rgb(0, 0, 0);">
+                <option value="10.25">AWG7=10.25mm²</option>
+                <option value="8.34">AWG8=8.34mm²</option>
+                <option value="5.27" selected="">AWG10=5.27mm²</option>
+                <option value="3.30">AWG12=3.30mm²</option>
+                <option value="2.63">AWG13=2.63mm²</option>
+                <option value="2.08">AWG14=2.08mm²</option>
+                <option value="1.31">AWG16=1.31mm²</option>
+                <option value="0.79">AWG18=0.79mm²</option>
+                <option value="0.51">AWG20=0.51mm²</option>
+                <option value="0.32">AWG22=0.32mm²</option>
+              </select><br></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEBatLength">Comprimento:</span><br>
+			<input type="text" class="input" name="inEBatLength" id="inEBatLength" size="4" value="0" onchange="javascript:is0PositiveNumber(this);mm2inch(document.theForm.inEBatLength.value,document.theForm.inEBatLengthInch)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEBatLength">mm</span><br>
+			<input type="text" class="input" name="inEBatLengthInch" id="inEBatLengthInch" size="4" value="0" onchange="javascript:is0PositiveNumber(this);inch2mm(document.theForm.inEBatLengthInch.value,document.theForm.inEBatLength)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEBatLengthInch">pol.</span></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEWireToMotor">Bitola do condutor<br>até o motor:</span><br>
+			  <select class="input" size="1" name="inEWireToMotor" id="inEWireToMotor" style="color: rgb(0, 0, 0);">
+                <option value="10.25">AWG7=10.25mm²</option>
+                <option value="8.34">AWG8=8.34mm²</option>
+                <option value="5.27" selected="">AWG10=5.27mm²</option>
+                <option value="3.30">AWG12=3.30mm²</option>
+                <option value="2.63">AWG13=2.63mm²</option>
+                <option value="2.08">AWG14=2.08mm²</option>
+                <option value="1.31">AWG16=1.31mm²</option>
+                <option value="0.79">AWG18=0.79mm²</option>
+                <option value="0.51">AWG20=0.51mm²</option>
+                <option value="0.32">AWG22=0.32mm²</option>
+              </select><br></td>
+			<td class="inputEsc">&nbsp;</td>
+			<td class="inputEsc"><span id="lblEMotLength">Comprimento:</span><br>
+			<input type="text" class="input" name="inEMotLength" id="inEMotLength" size="4" value="0" onchange="javascript:is0PositiveNumber(this);mm2inch(document.theForm.inEMotLength.value,document.theForm.inEMotLengthInch)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEMotLength">mm</span><br>
+			<input type="text" class="input" name="inEMotLengthInch" id="inEMotLengthInch" size="4" value="0" onchange="javascript:is0PositiveNumber(this);inch2mm(document.theForm.inEMotLengthInch.value,document.theForm.inEMotLength)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uEMotLengthInch">inch</span></td>
+		</tr>
+		<tr>
+			<td class="inputMotor" id="inMotor" name="inMotor"><strong><span id="lblMMotor">Motor</span></strong></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMManufacturer">Fabricante - Tipo (Kv)</span> - <span id="lblGMotorCooling">refrigeração:</span>&nbsp;&nbsp;<small>(² = <span id="lblGMotorDisconinued">descontinuado</span>)</small><br>
+			<table cellpadding="0" cellspacing="0">
+				<tbody><tr>
+					<td align="left" nowrap="" style="padding-top:1px">
+					   <select class="input" name="inMManufacturer" id="inMManufacturer" onchange="javascript:loadMotorTyps(document.theForm)" style="color: rgb(0, 0, 0);"> 
+					      <option value="-1">selecionar...</option><option value="134">4-Max </option><option value="39">actro </option><option value="52">Aeolian </option><option value="119">airtek </option><option value="163">AJ Aircraft </option><option value="122">ALZRC </option><option value="164">AOS </option><option value="142">Apex </option><option value="41">ARC </option><option value="114">Astro Flight </option><option value="80">Aveox </option><option value="73">Avroto </option><option value="106">Avionic </option><option value="1">AXI </option><option value="138">BadAss </option><option value="71">BlackMagic </option><option value="104">Black Widow (ZTW) </option><option value="133">BrotherHobby </option><option value="15">Castle </option><option value="74">Cheetah </option><option value="23">Cobra </option><option value="25">Cyclon </option><option value="155">DarwinFPV </option><option value="93">Detrum </option><option value="110">DinoPower </option><option value="22">DJI </option><option value="65">D-Power </option><option value="38">Dualsky </option><option value="27">Dymond </option><option value="78">DYS </option><option value="30">E-flite </option><option value="146">Eachine </option><option value="159">Egodrift </option><option value="47">ElectriFly </option><option value="31">EMAX </option><option value="79">EMP </option><option value="62">Engel MT </option><option value="10">ePower X </option><option value="50">EP Product </option><option value="132">Esprit Model </option><option value="69">Exceed RC </option><option value="118">Extreme Flight </option><option value="129">Extron </option><option value="32">Faigao </option><option value="113">FHEM </option><option value="158">Flash Hobby </option><option value="84">Flyduino </option><option value="33">Flyware </option><option value="141">Flywoo </option><option value="85">FMS </option><option value="152">Foxeer </option><option value="117">Foxy </option><option value="90">FSD-Motor </option><option value="123">Futaba </option><option value="87">Gartt </option><option value="100">Gaui </option><option value="19">Gens ace </option><option value="144">GepRC </option><option value="18">Graupner </option><option value="89">GS Models </option><option value="2">Hacker Motor</option><option value="140">Hemotec </option><option value="26">HengLi (HLY) </option><option value="21">HET (Typhoon) </option><option value="150">HGLRC </option><option value="36">Himax </option><option value="107">HiTec </option><option value="125">HobbyStar </option><option value="124">HobbyWing </option><option value="3">Hyperion </option><option value="135">iFlight </option><option value="28">Infinite </option><option value="66">iPower </option><option value="115">Jamara </option><option value="64">Jeti </option><option value="77">Joby Motors </option><option value="137">Karearea </option><option value="153">Kavan </option><option value="61">KDEDirect </option><option value="37">KEDA </option><option value="6">Kontronik </option><option value="111">LDPower </option><option value="20">Lehner </option><option value="12">Leomotion Drives</option><option value="11">Leomotion </option><option value="59">Leopard </option><option value="98">Liomax </option><option value="56">LiPolice </option><option value="101">Lumenier </option><option value="121">MAD Components </option><option value="149">Mamba System </option><option value="102">Maytech </option><option value="161">Maxon </option><option value="4">Mini AC </option><option value="9">Mega Motor </option><option value="156">MEPS </option><option value="86">mfly </option><option value="76">MicroDAN </option><option value="94">Mikrokopter </option><option value="96">MotrolFly </option><option value="105">MP Jet </option><option value="126">MultiStar  </option><option value="99">MVVS </option><option value="5">NeuMotors </option><option value="57">O.S.Motor </option><option value="160">Overlander </option><option value="17">Peggy Pepper </option><option value="29">Pichler </option><option value="60">Planet-Hobby </option><option value="40">Plettenberg </option><option value="109">Poly-Tec </option><option value="53">PowerHD </option><option value="48">ProTronik </option><option value="51">Pulso </option><option value="72">Quantum </option><option value="97">Quanum </option><option value="139">RaceStar </option><option value="112">RCinPower </option><option value="54">RCTimer </option><option value="103">RCX </option><option value="43">RedRock </option><option value="127">Ripmax </option><option value="148">RockAmp </option><option value="44">ROXXY </option><option value="136">Robbe</option><option value="42">Roton </option><option value="154">RVE </option><option value="81">Savox </option><option value="8">Scorpion </option><option value="116">SMC Power </option><option value="55">Simprop </option><option value="120">SkyRC </option><option value="157">SpcMaker </option><option value="151">Spektrum </option><option value="143">Spitz </option><option value="162">SSS </option><option value="108">Storm </option><option value="63">SunnySky </option><option value="88">Suppo </option><option value="145">Surpass </option><option value="46">T-Motor </option><option value="68">Tacon </option><option value="70">Tarot </option><option value="128">Team Black Sheep </option><option value="82">Team Hunter RC </option><option value="147">Tempest  </option><option value="58">Tenshock </option><option value="131">TFL Hobby </option><option value="45">Thunder Tiger </option><option value="92">Tomcat </option><option value="16">Torcman </option><option value="34">Torcster </option><option value="83">Tp Power</option><option value="35">Turnigy </option><option value="95">Warhead </option><option value="165">Vertiq </option><option value="7">Waypoint </option><option value="49">Xera </option><option value="91">Xnova </option><option value="130">XOAR </option><option value="75">XPower </option><option value="67">X-Team
+			              </option>
+			           </select>
+					</td>
+					<td align="left" nowrap="" style="padding-top:1px">
+					   &nbsp;-&nbsp;<select class="input" name="inMType" id="inMType" onchange="javacsript:configMotor()" style="color: rgb(0, 0, 0);"> 
+					     
+			           <option value="0" selected="">personalizar</option><option value="46|Air 2213-920 (Air Gear 350)">Air 2213-920 (Air Gear 350) (920)</option><option value="46|Air 2216II-880 (Air Gear 450II)">Air 2216II-880 (Air Gear 450II) (880)</option><option value="46|Antigravity MN2214-920">Antigravity MN2214-920 (920)</option><option value="46|Antigravity MN2806-650">Antigravity MN2806-650 (650)</option><option value="46|Antigravity MN2806-400">Antigravity MN2806-400 (400)</option><option value="46|Antigravity 1005">Antigravity 1005 (90)</option><option value="46|Antigravity 4004-400">Antigravity 4004-400 (400)</option><option value="46|Antigravity 4004-300">Antigravity 4004-300 (300)</option><option value="46|Antigravity 4006-380">Antigravity 4006-380 (380)</option><option value="46|Antigravity 4014-330">Antigravity 4014-330 (330)</option><option value="46|Antigravity 5006-450">Antigravity 5006-450 (450)</option><option value="46|Antigravity 5006-300">Antigravity 5006-300 (300)</option><option value="46|Antigravity 5008-400">Antigravity 5008-400 (400)</option><option value="46|Antigravity 5008-340">Antigravity 5008-340 (340)</option><option value="46|Antigravity 5008-170">Antigravity 5008-170 (170)</option><option value="46|Antigravity 6007-320">Antigravity 6007-320 (320)</option><option value="46|Antigravity 6007-160">Antigravity 6007-160 (160)</option><option value="46|Antigravity 6007II-320">Antigravity 6007II-320 (320)</option><option value="46|Antigravity 6007II-160">Antigravity 6007II-160 (160)</option><option value="46|Antigravity 7005-230">Antigravity 7005-230 (230)</option><option value="46|Antigravity 7005-115">Antigravity 7005-115 (115)</option><option value="46|Antigravity 8017-120">Antigravity 8017-120 (120)</option><option value="46|AM20 PRO F3P-1900">AM20 PRO F3P-1900 (1900)</option><option value="46|AM20 PRO F3P-1500">AM20 PRO F3P-1500 (1500)</option><option value="46|AM30 3D/4D-2280">AM30 3D/4D-2280 (2280)</option><option value="46|AM30 F3P 3D/4D-1750">AM30 F3P 3D/4D-1750 (1750)</option><option value="46|AM30 F3P 3D/4D-1450">AM30 F3P 3D/4D-1450 (1450)</option><option value="46|AM40 F3P 3D/4D-1850">AM40 F3P 3D/4D-1850 (1850)</option><option value="46|AM40 F3P 3D/4D-1500">AM40 F3P 3D/4D-1500 (1500)</option><option value="46|AM40-1880 V2.0">AM40-1880 V2.0 (1880)</option><option value="46|AM40-1550 V2.0">AM40-1550 V2.0 (1550)</option><option value="46|AM480-900">AM480-900 (900)</option><option value="46|AM480-650">AM480-650 (650)</option><option value="46|AM480-600">AM480-600 (600)</option><option value="46|AM600 3D-555">AM600 3D-555 (555)</option><option value="46|AM600 3D-525">AM600 3D-525 (525)</option><option value="46|AM670 3D-520">AM670 3D-520 (520)</option><option value="46|AM670 3D-480">AM670 3D-480 (480)</option><option value="46|AT2303-2300">AT2303-2300 (2300)</option><option value="46|AT2303-1800">AT2303-1800 (1800)</option><option value="46|AT2303-1500">AT2303-1500 (1500)</option><option value="46|AT2304-2300">AT2304-2300 (2300)</option><option value="46|AT2304-1800">AT2304-1800 (1800)</option><option value="46|AT2304-1500">AT2304-1500 (1500)</option><option value="46|AT2306-2300">AT2306-2300 (2300)</option><option value="46|AT2306-1900">AT2306-1900 (1900)</option><option value="46|AT2306-1500">AT2306-1500 (1500)</option><option value="46|AT2308-2600 (Long Shaft)">AT2308-2600 (Long Shaft) (2600)</option><option value="46|AT2308-1450 (Long Shaft)">AT2308-1450 (Long Shaft) (1450)</option><option value="46|AT2310-2200">AT2310-2200 (2200)</option><option value="46|AT2312-1400 (Long Shaft)">AT2312-1400 (Long Shaft) (1400)</option><option value="46|AT2312-1150  (Long Shaft)">AT2312-1150  (Long Shaft) (1150)</option><option value="46|AT2317-1400 (Long Shaft)">AT2317-1400 (Long Shaft) (1400)</option><option value="46|AT2317-1250 (Long Shaft)">AT2317-1250 (Long Shaft) (1250)</option><option value="46|AT2317-880 (Long Shaft)">AT2317-880 (Long Shaft) (880)</option><option value="46|AT2321-1250 (Long Shaft)">AT2321-1250 (Long Shaft) (1250)</option><option value="46|AT2321-950 (Long Shaft)">AT2321-950 (Long Shaft) (950)</option><option value="46|AT2814-1200 (Long Shaft)">AT2814-1200 (Long Shaft) (1200)</option><option value="46|AT2814-1050 (Long Shaft)">AT2814-1050 (Long Shaft) (1050)</option><option value="46|AT2814-900 (Long Shaft)">AT2814-900 (Long Shaft) (900)</option><option value="46|AT2820-1250 (Long Shaft)">AT2820-1250 (Long Shaft) (1250)</option><option value="46|AT2820-1050 (Long Shaft)">AT2820-1050 (Long Shaft) (1050)</option><option value="46|AT2820-880 (Long Shaft)">AT2820-880 (Long Shaft) (880)</option><option value="46|AT2826-1100 (Long Shaft)">AT2826-1100 (Long Shaft) (1100)</option><option value="46|AT2826-900 (Long Shaft)">AT2826-900 (Long Shaft) (900)</option><option value="46|AT3520-850 (Long Shaft)">AT3520-850 (Long Shaft) (850)</option><option value="46|AT3520-720 (Long Shaft)">AT3520-720 (Long Shaft) (720)</option><option value="46|AT3520-550 (Long Shaft)">AT3520-550 (Long Shaft) (550)</option><option value="46|AT3530-580 (Long Shaft)">AT3530-580 (Long Shaft) (580)</option><option value="46|AT4120-560 (Long Shaft)">AT4120-560 (Long Shaft) (560)</option><option value="46|AT4120-500 (Long Shaft)">AT4120-500 (Long Shaft) (500)</option><option value="46|AT4120-250 (Long Shaft)">AT4120-250 (Long Shaft) (250)</option><option value="46|AT4125-540 (Long Shaft)">AT4125-540 (Long Shaft) (540)</option><option value="46|AT4125-250 (Long Shaft)">AT4125-250 (Long Shaft) (250)</option><option value="46|AT4130-450 (Long Shaft)">AT4130-450 (Long Shaft) (450)</option><option value="46|AT4130-300 (Long Shaft)">AT4130-300 (Long Shaft) (300)</option><option value="46|AT4130-230 (Long Shaft)">AT4130-230 (Long Shaft) (230)</option><option value="46|AT5220-A-380">AT5220-A-380 (380)</option><option value="46|AT5220-A-220">AT5220-A-220 (220)</option><option value="46|AT5220-B-380">AT5220-B-380 (380)</option><option value="46|AT5220-B-220">AT5220-B-220 (220)</option><option value="46|AT5230-A-220">AT5230-A-220 (220)</option><option value="46|AT5230-A-200">AT5230-A-200 (200)</option><option value="46|AT5230-B-200">AT5230-B-200 (200)</option><option value="46|AT7215-270">AT7215-270 (270)</option><option value="46|AT7215-245">AT7215-245 (245)</option><option value="46|AT7215-220">AT7215-220 (220)</option><option value="46|AT7215-200">AT7215-200 (220)</option><option value="46|AT7224-190">AT7224-190 (190)</option><option value="46|AT7224-160">AT7224-160 (160)</option><option value="46|AT8020-210">AT8020-210 (210)</option><option value="46|AT8020-180">AT8020-180 (180)</option><option value="46|AT8025-190">AT8025-190 (190)</option><option value="46|AT8025-160">AT8025-160 (160)</option><option value="46|AT8030-190">AT8030-190 (190)</option><option value="46|AT8030-160">AT8030-160 (160)</option><option value="46|AS2303-2300">AS2303-2300 (2300)</option><option value="46|AS2303-1800">AS2303-1800 (1800)</option><option value="46|AS2303-1500">AS2303-1500 (1500)</option><option value="46|AS2304-2300">AS2304-2300 (2300)</option><option value="46|AS2304-1800">AS2304-1800 (1800)</option><option value="46|AS2304-1500">AS2304-1500 (1500)</option><option value="46|AS2306-2300">AS2306-2300 (2300)</option><option value="46|AS2306-1900">AS2306-1900 (1900)</option><option value="46|AS2306-1500">AS2306-1500 (1500)</option><option value="46|AS2308-2600 (Long Shaft)">AS2308-2600 (Long Shaft) (2600)</option><option value="46|AS2308-1450 (Long Shaft)">AS2308-1450 (Long Shaft) (1450)</option><option value="46|AS2312-1400 (Long Shaft)">AS2312-1400 (Long Shaft) (1400)</option><option value="46|AS2312-1150 (Long Shaft)">AS2312-1150 (Long Shaft) (1150)</option><option value="46|AS2317-1400 (Long Shaft)">AS2317-1400 (Long Shaft) (1400)</option><option value="46|AS2317-1250 (Long Shaft)">AS2317-1250 (Long Shaft) (1250)</option><option value="46|AS2317-880 (Long Shaft)">AS2317-880 (Long Shaft) (880)</option><option value="46|AS2814-2000 (Long Shaft)">AS2814-2000 (Long Shaft) (2000)</option><option value="46|AS2814-1200 (Long Shaft)">AS2814-1200 (Long Shaft) (1200)</option><option value="46|AS2814-1050 (Long Shaft)">AS2814-1050 (Long Shaft) (1050)</option><option value="46|AS2814-900 (Long Shaft)">AS2814-900 (Long Shaft) (900)</option><option value="46|AS2820-1250 (Long Shaft)">AS2820-1250 (Long Shaft) (1250)</option><option value="46|AS2820-1050 (Long Shaft)">AS2820-1050 (Long Shaft) (1050)</option><option value="46|AS2820-880 (Long Shaft)">AS2820-880 (Long Shaft) (880)</option><option value="46|CINE66-1155">CINE66-1155 (1155)</option><option value="46|CINE66-925">CINE66-925 (925)</option><option value="46|CINE77-977">CINE77-977 (977)</option><option value="46|CINE77-777">CINE77-777 (777)</option><option value="46|CINE77-477">CINE77-477 (477)</option><option value="46|F0802-25000">F0802-25000 (25000)</option><option value="46|F0803-22000">F0803-22000 (22000)</option><option value="46|F10-7500">F10-7500 (7500)</option><option value="46|F1103-11000">F1103-11000 (11000)</option><option value="46|F1103-8000">F1103-8000 (8000)</option><option value="46|F1203-7000">F1203-7000 (7000)</option><option value="46|F1204-5000">F1204-5000 (5000)</option><option value="46|F1303-5000">F1303-5000 (5000)</option><option value="46|F1408-3950">F1408-3950 (3950)</option><option value="46|F1408-2800">F1408-2800 (2800)</option><option value="46|F1507-3800">F1507-3800 (3800)</option><option value="46|F15-6000">F15-6000 (6000)</option><option value="46|F1404-4600">F1404-4600 (4600)</option><option value="46|F1404-3800">F1404-3800 (3800)</option><option value="46|F1507-3800">F1507-3800 (3800)</option><option value="46|F1507-2700">F1507-2700 (2700)</option><option value="46|F2004-3000">F2004-3000 (3000)</option><option value="46|F2004-1700">F2004-1700 (1700)</option><option value="46|F2203.5-3550">F2203.5-3550 (3500)</option><option value="46|F2203.5-2850">F2203.5-2850 (2850)</option><option value="46|F2203.5-1500">F2203.5-1500 (1500)</option><option value="46|F20II-3750">F20II-3750 (3750)</option><option value="46|F20II-3500">F20II-3500 (3500)</option><option value="46|F20II-2800">F20II-2800 (2800)</option><option value="46|F30 3s">F30 3s (4600)</option><option value="46|F30 4s">F30 4s (3800)</option><option value="46|F30 6s">F30 6s (2900)</option><option value="46|F30-2800">F30-2800 (2800)</option><option value="46|F30-2300">F30-2300 (2300)</option><option value="46|F40III-2750">F40III-2750 (2750)</option><option value="46|F40III-2600">F40III-2600 (2600)</option><option value="46|F40III-2400">F40III-2400 (2400)</option><option value="46|F40 PRO IV KV2400">F40 PRO IV KV2400 (2400)</option><option value="46|F40 PRO IV KV1950">F40 PRO IV KV1950 (1950)</option><option value="46|F40 PRO III KV2600">F40 PRO III KV2600 (2600)</option><option value="46|F40 PRO III KV2400">F40 PRO III KV2400 (2400)</option><option value="46|F40 PRO II KV2600">F40 PRO II KV2600 (2600)</option><option value="46|F40 PRO II KV2400">F40 PRO II KV2400 (2400)</option><option value="46|F40 PRO II KV2150">F40 PRO II KV2150 (2150)</option><option value="46|F40 PRO II KV1750">F40 PRO II KV1750 (1750)</option><option value="46|F40 PRO II KV1600">F40 PRO II KV1600 (1600)</option><option value="46|F40 PRO KV2600">F40 PRO KV2600 (2600)</option><option value="46|F40 PRO KV2400">F40 PRO KV2400 (2400)</option><option value="46|F60 PRO IV KV2550">F60 PRO IV KV2550 (2550)</option><option value="46|F60 PRO IV KV1950">F60 PRO IV KV1950 (1950)</option><option value="46|F60 PRO IV KV1750">F60 PRO IV KV1750 (1750)</option><option value="46|F60 PRO III KV2700">F60 PRO III KV2700 (2700)</option><option value="46|F60 PRO III KV2500">F60 PRO III KV2500 (2500)</option><option value="46|F60 PRO III KV2150">F60 PRO III KV2150 (2150)</option><option value="46|F60 PRO III KV1900">F60 PRO III KV1900 (1900)</option><option value="46|F60 PRO III KV1750">F60 PRO III KV1750 (1750)</option><option value="46|F60 PRO II KV2700">F60 PRO II KV2700 (2700)</option><option value="46|F60 PRO II KV2500">F60 PRO II KV2500 (2500)</option><option value="46|F60 PRO II KV2350">F60 PRO II KV2350 (2350)</option><option value="46|F60 PRO II KV1750">F60 PRO II KV1750 (1750)</option><option value="46|F80 PRO KV2500">F80 PRO KV2500 (2500)</option><option value="46|F80 PRO KV2200">F80 PRO KV2200 (2200)</option><option value="46|F80 PRO KV1900">F80 PRO KV1900 (1900)</option><option value="46|F80-2500">F80-2500 (2500)</option><option value="46|F80-2200">F80-2200 (2200)</option><option value="46|F80-1900">F80-1900 (1900)</option><option value="46|F90-1500">F90-1500 (1500)</option><option value="46|F90-1300">F90-1300 (1300)</option><option value="46|F100-1350">F100-1350 (1350)</option><option value="46|F100-1100">F100-1100 (1100)</option><option value="46|F1000-635">F1000-635 (635)</option><option value="46|F1000-545">F1000-545 (545)</option><option value="46|F1000-510">F1000-510 (510)</option><option value="46|F1000-300">F1000-300 (300)</option><option value="46|LF40 KV2450">LF40 KV2450 (2450)</option><option value="46|MN501-S KV360">MN501-S KV360 (360)</option><option value="46|MN501-S KV300">MN501-S KV300 (300)</option><option value="46|MN501-S KV240">MN501-S KV240 (240)</option><option value="46|MN505-S KV380">MN505-S KV380 (380)</option><option value="46|MN505-S KV320">MN505-S KV320 (320)</option><option value="46|MN601-S KV320">MN601-S KV320 (320)</option><option value="46|MN601-S KV170">MN601-S KV170 (170)</option><option value="46|MN605-S KV320">MN605-S KV320 (320)</option><option value="46|MN605-S KV170">MN605-S KV170 (170)</option><option value="46|MN701-S KV280">MN701-S KV280 (280)</option><option value="46|MN701-S KV135">MN701-S KV135 (135)</option><option value="46|MN705-S KV260">MN705-S KV260 (260)</option><option value="46|MN705-S KV125">MN705-S KV125 (125)</option><option value="46|MN801-S KV150">MN801-S KV150 (150)</option><option value="46|MN801-S KV120">MN801-S KV120 (120)</option><option value="46|MN805-S KV170">MN805-S KV170 (170)</option><option value="46|MN805-S KV150">MN805-S KV150 (150)</option><option value="46|MN805-S KV120">MN805-S KV120 (120)</option><option value="46|MN1010-135">MN1010-135 (135)</option><option value="46|MN1010-90">MN1010-90 (90)</option><option value="46|MN1015-70">MN1015-70 (70)</option><option value="46|MN1018-72">MN1018-72 (72)</option><option value="46|MN1804-2400">MN1804-2400 (2400)</option><option value="46|MN1806-2300">MN1806-2300 (2300)</option><option value="46|MN1806-1400">MN1806-1400 (1400)</option><option value="46|MN2204-2300">MN2204-2300 (2300)</option><option value="46|MN2204-1400">MN2204-1400 (1400)</option><option value="46|MN2206-2000">MN2206-2000 (2000)</option><option value="46|MN2212-V2.0-920">MN2212-V2.0-920 (920)</option><option value="46|MN2212-V2.0-780">MN2212-V2.0-780 (780)</option><option value="46|MN3110-780">MN3110-780 (780)</option><option value="46|MN3110-700">MN3110-700 (700)</option><option value="46|MN3110-470">MN3110-470 (470)</option><option value="46|MN3508-700">MN3508-700 (700)</option><option value="46|MN3508-580">MN3508-580 (580)</option><option value="46|MN3508-380">MN3508-380 (380)</option><option value="46|MN3510-700">MN3510-700 (700)</option><option value="46|MN3510-630">MN3510-630 (630)</option><option value="46|MN3510-360">MN3510-360 (360)</option><option value="46|MN3515-400">MN3515-400 (400)</option><option value="46|MN3520-400">MN3520-400 (400)</option><option value="46|MN4010-580">MN4010-580 (580)</option><option value="46|MN4010-475">MN4010-475 (475)</option><option value="46|MN4010-370">MN4010-370 (370)</option><option value="46|MN4110-400">MN4110-400 (400)</option><option value="46|MN4110-340">MN4110-340 (340)</option><option value="46|MN4110-300">MN4110-300 (300)</option><option value="46|MN4112-420">MN4112-420 (420)</option><option value="46|MN4112-320">MN4112-320 (320)</option><option value="46|MN4116-450">MN4116-450 (450)</option><option value="46|MN4116-340">MN4116-340 (340)</option><option value="46|MN4120-465">MN4120-465 (465)</option><option value="46|MN4120-400">MN4120-400 (400)</option><option value="46|MN5004-500">MN5004-500 (500)</option><option value="46|MN5006-450">MN5006-450 (450)</option><option value="46|MN5006-300">MN5006-300 (300)</option><option value="46|MN5008-400">MN5008-400 (400)</option><option value="46|MN5008-340">MN5008-340 (340)</option><option value="46|MN5008-170">MN5008-170 (170)</option><option value="46|MN5208-340">MN5208-340 (340)</option><option value="46|MN5212-420">MN5212-420 (420)</option><option value="46|MN5212-340">MN5212-340 (340)</option><option value="46|MN6007-320">MN6007-320 (320)</option><option value="46|MN6007-160">MN6007-160 (160)</option><option value="46|MN6007II-320">MN6007II-320 (320)</option><option value="46|MN6007II-160">MN6007II-160 (160)</option><option value="46|MN7005-230">MN7005-230 (230)</option><option value="46|MN7005-115">MN7005-115 (115)</option><option value="46|MN8012-100">MN8012-100 (100)</option><option value="46|MN8014-100">MN8014-100 (100)</option><option value="46|MN8017-120">MN8017-120 (120)</option><option value="46|MS8014-160">MS8014-160 (160)</option><option value="46|P2207-2550 V3.0">P2207-2550 V3.0 (2550)</option><option value="46|P2207-2080 V3.0">P2207-2080 V3.0 (2080)</option><option value="46|P2207-1960 V3.0">P2207-1960 V3.0 (1950)</option><option value="46|P2207-1750 V3.0">P2207-1750 V3.0 (1750)</option><option value="46|P2207-2550 V2.0">P2207-2550 V2.0 (2550)</option><option value="46|P2207-1950 V2.0">P2207-1950 V2.0 (1950)</option><option value="46|P2207-1750 V2.0">P2207-1750 V2.0 (1750)</option><option value="46|P2306-2550 V3.0">P2306-2550 V3.0 (2550)</option><option value="46|P2306-1950 V3.0">P2306-1950 V3.0 (1950)</option><option value="46|P2306-1750 V3.0">P2306-1750 V3.0 (1750)</option><option value="46|P2306-2400 V2.0">P2306-2400 V2.0 (2400)</option><option value="46|P2306-1950 V2.0">P2306-1950 V2.0 (1950)</option><option value="46|P2505-1850">P2505-1850 (1850)</option><option value="46|P60 PRO IV V2.0  KV2250">P60 PRO IV V2.0  KV2250 (2550)</option><option value="46|P60 PRO IV V2.0 KV1950">P60 PRO IV V2.0 KV1950 (1950)</option><option value="46|P60 PRO IV V2.0 KV1740">P60 PRO IV V2.0 KV1740 (1750)</option><option value="46|P60-340">P60-340 (340)</option><option value="46|P60-170">P60-170 (170)</option><option value="46|P80-170">P80-170 (170)</option><option value="46|P80III-120">P80III-120 (120)</option><option value="46|P80III-100">P80III-100 (100)</option><option value="46|P80-120">P80-120 (120)</option><option value="46|P80-100">P80-100 (100)</option><option value="46|U3-700">U3-700 (700)</option><option value="46|U5-400">U5-400 (400)</option><option value="46|U7-490 V2">U7-490 V2 (490)</option><option value="46|U7-420 V2">U7-420 V2 (420)</option><option value="46|U7-280 V2">U7-280 V2 (280)</option><option value="46|U11-120">U11-120 (120)</option><option value="46|U11-90">U11-90 (90)</option><option value="46|U11II-120">U11II-120 (120)</option><option value="46|U13II-130">U13II-130 (130)</option><option value="46|U13II-65">U13II-65 (65)</option><option value="46|U15II-100">U15II-100 (100)</option><option value="46|U15II-80">U15II-80 (80)</option><option value="46|V2207-2550 V2.0">V2207-2550 V2.0 (2550)</option><option value="46|V2207-1950 V2.0">V2207-1950 V2.0 (1950)</option><option value="46|V2207-1750 V2.0">V2207-1750 V2.0 (1750)</option><option value="46|V2208-2450 V2.0">V2208-2450 V2.0 (2450)</option><option value="46|V2208-1950 V2.0">V2208-1950 V2.0 (1950)</option><option value="46|V2208-1750 V2.0">V2208-1750 V2.0 (1750)</option><option value="46|V2306-2400 V2.0">V2306-2400 V2.0 (2400)</option><option value="46|V2306-1950 V2.0">V2306-1950 V2.0 (1950)</option><option value="46|V2307-2550 V2.0">V2307-2550 V2.0 (2550)</option><option value="46|V2307-1950 V2.0">V2307-1950 V2.0 (1950)</option><option value="46|V2808-1950">V2808-1950 (1950)</option><option value="46|V2808-1500">V2808-1500 (1500)</option><option value="46|V2808-1300">V2808-1300 (1300)</option><option value="46|V2812-1155">V2812-1155 (1155)</option><option value="46|V2812-925">V2812-925 (925)</option><option value="46|V3008-1500">V3008-1500 (1500)</option><option value="46|V3008-1350">V3008-1350 (1350)</option><option value="46|V3008-1155">V3008-1155 (1155)</option><option value="46|V3115-1050">V3115-1050 (1050)</option><option value="46|V3115-900">V3115-900 (900)</option><option value="46|V3115-640">V3115-640 (640)</option><option value="46|V3115-400">V3115-400 (400)</option><option value="46|V3120-700">V3120-700 (700)</option><option value="46|V3120-500">V3120-500 (500)</option><option value="46|V505-260">V505-260 (260)</option><option value="46|V602-180">V602-180 (180)</option><option value="46|V605-210">V605-210 (210)</option><option value="46|V804-170">V804-170 (170)</option><option value="46|V807-170">V807-170 (170)</option><option value="46|V10-160">V10-160 (160)</option><option value="46|V10L-170">V10L-170 (170)</option><option value="46|V13L-65">V13L-65 (65)</option><option value="46|-- before 2024 --">-- before 2024 -- (2024)</option><option value="46|U8 Lite-190²">U8 Lite-190² (190)</option><option value="46|U8 Lite-150²">U8 Lite-150² (150)</option><option value="46|U8 Lite-100²">U8 Lite-100² (100)</option><option value="46|U8 Lite-85²">U8 Lite-85² (85)</option><option value="46|U8 Lite L-110²">U8 Lite L-110² (110)</option><option value="46|U8 Lite L-95²">U8 Lite L-95² (95)</option><option value="46|U8II-190²">U8II-190² (190)</option><option value="46|U8II-150²">U8II-150² (150)</option><option value="46|U8II-100²">U8II-100² (100)</option><option value="46|U8II-85²">U8II-85² (85)</option><option value="46|U8II Lite-100²">U8II Lite-100² (100)</option><option value="46|U8II Pro-100²">U8II Pro-100² (100)</option><option value="46|U10II-100²">U10II-100² (100)</option><option value="46|U12II-120²">U12II-120² (120)</option><option value="46|U12II-60²">U12II-60² (60)</option><option value="46|U15L²">U15L² (43)</option><option value="46|U15XL²">U15XL² (38)</option><option value="46|U15XXL²">U15XXL² (29)</option><option value="46|V2207.5-2550²">V2207.5-2550² (2550)</option><option value="46|V2207.5-1950²">V2207.5-1950² (1950)</option><option value="46|V2207.5-1750²">V2207.5-1750² (1750)</option><option value="46|V2207-1950²">V2207-1950² (1950)</option><option value="46|V2208-2450²">V2208-2450² (2450)</option><option value="46|V2208-1950²">V2208-1950² (1950)</option><option value="46|V2306.5-2550²">V2306.5-2550² (2550)</option><option value="46|V2306-2400²">V2306-2400² (2400)</option><option value="46|-- before 2023 --">-- before 2023 -- (2023)</option><option value="46|Air 2205-2000 (Air Gear 200)²">Air 2205-2000 (Air Gear 200)² (2000)</option><option value="46|Air 2216-880 (Air Gear 450)²">Air 2216-880 (Air Gear 450)² (880)</option><option value="46|Air 40²">Air 40² (2450)</option><option value="46|MN1005-90 V2.0²">MN1005-90 V2.0² (90)</option><option value="46|MN4010-9²">MN4010-9² (580)</option><option value="46|MN4010-11²">MN4010-11² (475)</option><option value="46|MN4010-14²">MN4010-14² (370)</option><option value="46|MN4012-9²">MN4012-9² (480)</option><option value="46|MN4012-11²">MN4012-11² (400)</option><option value="46|MN4012-13²">MN4012-13² (340)</option><option value="46|MN4014-9²">MN4014-9² (400)</option><option value="46|MN4014-11²">MN4014-11² (330)</option><option value="46|U8-110 LITE²">U8-110 LITE² (110)</option><option value="46|U8-95 LITE²">U8-95 LITE² (95)</option><option value="46|P2207.5-2550 V2.0²">P2207.5-2550 V2.0² (2550)</option><option value="46|P2207.5-1950 V2.0²">P2207.5-1950 V2.0² (1950)</option><option value="46|P2207.5-1750 V2.0²">P2207.5-1750 V2.0² (1750)</option><option value="46|P2207.5-1950²">P2207.5-1950² (1950)</option><option value="46|P2207.5-1750²">P2207.5-1750² (1750)</option><option value="46|P2208-2450 V2.0²">P2208-2450 V2.0² (2450)</option><option value="46|P2208-1950 V2.0²">P2208-1950 V2.0² (1950)</option><option value="46|P2208-1750 V2.0²">P2208-1750 V2.0² (1750)</option><option value="46|P2208-2450²">P2208-2450² (2450)</option><option value="46|P2306.5-2400 V2.0²">P2306.5-2400 V2.0² (2550)</option><option value="46|P2306.5-1950 V2.0²">P2306.5-1950 V2.0² (1950)</option><option value="46|P2306-2550²">P2306-2550² (2550)</option><option value="46|P2306-1950²">P2306-1950² (1950)</option><option value="46|U3-700²">U3-700² (700)</option><option value="46|U5-400²">U5-400² (400)</option><option value="46|U7-V2.0-490²">U7-V2.0-490² (490)</option><option value="46|U7-V2.0-420²">U7-V2.0-420² (420)</option><option value="46|U7-V2.0-280²">U7-V2.0-280² (280)</option><option value="46|U8II-190 ²">U8II-190 ² (190)</option><option value="46|U8II-150 ²">U8II-150 ² (150)</option><option value="46|U8II-100 ²">U8II-100 ² (100)</option><option value="46|U8II-85 ²">U8II-85 ² (85)</option><option value="46|U8-170²">U8-170² (170)</option><option value="46|U8-135²">U8-135² (135)</option><option value="46|U8-100²">U8-100² (100)</option><option value="46|U8-170 PRO ²">U8-170 PRO ² (170)</option><option value="46|U8-135 PRO ²">U8-135 PRO ² (135)</option><option value="46|U8-100 PRO ²">U8-100 PRO ² (100)</option><option value="46|U8-110 LITE L²">U8-110 LITE L² (110)</option><option value="46|U8-95 LITE L²">U8-95 LITE L² (95)</option><option value="46|U10II-100 ²">U10II-100 ² (100)</option><option value="46|U10-100²">U10-100² (100)</option><option value="46|U10 -80²">U10 -80² (80)</option><option value="46|U10 Plus 170²">U10 Plus 170² (170)</option><option value="46|U10 Plus 100²">U10 Plus 100² (100)</option><option value="46|U10 Plus 80²">U10 Plus 80² (80)</option><option value="46|U11II-120²">U11II-120² (120)</option><option value="46|U11-120²">U11-120² (120)</option><option value="46|U11-90²">U11-90² (90)</option><option value="46|U13II-130²">U13II-130² (130)</option><option value="46|U13II-65²">U13II-65² (65)</option><option value="46|U13-100²">U13-100² (100)</option><option value="46|U13-85²">U13-85² (85)</option><option value="46|U15II-100²">U15II-100² (100)</option><option value="46|U15II-80²">U15II-80² (80)</option><option value="46|-- before 2019 --">-- before 2019 -- (2019)</option><option value="46|F20-4100²">F20-4100² (4100)</option><option value="46|F20-3200²">F20-3200² (3200)</option><option value="46|F30-2800²">F30-2800² (2800)</option><option value="46|F30-2300²">F30-2300² (2300)</option><option value="46|F40II-2600²">F40II-2600² (2600)</option><option value="46|F40II-2300²">F40II-2300² (2300)</option><option value="46|F40-2500²">F40-2500² (2500)</option><option value="46|F40-2300²">F40-2300² (2300)</option><option value="46|F40III-2300²">F40III-2300² (2300)</option><option value="46|F60III KV2750²">F60III KV2750² (2750)</option><option value="46|F60III KV2500²">F60III KV2500² (2500)</option><option value="46|F60III KV2350²">F60III KV2350² (2350)</option><option value="46|F60 PRO KV2500²">F60 PRO KV2500² (2500)</option><option value="46|F60 PRO KV2350²">F60 PRO KV2350² (2350)</option><option value="46|F60 PRO KV2200²">F60 PRO KV2200² (2200)</option><option value="46|F80 PRO KV2500²">F80 PRO KV2500² (2500)</option><option value="46|F80 PRO KV2200²">F80 PRO KV2200² (2200)</option><option value="46|F80 PRO KV1900²">F80 PRO KV1900² (1900)</option><option value="46|U8-190 II²">U8-190 II² (190)</option><option value="46|U8-150 II²">U8-150 II² (150)</option><option value="46|U8-85 II²">U8-85 II² (85)</option><option value="46|U8-190 Lite²">U8-190 Lite² (190)</option><option value="46|U8-150 Lite²">U8-150 Lite² (150)</option><option value="46|U8-100 Lite²">U8-100 Lite² (100)</option><option value="46|U8-85 Lite²">U8-85 Lite² (85)</option><option value="46|U8-170 Pro²">U8-170 Pro² (170)</option><option value="46|U8-135 Pro²">U8-135 Pro² (135)</option><option value="46|U8-100 Pro²">U8-100 Pro² (100)</option><option value="46|U12II-120 ²">U12II-120 ² (120)</option><option value="46|U12-100²">U12-100² (100)</option><option value="46|U12-90²">U12-90² (90)</option><option value="46|U15-100²">U15-100² (100)</option><option value="46|U15-80²">U15-80² (80)</option><option value="46|-- before 2018 --">-- before 2018 -- (2018)</option><option value="46|F60-2450²">F60-2450² (2450)</option><option value="46|F60-2200²">F60-2200² (2200)</option><option value="46|-- before 2017 --">-- before 2017 -- (2017)</option><option value="46|F60 (2206)²">F60 (2206)² (1900)</option><option value="46|F40 (2204)²">F40 (2204)² (2300)</option><option value="46|F80 (2208)²">F80 (2208)² (2100)</option><option value="46|MN7005-230²">MN7005-230² (230)</option><option value="46|MN7005-115²">MN7005-115² (115)</option><option value="46|MT1306-20²">MT1306-20² (3100)</option><option value="46|MT1306-3100²">MT1306-3100² (3100)</option><option value="46|MT2206-23²">MT2206-23² (1200)</option><option value="46|MT2208-18 ²">MT2208-18 ² (1100)</option><option value="46|MT2212-11²">MT2212-11² (1100)</option><option value="46|MT2212-13²">MT2212-13² (980)</option><option value="46|MT2212-16²">MT2212-16² (750)</option><option value="46|MT2216-V2.0-1100²">MT2216-V2.0-1100² (1100)</option><option value="46|MT2216-V2.0-900²">MT2216-V2.0-900² (900)</option><option value="46|MT2216-V2.0-800²">MT2216-V2.0-800² (800)</option><option value="46|MT2814-11 ²">MT2814-11 ² (710)</option><option value="46|MT2814-10²">MT2814-10² (770)</option><option value="46|MT2814-20²">MT2814-20² (400)</option><option value="46|MT2820-7²²">MT2820-7²² (830)</option><option value="46|MT2826-5²">MT2826-5² (760)</option><option value="46|MT2826-8²">MT2826-8² (550)</option><option value="46|MT2826-10²">MT2826-10² (380)</option><option value="46|MT3506-25 ²">MT3506-25 ² (650)</option><option value="46|MT3515-9²">MT3515-9² (650)</option><option value="46|MT3515-15 ²">MT3515-15 ² (400)</option><option value="46|MT3520-11²">MT3520-11² (400)</option><option value="46|MT3520-14²">MT3520-14² (300)</option><option value="46|MT4006-13 ²">MT4006-13 ² (740)</option><option value="46|MT4008-12²">MT4008-12² (600)</option><option value="46|MT4008-18²">MT4008-18² (380)</option><option value="46|MT13050-3²">MT13050-3² (75)</option><option value="46|-- before 2015 --">-- before 2015 -- (2015)</option><option value="46|MN3110-15²">MN3110-15² (780)</option><option value="46|MN3110-17²">MN3110-17² (700)</option><option value="46|MN3110-26²">MN3110-26² (470)</option><option value="46|MN3508-16²">MN3508-16² (700)</option><option value="46|MN3508-20²">MN3508-20² (580)</option><option value="46|MN3508-29²">MN3508-29² (380)</option><option value="46|MN3510-13²">MN3510-13² (700)</option><option value="46|MN3510-15²">MN3510-15² (630)</option><option value="46|MN3510-25²">MN3510-25² (360)</option><option value="46|MT2216-11²">MT2216-11² (900)</option><option value="46|MT2216-12²">MT2216-12² (800)</option><option value="46|MT2814-11²">MT2814-11² (710)</option><option value="46|U7-490²">U7-490² (490)</option><option value="46|U7-420²">U7-420² (420)</option><option value="46|U8-10²">U8-10² (170)</option><option value="46|U8-13²">U8-13² (135)</option><option value="46|U8-16²">U8-16² (100)</option><option value="46|-- before 2014 --">-- before 2014 -- (2014)</option><option value="46|AS2208-15²">AS2208-15² (1260)</option><option value="46|AS2212-10²">AS2212-10² (1250)</option><option value="46|AS2216-11²">AS2216-11² (880)</option><option value="46|AS2814-8²">AS2814-8² (1000)</option><option value="46|AS2820-7²">AS2820-7² (920)</option><option value="46|AT2202-32²">AT2202-32² (2350)</option><option value="46|AT2204-21²">AT2204-21² (1800)</option><option value="46|AT2206-14²">AT2206-14² (1500)</option><option value="46|AT2216-8²">AT2216-8² (1250)</option><option value="46|AT2814-8²">AT2814-8² (1000)</option><option value="46|AT2820-830²">AT2820-830² (830)</option><option value="46|AT2826-900²">AT2826-900² (870)</option><option value="46|AT2826-500²">AT2826-500² (550)</option><option value="46|AT3520-880²">AT3520-880² (880)</option><option value="46|AT3520-730²">AT3520-730² (730)</option><option value="46|AT3530-700²">AT3530-700² (700)</option><option value="46|AT3530-570²">AT3530-570² (570)</option><option value="46|AT4120-550²">AT4120-550² (550)</option><option value="46|AT4130-275²">AT4130-275² (275)</option><option value="46|AT5330-190²">AT5330-190² (190)</option><option value="46|HT2220-4²">HT2220-4² (3650)</option><option value="46|HT2825-4²">HT2825-4² (1700)</option><option value="46|HT4025-7²">HT4025-7² (650)</option><option value="46|HT4035-5²">HT4035-5² (560)</option><option value="46|HT4035-5.5²">HT4035-5.5² (530)</option><option value="46|HT4035-6²">HT4035-6² (510)</option><option value="46|MS2208-18²">MS2208-18² (1100)</option><option value="46|MS2212-13²">MS2212-13² (980)</option><option value="46|MS2216-9²">MS2216-9² (1100)</option><option value="46|MS2216-10²">MS2216-10² (900)</option><option value="46|MS2814-11²">MS2814-11² (710)</option><option value="46|MT2208-18²">MT2208-18² (1100)</option><option value="46|MT2216-11.²">MT2216-11.² (900)</option><option value="46|MT2216-12.²">MT2216-12.² (800)</option><option value="46|MT2820-7²">MT2820-7² (830)</option><option value="46|-- before 2012 --">-- before 2012 -- (2012)</option><option value="46|AT2202-2300²">AT2202-2300² (2300)</option><option value="46|AT2204-1850²">AT2204-1850² (1850)</option><option value="46|AT2206-1500²">AT2206-1500² (1500)</option><option value="46|AT2216-1250²">AT2216-1250² (1250)</option><option value="46|AT2814-1000²">AT2814-1000² (1000)</option><option value="46|MT2208-18²²">MT2208-18²² (1100)</option><option value="46|MT2216-11²²">MT2216-11²² (800)</option><option value="46|MT2216-10²">MT2216-10² (900)</option><option value="46|MT2820-8²">MT2820-8² (830)</option><option value="46|MT3506-25²">MT3506-25² (650)</option><option value="46|MT3515-15²">MT3515-15² (400)</option><option value="46|MT4006-13²">MT4006-13² (740)</option><option value="46|T1302²">T1302² (5900)</option><option value="46|T1304²">T1304² (3400)</option><option value="46|T1306²">T1306² (3200)</option><option value="46|T1804²">T1804² (2250)</option><option value="46|T1805²">T1805² (2000)</option><option value="46|T1806²">T1806² (2000)</option><option value="46|T2004²">T2004² (2000)</option><option value="46|T2006²">T2006² (1900)</option><option value="46|T2008²">T2008² (2000)</option><option value="46|T2204²">T2204² (1700)</option><option value="46|T2208²">T2208² (1370)</option><option value="46|T2212²">T2212² (1300)</option><option value="46|T2216 Pro²">T2216 Pro² (1250)</option><option value="46|T2402²">T2402² (2350)</option><option value="46|T2403²">T2403² (2100)</option><option value="46|T2404²">T2404² (1900)</option><option value="46|T2814 Pro²">T2814 Pro² (1000)</option><option value="46|T2820 Pro²">T2820 Pro² (830)</option></select>
+	               </td>
+				</tr>
+				<tr>
+					<td align="left" nowrap="" style="padding-top:1px">
+						<select class="input" size="1" name="inGMotorCooling" id="inGMotorCooling" style="color: rgb(0, 0, 0);">
+			              <option value="excellent">excelente</option>
+			              <option value="good">boa</option>
+			              <option value="medium" selected="">média</option>
+			              <option value="poor">ruim</option>
+			              <option value="verypoor">muito ruim</option>
+			            </select>
+					</td>
+					<td align="right" nowrap="" style="padding-top:1px"><script language="JavaScript">document.write(searchButton);</script><input type="button" id="BtnSearch" name="BtnSearch" value="   procurar...   " onclick="javascript:openSearch();" style="color: rgb(0, 0, 0);"></td>
+				</tr>
+			</tbody></table>
+			</td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMKv">Kv (sem torque):</span><br>
+			<input type="text" class="input" name="inMKv" id="inMKv" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMKv">rpm/V</span><br><script language="JavaScript">document.write(wizardButton)</script><input style="margin-top: 4px; color: rgb(0, 0, 0);" type="button" id="BtnPropKvWizard" name="BtnWizard" value=" Assistente-Propulsor-KV " onclick="javascript:openWizard();"></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMIo">Corrente sem carga:</span><br>
+			<input type="text" class="input" name="inMIo" id="inMIo" size="3" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMIo">A</span>&nbsp;@
+			<input type="text" class="input" name="inMVIo" id="inMVIo" size="3" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);"><span id="uMVIo">V</span></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMLimit">Limite (até 15s):</span><br>
+			<input type="text" class="input" name="inMLimit" id="inMLimit" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">              
+			<select class="input" size="1" name="inMLimitType" id="inMLimitType" disabled="" style="color: rgb(0, 0, 0);"><option value="A">A</option>
+			<option selected="selected" value="W">W</option></select></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMRi">Resistência:</span><br>
+			<input type="text" class="input" name="inMRi" id="inMRi" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMRi">Ohm</span></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMLength">Tamanho do invólucro:</span><br>
+			<input type="text" class="input" name="inMLength" id="inMLength" size="4" value="" onchange="javascript:isPositiveNumber(this);mm2inch(document.theForm.inMLength.value,document.theForm.inMLengthInch)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMLength">mm</span><br>
+			<input type="text" class="input" name="inMLengthInch" id="inMLengthInch" size="4" value="" onchange="javascript:isPositiveNumber(this);inch2mm(document.theForm.inMLengthInch.value,document.theForm.inMLength)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMLengthInch">pol.</span></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMPoles"># polos magnéticos:</span><br>
+			<input type="text" class="input" name="inMPoles" id="inMPoles" size="4" value="" onchange="javascript:isPositiveNumber(this)" disabled="" style="color: rgb(0, 0, 0);"></td>
+			<td class="inputMotor">&nbsp;</td>
+			<td class="inputMotor"><span id="lblMWeight">Peso:</span><br>
+			<input type="text" class="input" name="inMWeight" id="inMWeight" size="4" value="" onchange="javascript:isPositiveNumber(this);g2oz(document.theForm.inMWeight.value,document.theForm.inMWeightOz)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMWeight">g</span><br>
+			<input type="text" class="input" name="inMWeightOz" id="inMWeightOz" size="4" value="" onchange="javascript:isPositiveNumber(this);oz2g(document.theForm.inMWeightOz.value,document.theForm.inMWeight)" disabled="" style="color: rgb(0, 0, 0);">&nbsp;<span id="uMWeightOz">oz</span></td>
+		</tr>
+		<tr>
+			<td class="inputProp"><strong><span id="lblPProp">Hélice</span></strong></td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPType">Tipo - torção no nariz:</span><br>
+              <select class="input" name="inPType" id="inPType" onchange="javascript:configProp()" style="color: rgb(0, 0, 0);"> 
+                
+              <option value="0" selected="">personalizar</option><option value="1">Generic - thin</option><option value="2">Generic - normal</option><option value="3">Generic - wide</option><option value="4">Aeronaut CamCarbon</option><option value="5">APC SlowFly SF</option><option value="6">APC Electric E</option><option value="7">APC Speed E</option><option value="8">APC MultiRotor MR</option><option value="9">Carbon-Fold-Prop</option><option value="10">DJI</option><option value="11">Dualsky MRP Carbon</option><option value="12">Falcon</option><option value="13">Fiala Classic</option><option value="14">Fiala Classic 3-Blades</option><option value="15">Fiala Electric E3</option><option value="16">Fiala Electric E3 3-Blades</option><option value="17">GemFan</option><option value="18">GemFan Bullnose</option><option value="19">GM</option><option value="20">Graupner CAM Folding Prop</option><option value="21">Graupner CAM Slim Prop</option><option value="22">Graupner E Prop</option><option value="23">GWS</option><option value="24">GWS EP</option><option value="25">HQProp</option><option value="26">HQProp Bullnose</option><option value="27">Leomotion</option><option value="28">Master Airscrew</option><option value="29">Master Airscrew Electric</option><option value="30">Master Airscrew GF</option><option value="31">Master Airscrew Scimitar</option><option value="32">Mejzlik</option><option value="33">Mejzlik Multicopter</option><option value="34">KDE Direct KDE-CF</option><option value="35">Ramoser 3-Blatt/Blades</option><option value="36">Ramoser 4-Blatt/Blades</option><option value="37">Ramoser 5-Blatt/Blades</option><option value="38">RFM</option><option value="39">RFM (thin)</option><option value="40">RFM (wide)</option><option value="41">T-Motor CF</option><option value="42">VitaProp</option><option value="43">XOAR PJA Sport</option><option value="44">XOAR PJN Electric</option></select> 
+              - 
+              <select class="input" name="inPTwist" id="inPTwist" style="color: rgb(0, 0, 0);">
+                <option value="7">+7.0°</option>
+                <option value="6">+6.0°</option>
+                <option value="5">+5.0°</option>
+                <option value="4">+4.0°</option>
+                <option value="3.5">+3.5°</option>
+                <option value="3">+3.0°</option>
+                <option value="2.5">+2.5°</option>
+                <option value="2">+2.0°</option>
+                <option value="0" selected="">0°</option>
+                <option value="-2.5">-2.5°</option>
+                <option value="-5">-5.0°</option>
+                <option value="-7">-7.0°</option>
+              </select>	
+              <!-- <br/><span id="outMsgFoldingProp" style="color:gray; margin-top:2px;">for Folding Props use effective Diameter (incl. yoke)</span> -->		
+			</td><td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPDiameter">Diâmetro:</span><br>
+			<input type="text" class="input" name="inPDiameter" id="inPDiameter" size="4" value="10" onchange="javascript:isPositiveNumber(this);inch2mm(document.theForm.inPDiameter.value,document.theForm.inPDiameterMm);configProp()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPDiameter">pol.</span>
+			<input class="input" type="hidden" name="outPEffDiameter" id="outPEffDiameter" value="10" style="color: rgb(0, 0, 0);"><br>
+			<input type="text" class="input" name="inPDiameterMm" id="inPDiameterMm" size="4" value="254" onchange="javascript:isPositiveNumber(this);mm2inch(document.theForm.inPDiameterMm.value,document.theForm.inPDiameter);configProp()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPDiameterMm">mm</span>
+			</td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPPitch">Passo:</span><br>
+			<input type="text" class="input" name="inPPitch" id="inPPitch" size="4" value="4.7" onchange="javascript:isPositiveNumber(this);inch2mm(document.theForm.inPPitch.value,document.theForm.inPPitchMm);configProp()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPPitch">pol.</span>
+			<input class="input" type="hidden" name="outPEffPitch" id="outPEffPitch" value="4.7" style="color: rgb(0, 0, 0);"><br>
+			<input type="text" class="input" name="inPPitchMm" id="inPPitchMm" size="4" value="119" onchange="javascript:isPositiveNumber(this);mm2inch(document.theForm.inPPitchMm.value,document.theForm.inPPitch);configProp()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPPitchMm">mm</span>			
+			</td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPBlades"># pás:</span><br>
+			<input type="text" class="input" name="inPBlades" id="inPBlades" size="4" value="2" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);"></td>
+			<td class="inputProp">&nbsp;</td>
+<!--
+			<td class="inputProp"><span id="lblPConst">PConst / TConst:</span><br />
+-->
+
+			<td class="inputProp">Simulation based on<span id="lblPPerf">:</span><br>
+			 <select class="input" name="inPSimBase" id="inPSimBase" onchange="javascript:configSimulationBase();configProp()" style="color: rgb(0, 0, 0);"> 
+                <option value="const" selected="">PConst / TConst</option>
+                <option value="Cpo">Cpo / -</option>
+                <option value="coeff">Cpo / Cto</option>
+                <option value="n100W" =""="">n100W / -</option>
+                <option value="n100n10">n100W / n10N</option>
+              </select><br> 
+
+			<input type="text" class="input" name="inPConst" id="inPConst" size="4" value="1.2" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);"> /
+			<input type="text" class="input" name="inTConst" id="inTConst" size="4" value="1.0" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);"></td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPGearRatio">Relação de engrenagem:</span><br>
+			<input type="text" class="input" name="inPGearRatio" id="inPGearRatio" size="4" value="1" onchange="javascript:isPositiveNumber(this)" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPGearRatio">: 1</span></td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp"><span id="lblPSpeed">Velocidade de voo:</span><br>
+			<input type="text" class="input" name="inPSpeed" id="inPSpeed" size="4" value="0" onchange="javascript:is0PositiveNumber(this);kmh2mph(document.theForm.inPSpeed.value,document.theForm.inPSpeedMph);setThrLabel()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPSpeed">km/h</span><br>
+			<input type="text" class="input" name="inPSpeedMph" id="inPSpeedMph" size="4" value="0" onchange="javascript:is0PositiveNumber(this);mph2kmh(document.theForm.inPSpeedMph.value,document.theForm.inPSpeed);setThrLabel()" style="color: rgb(0, 0, 0);">&nbsp;<span id="uPSpeedMph">mph</span></td>
+			<td class="inputProp">&nbsp;</td>
+			<td class="inputProp">&nbsp;<br>
+			<input type="button" name="btnCalculate" value="calcular" onclick="javasript:calculate();" style="color: rgb(0, 0, 0);"></td>
+		</tr>
+		</tbody></table>
+
+
+
+
+<!-- User Name der berechnung für Log mitgeben  -->
+<input name="user" id="user" value="juliramosmello@gmail.com" hidden="" style="color: rgb(0, 0, 0);">
+
+
+</form>
+<hr id="gaugeLine" name="gaugeLine" class="line">
+
+<!-- Begin Gauges -->
+  <table style="width: 100%" id="gaugeTable" name="gaugeTable">
+  
+	<tbody><tr>
+	   <td class="output"><center><canvas id="gaugeBatLoad" name="gaugeBatLoad" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugeBatLoad" name="lblGaugeBatLoad">Carga:</span></center></td>   
+	   <td class="output"><center><canvas id="gaugeMixedFT" name="gaugeMixedFT" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugeMixedFlightTime" name="lblGaugeMixedFlightTime">Tempo de voo variado:</span></center></td>   
+	   <td class="output"><center><canvas id="gaugeMmax" name="gaugeMmax" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugeMmax" name="lblGaugeMmax">Potência elétrica:</span></center></td>   
+	   <td class="output"><center><canvas id="gaugeTemp" name="gaugeTemp" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugeTemp" name="lblGaugeTemp">Temperatura est.:</span></center></td>   
+	   <td class="output"><center><canvas id="gaugeThrWgt" name="gaugeThrWgt" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugeThrWgt" name="lblGaugeThrWgt">Peso-empuxo:</span></center></td>   
+	   <td class="output"><center><canvas id="gaugePitchV" name="gaugePitchV" width="150" height="150" style="width: 150px; height: 150px;"></canvas><br><span id="lblGaugePitchV" name="lblGaugePitchV">Velocidade de passo:</span></center></td>   
+	</tr>
+   </tbody></table>
+<!-- END gauges -->
+
+<hr class="line">
+
+<!-- Begin Error Messages -->
+			<table>
+				<tbody><tr>
+					<td class="output"><strong><span id="lblRemark">Notas:</span></strong></td>
+					<td>&nbsp;</td>
+					<td class="output"><span id="errorMsg"><span style="color:red">Selecione os componentes do primeiro ou verificar e corrigir o vermelho marcada valores que representam números inválidos (NaN).</span></span></td>
+				</tr>
+			</tbody></table>
+<!-- END Error Messages -->			
+
+<table cellpadding="2" cellspacing="0" style="width: 100%">
+	<tbody><tr>
+		<td class="outDark"><strong><span id="lblBTitel">Bateria</span></strong><br>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblBLoad">Carga:</span></td>
+				<td class="output" style="text-align: right"><span id="outBLoad">
+				-</span></td>
+				<td class="output"><span id="uBLoad">C</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBVoltage">Tensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outBVoltage">
+				-</span></td>
+				<td class="output"><span id="uBVoltage">V</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBRatedVoltage">Tensão nominal:</span></td>
+				<td class="output" style="text-align: right"><span id="outBRatedVoltage">
+				-</span></td>
+				<td class="output"><span id="uBRatedVoltage">V</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBEnergy">Energia:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outBEnergy">-</span></td>
+				<td class="output"><span id="uBEnergy">Wh</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBCapacity">Capacidade total:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outBCapacity">-</span></td>
+				<td class="output"><span id="uBCapacity">mAh</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBCapacityUsed">Capacidade utilizada:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outBCapacityUsed">-</span></td>
+				<td class="output"><span id="uBCapacityUsed">mAh</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBFlightTime">Tempo de vôo mínimo:</span></td>
+				<td class="output" style="text-align: right"><span id="outBFlightTime">
+				-</span></td>
+				<td class="output"><span id="uBFlightTime">min</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblBMixedFlightTime">Tempo de voo variado:</span></td>
+				<td class="output" style="text-align: right"><span id="outBMixedFlightTime">
+				-</span></td>
+				<td class="output"><span id="uBMixedFlightTime">min</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOutBWeight">Peso:</span></td>
+				<td class="output" style="text-align: right"><span id="outBWeight">
+				-</span></td>
+				<td class="output"><span id="uOutBWeight">g</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outBWeightOz">
+				-</span></td>
+				<td class="output"><span id="uOutBWeightOz">oz</span></td>
+			</tr>
+		</tbody></table>
+		</td>
+		<td>&nbsp;</td>
+		<td class="outBright"><strong><span id="lblOptTitel">Motor @ Eficiência ótima</span></strong>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblOptI">Corrente:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptI">
+				-</span></td>
+				<td class="output"><span id="uOptI">A</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOptV">Tensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptV">
+				-</span></td>
+				<td class="output"><span id="uOptV">V</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOptRpm">Revoluções*:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptRpm">
+				-</span></td>
+				<td class="output"><span id="uOptRpm">rpm</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOptWin">Potência elétrica:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptWin">
+				-</span></td>
+				<td class="output"><span id="uOptWin">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOptWout">Potência mecânica:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptWout">
+				-</span></td>
+				<td class="output"><span id="uOptWout">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblOptEfficiency">Eficência:</span></td>
+				<td class="output" style="text-align: right"><span id="outOptEfficiency">
+				-</span></td>
+				<td class="output"><span id="uOptEfficiency">%</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;&nbsp;</td>
+				<td class="output" style="text-align: right">&nbsp;</td>
+				<td class="output">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;&nbsp;</td>
+				<td class="output" style="text-align: right">&nbsp;</td>
+				<td class="output">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp; </td>
+				<td class="output" style="text-align: right">&nbsp;</td>
+				<td class="output">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp; </td>
+				<td class="output" style="text-align: right">&nbsp;</td>
+				<td class="output">&nbsp;</td>
+			</tr>
+			</tbody></table>
+			&nbsp;<br><strong><span id="lblLoggerTitel">Leituras do medidor Watt</span></strong>
+		    <table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblLoggerI">Corrente:</span></td>
+				<td class="output" style="text-align: right"><span id="outLoggerI">
+				-</span></td>
+				<td class="output"><span id="uLoggerI">A</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblLoggerV">Tensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outLoggerV">
+				-</span></td>
+				<td class="output"><span id="uLoggerV">V</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblLoggerP">Potência:</span></td>
+				<td class="output" style="text-align: right"><span id="outLoggerP">
+				-</span></td>
+				<td class="output"><span id="uLoggerP">W</span></td>
+			</tr>
+			</tbody></table>
+
+		</td>
+		<td>&nbsp;</td>
+		<td class="outDark"><strong><span id="lblMaxTitel">Motor @ Máximo</span></strong>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblMaxI">Corrente:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxI">
+				-</span></td>
+				<td class="output"><span id="uMaxI">A</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxV">Tensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxV">
+				-</span></td>
+				<td class="output"><span id="uMaxV">V</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxRpm">Revoluções*:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxRpm">
+				-</span></td>
+				<td class="output"><span id="uMaxRpm">rpm</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxWin">Potência elétrica:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxWin">
+				-</span></td>
+				<td class="output"><span id="uMaxWin">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxWout">Potência mecânica:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outMaxWout">
+				-</span></td>
+				<td class="output"><span id="uMaxWout">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxEfficiency">Eficiência:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxEfficiency">
+				-</span></td>
+				<td class="output"><span id="uMaxEfficiency">%</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMaxTemp">Temperatura est.:</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxTemp">
+				-</span></td>
+				<td class="output"><span id="uMaxTemp">°C</span></td>
+			</tr>
+			<tr>
+				<td class="">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outMaxTempF">
+				-</span></td>
+				<td class="output"><span id="uMaxTempF">°F</span></td>
+			</tr>
+			<tr>
+				<td class="output">Rm:</td>
+				<td class="output" style="text-align: right"><span id="outMaxRm">-</span></td>
+				<td class="output">mΩ</td>
+			</tr>
+<!--
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"></td>
+				<td class="output"></td>
+			</tr>
+
+-->
+			<tr>
+				<td class="output"><span id="lblMaxESC">ESC</span></td>
+				<td class="output" style="text-align: right"><span id="outMaxESC">-</span></td>
+				<td class="output"><span id="uMaxESC">epm</span></td>
+			</tr>
+
+			</tbody></table>
+			&nbsp;<br><strong><span class="output" id="lblTempCurve">Curva Térmica</span></strong>
+		    <table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="outT05tau">-</span></td>
+				<td class="output"><span id="outT1tau">-</span></td>
+				<td class="output"><span id="outT2tau">-</span></td>
+				<td class="output"><span id="outT3tau">-</span></td>
+				<td class="output"><span id="uT">s</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="outTemp05tau">-</span></td>
+				<td class="output"><span id="outTemp1tau">-</span></td>
+				<td class="output"><span id="outTemp2tau">-</span></td>
+				<td class="output"><span id="outTemp3tau">-</span></td>
+				<td class="output"><span id="uTemp">°C</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="outTempF05tau">-</span></td>
+				<td class="output"><span id="outTempF1tau">-</span></td>
+				<td class="output"><span id="outTempF2tau">-</span></td>
+				<td class="output"><span id="outTempF3tau">-</span></td>
+				<td class="output"><span id="uTempF">°F</span></td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+		<td>&nbsp;</td>
+		<td class="outBright"><strong><span id="lblPTitel">Hélice</span></strong>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblPThrust">Empuxo estático:</span></td>
+				<td class="output" style="text-align: right"><span id="outPThrust">
+				-</span></td>
+				<td class="output"><span id="uPThrust">g</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outPThrustOz">
+				-</span></td>
+				<td class="output"><span id="uPThrustOz">oz</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPRpm">Revoluções*:</span></td>
+				<td class="output" style="text-align: right"><span id="outPRpm">
+				-</span></td>
+				<td class="output"><span id="uPRpm">rpm</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPStallThrust">Empuxo de estol:</span></td>
+				<td class="output" style="text-align: right"><span id="outPStallThrust">
+				-</span></td>
+				<td class="output"><span id="uPStallThrust">g</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outPStallThrustOz">
+				-</span></td>
+				<td class="output"><span id="uPStallThrustOz">oz</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPFlightThrust">Empuxo a 0 km/h:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outPFlightThrust">-</span></td>
+				<td class="output"><span id="uPFlightThrust">g</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPFlightThrustOz">Empuxo a 0 mph:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outPFlightThrustOz">-</span></td>
+				<td class="output"><span id="uPFlightThrustOz">oz</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPPitchSpeed">Velocidade de passo:</span></td>
+				<td class="output" style="text-align: right"><span id="outPPitchSpeed">
+				-</span></td>
+				<td class="output"><span id="uPPitchSpeed">km/h</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outPPitchSpeedMph">
+				-</span></td>
+				<td class="output"><span id="uPPitchSpeedMph">mph</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPTipSpeed">Topo de velocidade:</span></td>
+				<td class="output" style="text-align: right"><span id="outPTipSpeed">
+				-</span></td>
+				<td class="output"><span id="uPTipSpeed">km/h</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outPTipSpeedMph">
+				-</span></td>
+				<td class="output"><span id="uPTipSpeedMph">mph</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPEfficiency">Empuxo específico:</span></td>
+				<td class="output" style="text-align: right"><span id="outPEfficiency">
+				-</span></td>
+				<td class="output"><span id="uPEfficiency">g/W</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outPEfficiencyOzW">
+				-</span></td>
+				<td class="output"><span id="uPEfficiencyOzW">oz/W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPn100W">n100W:</span></td>
+				<td class="output" style="text-align: right"><span id="outPn100W">-</span></td>
+				<td class="output"><span id="uPn100W">rpm</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblPn10N">n10N:</span></td>
+				<td class="output" style="text-align: right"><span id="outPn10N">-</span></td>
+				<td class="output"><span id="uPn10N">rpm</span></td>
+			</tr>
+			</tbody></table>
+		</td>
+		<td>&nbsp;</td>
+		<td class="outDark"><strong><span id="lblTotTitel">Totais</span></strong>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblTotDriveWeight">Peso componentes:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotDriveWeight">
+				-</span></td>
+				<td class="output"><span id="uTotDriveWeight">g</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outTotDriveWeightOz">
+				-</span></td>
+				<td class="output"><span id="uTotDriveWeightOz">oz</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotPowerWeight">Peso-potência:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotPowerWeight">
+				-</span></td>
+				<td class="output"><span id="uTotPowerWeight">W/kg</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outTotPowerWeightWOz">
+				-</span></td>
+				<td class="output"><span id="uTotPowerWeightWOz">W/lb</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotThrustWeight">Peso-empuxo:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotThrustWeight">
+				-</span></td>
+				<td class="output"><span id="uTotThrustWeight">: 1</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotI">Corrente @ máx:</span></td>
+				<td class="output" style="text-align: right">
+				<span id="outTotI">-</span></td>
+				<td class="output"><span id="uTotI">A</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotPin">P(entrada) @ máx:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotPin">
+				-</span></td>
+				<td class="output"><span id="uTotPin">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotPout">P(saída) @ máx:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotPout">
+				-</span></td>
+				<td class="output"><span id="uTotPout">W</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotEfficiency">Eficiência @ máx:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotEfficiency">
+				-</span></td>
+				<td class="output"><span id="uTotEfficiency">%</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotTorque">Torque:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotTorque">
+				-</span></td>
+				<td class="output"><span id="uTotTorque">Nm</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outTotTorqueLbft">
+				-</span></td>
+				<td class="output"><span id="uTotTorqueLbft">lbf.ft</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblTotClbCap">capacidade de ascensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotClbCap">
+				-</span></td>
+				<td class="output"><span id="uTotClbCap">m</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outTotClbCapFt">
+				-</span></td>
+				<td class="output"><span id="uTotClbCapFt">ft</span></td>
+			</tr>
+
+			</tbody></table>		
+		</td>
+		<td>&nbsp;</td>
+		<td class="outBright"><strong><span id="lblMTitel">Avião</span></strong>
+		<table cellpadding="3" cellspacing="0" style="width: 100%">
+			<tbody><tr>
+				<td class="output"><span id="lblTotAUW">Peso total:</span></td>
+				<td class="output" style="text-align: right"><span id="outTotAUW">
+				-</span></td>
+				<td class="output"><span id="uTotAUW">g</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outTotAUWOz">
+				-</span></td>
+				<td class="output"><span id="uTotAUWOz">oz</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMWLoad">Carga da Asa:</span></td>
+				<td class="output" style="text-align: right"><span id="outMWLoad">
+				-</span></td>
+				<td class="output"><span id="uMWLoad">g/dm²</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outMWLoadOz">
+				-</span></td>
+				<td class="output"><span id="uMWLoadOz">oz/pé²</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMW3Load">Carga Cúbica da Asa:</span></td>
+				<td class="output" style="text-align: right"><span id="outMW3Load">
+				-</span></td>
+				<td class="output"><span id="uMW3Load"></span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMStallSpeed">Velocidade de Estol estimada:</span></td>
+				<td class="output" style="text-align: right"><span id="outMStallSpeed">
+				-</span></td>
+				<td class="output"><span id="uMStallSpeed">km/h</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outMStallSpeedMph">
+				-</span></td>
+				<td class="output"><span id="uMStallSpeedMph">mph</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMLevelSpeed">Velocidade estimada(nivelado):</span></td>
+				<td class="output" style="text-align: right"><span id="outMLevelSpeed">
+				-</span></td>
+				<td class="output"><span id="uMLevelSpeed">km/h</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outMLevelSpeedMph">
+				-</span></td>
+				<td class="output"><span id="uMLevelSpeedMph">mph</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMVclimbSpeed">Velocidade estimada(vertical):</span></td>
+				<td class="output" style="text-align: right"><span id="outMVclimbSpeed">
+				-</span></td>
+				<td class="output"><span id="uMVclimbSpeed">km/h</span></td>
+			</tr>
+			<tr>
+				<td class="output">&nbsp;</td>
+				<td class="output" style="text-align: right"><span id="outMVclimbSpeedMph">
+				-</span></td>
+				<td class="output"><span id="uMVclimbSpeedMph">mph</span></td>
+			</tr>
+			<tr>
+				<td class="output"><span id="lblMRoc">Taxa estimada de ascensão:</span></td>
+				<td class="output" style="text-align: right"><span id="outMRoc">
+				-</span></td>
+				<td class="output"><span id="uMRoc">m/s</span></td>
+			</tr>
+			<tr>
+				<td class="output" style="text-align:right;">( ~<span id="outMaxAoClimb">-...-</span>° )</td>
+				<td class="output" style="text-align: right"><span id="outMRocFt">
+				-</span></td>
+				<td class="output"><span id="uMRocFt">pé/min</span></td>
+			</tr>
+			</tbody></table>
+		</td>
+
+	</tr>
+	<script language="JavaScript">document.write(exportForm);</script><tr><td colspan="6" align="left"><input type="button" value=" Compartilhar " id="shareCalc" onclick="javascript:location.replace(createLink());">&nbsp;<input type="button" value="performanceCalc" id="perfCalc" onclick="javascript:callPerfCalc();"></td><td colspan="5" align="right"><form id="csvForm" method="post" action="./calcinclude/export.php"><textarea cols="1" name="exportData" rows="1" id="exportData" hidden=""></textarea><input type="button" value="Adicionar &gt;&gt;" id="AddCSV" onclick="javascript:addDataForExport();">&nbsp;<input type="button" id="DownloadCSV" value="Baixar em .csv (0)" onclick="javascript:exportDataCSV();">&nbsp;<input type="button" id="ClearCSV" value="&lt;&lt; Limpar" onclick="javascript:clearExport()"></form></td></tr>
+
+</tbody></table>
+
+
+<hr class="line">
+
+   <!-- Motor Graph -->
+   <center><strong><span id="graphTitel">Características do motor</span></strong><br>
+   <div id="placeholder" style="width: 1200px; height: 450px; padding: 0px; position: relative;"><canvas class="flot-base" width="1200" height="450" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1200px; height: 450px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 12px;">0.00</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 128px;">0.10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 245px;">0.20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 362px;">0.30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 479px;">0.40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 596px;">0.50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 713px;">0.60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 830px;">0.70</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 947px;">0.80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 1064px;">0.90</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 434px; left: 1181px;">1.00</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 422px; left: 2px;">0.0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 338px; left: 2px;">0.2</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 254px; left: 2px;">0.4</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 169px; left: 2px;">0.6</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 85px; left: 2px;">0.8</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 2px;">1.0</div></div></div><canvas class="flot-overlay" width="1200" height="450" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1200px; height: 450px;"></canvas><div class="legend"><div style="position: absolute; width: 263px; height: 110px; top: 13px; left: 26px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:13px;left:26px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(237,194,64);overflow:hidden"></div></div></td><td class="legendLabel">① Potência elementar [em 1W]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(175,216,248);overflow:hidden"></div></div></td><td class="legendLabel">② Eficiência [%]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(100, 30, 100);overflow:hidden"></div></div></td><td class="legendLabel">③ Revoluções máximas [em 100rpm]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(190, 100, 0);overflow:hidden"></div></div></td><td class="legendLabel">④ Desperdício de potência [em 1W]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(30, 180, 20);overflow:hidden"></div></div></td><td class="legendLabel">⑤ Temperatura do casco do motor. [°C]</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(200, 20, 30);overflow:hidden"></div></div></td><td class="legendLabel">&nbsp;&nbsp;&nbsp;&nbsp;Temperatura de casco do motor acima do limite [°C]</td></tr></tbody></table></div><div style="position:absolute;left:901px;top:412px;color:#666;font-size:7pt">(c) by eCalc &nbsp;V1.00</div></div> 
+
+   <span id="graphAmp">Ampères</span></center>
+  
+  
+   <!-- Temp Graph -->
+   <center><strong><span id="graphTitelTemp">Propagação de temperatura</span></strong><br>
+   <div id="placeholderTemp" style="width: 1200px; height: 300px; padding: 0px; position: relative;"><canvas class="flot-base" width="1200" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1200px; height: 300px;"></canvas><div class="flot-text" style="position: absolute; inset: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 58px;">0.00s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 170px;">0.10s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 282px;">0.20s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 393px;">0.30s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 505px;">0.40s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 617px;">0.50s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 729px;">0.60s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 841px;">0.70s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 952px;">0.80s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 1064px;">0.90s</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 284px; left: 1176px;">1.00s</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; inset: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 272px; left: 19px;">0°C / 32°F</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 218px; left: 13px;">20°C / 68°F</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 164px; left: 8px;">40°C / 104°F</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 109px; left: 8px;">60°C / 140°F</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 55px; left: 8px;">80°C / 176°F</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 2px;">100°C / 212°F</div></div></div><canvas class="flot-overlay" width="1200" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 1200px; height: 300px;"></canvas><div class="legend"><div style="position: absolute; width: 78px; height: 18px; bottom: 26px; right: 17px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;bottom:26px;right:17px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(255, 214, 153);overflow:hidden"></div></div></td><td class="legendLabel">Temperatura</td></tr></tbody></table></div><span style="position:absolute;left:74px;top:44px;color:#fc901e;font-size:10pt">crítico</span><div style="position:absolute;left:577px;top:10px;color:#666;font-size:7pt">(c) by eCalc &nbsp;V1.00</div></div>
+   <span id="graphTempTime">Tempo</span><br>&nbsp;</center>
+
+<hr class="line">
+   <center><strong><span id="rpmTableTitel">Carga parcial do motor - estática no solo</span></strong><br>
+
+		<table id="rpmTable" cellpadding="2" cellspacing="3" style="width: 100%">
+			<tbody><tr>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabRpm">Hélice</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabPSpeed">Pitch Speed</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabThr">Throttle</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabI">Current</span> (DC)</td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabU">Volage</span> (DC)</td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabW">el. Power</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabEff">Efficiency</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabThrust">Thrust</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabSThrust">Spec. Thrust</span></td>
+<!--
+				<td class="outDark" style="text-align: center" colspan="2"><span id="lblTabLevelSpeed">Speed (level)</span></td>
+-->
+				<td class="outDark" style="text-align: right"><span id="lblTabFT">Tempo de Funcionamento</span></td>
+			</tr>
+			<tr>
+				<td class="outDark" style="text-align: right"><span id="uTabRpm">rpm</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabPSpeed">km/h</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabPSpeedImp">mph</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabThr">%</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabI">A</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabU">V</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabW">W</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabEff">%</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabThrust">g</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabThrustImp">oz</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabSThrust">g/W</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabSThrustImp">oz/W</span></td>
+<!--
+				<td class="outDark" style="text-align: right"><span id="uTabLevelSpeed">km/h</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabLevelSpeedImp">mph</span></td>
+-->
+				<td class="outDark" style="text-align: right">(<span id="pTabFT">85</span>%) <span id="uTabFT">min</span></td>
+			</tr>
+
+		</tbody></table>
+
+   </center>
+
+     
+
+<hr class="line">
+   <center><strong><span id="rpmDynTableTitel">Carga parcial do motor - dinâmica em voo</span></strong><br>
+
+		<table id="rpmDynTable" cellpadding="2" cellspacing="3" style="width: 100%">
+			<tbody><tr>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynRpm">Hélice</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabDynLevelSpeed">Velocidade (nivelado)</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynThr">Throttle</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynI">Current</span> (DC)</td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynU">Volage</span> (DC)</td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynW">el. Power</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="lblTabDynEff">Efficiency</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabDynThrust">Thrust</span></td>
+				<td class="outDark" style="text-align: center; width:13%" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="lblTabDynEnergyConsump">Consumo de energia</span></td>
+<!--
+				<td class="outDark" style="text-align: center" colspan="2"><span id="lblTabDynPSpeed">Pitch speed</span></td>
+-->
+				<td class="outDark" style="text-align: right"><span id="lblTabDynFT">Tempo de Funcionamento</span></td>
+			</tr>
+			<tr>
+				<td class="outDark" style="text-align: right"><span id="uTabDynRpm">rpm</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabDynLevelSpeed">km/h</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabDynLevelSpeedImp">mph</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynThr">%</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynI">A</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynU">V</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynW">W</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynEff">%</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabDynThrust">g</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabDynThrustImp">oz</span></td>
+				<td class="outDark" style="text-align: right; width:8%"><span id="uTabDynEnergyConsump">Wh/km</span></td>
+				<td class="outDark" style="text-align: right; width:7%"><span id="uTabDynEnergyConsumpImp">Wh/mi</span></td>
+<!--
+				<td class="outDark" style="text-align: right"><span id="uTabDynPSpeed">km/h</span></td>
+				<td class="outDark" style="text-align: right"><span id="uTabDynPSpeedImp">mph</span></td>
+-->
+				<td class="outDark" style="text-align: right">(<span id="pTabDynFT">85</span>%) <span id="uTabDynFT">min</span></td>
+			</tr>
+
+		</tbody></table>
+
+   </center>
+
+
+<hr class="line">
+
+			<table cellspacing="0" style="width: 100%">
+				<tbody><tr>
+					<td class="footnote"><span id="footnoteLeft"><strong>Nota importante:</strong><br>Antes de voar, verifique novamente a sua corrente máxima! Se sua corrente, potência ou RPM estiver acima dos limites especificados<br>pelo fabricante, seu motor, ESC e/ou bateria podem ser danificados! <strong>Verifique com medições antes de voar!</strong></span></td>
+					<td class="footnote"><span id="footnoteRight">Para imprimir, utilize o formato Paisagem<br>* A limitação do fabricante NÃO é monitorada<br>** Dados de prova com precisão reduzida</span></td>
+				</tr>
+			</tbody></table>
+
+<hr class="line">
+<center class="legal">
+<script type="text/javascript" src="/calcinclude/footer.js"></script>             © by Solution for All Markus Müller&nbsp;&nbsp;-&nbsp;&nbsp;www.eCalc.ch&nbsp;&nbsp;-&nbsp;&nbsp;info[at]eCalc.ch             <br>             <a href="/impressum.htm">Impressum</a> | <a href="/calcmember/agb_ecalc_en.pdf">Terms &amp; Condtions</a> | <a href="/eprivacy.htm">Privacy</a> | <a href="/eprivacy.htm">Cookie</a> | <a href="/advertising.htm">Advertising</a>			<script type="text/javascript">				function setCookieExpires(){					var exdate=new Date();					exdate.setDate(exdate.getDate() + 15);					return exdate.toUTCString();			    }			</script>
+<script type="text/javascript" id="cookieinfo" src="/calcinclude/cookieinfo.min.js" data-bg="#645862" data-fg="#FFFFFF" data-link="#F1D600" data-cookie="eCalcCookieInfo" data-text-align="left" data-close-text="Got it!" data-expires="setCookieExpires">
+</script>
+<script language="JavaScript">document.write(theEDriveLink)</script><br>
+Version: P<script language="JavaScript">document.write(theCalcVersion)</script>7.40.001, 20.1.2026&nbsp;/&nbsp;Data: <script language="JavaScript">document.write(theDataVersion)</script>20.1.2026 
+with <script language="JavaScript">document.write(motorArray.length)</script>14695 
+Motors<br>
+<script language="JavaScript">document.write(translatedBy)</script>traduzido para o português brasileiro por Alexandre Heitor Schmidt<br>
+<script language="JavaScript">document.write(theCounter)</script><img src="https://www.easycounter.com/counter.php?s4a,eCalc" border="0" alt="Website Hit Counter"><br>
+<script type="text/javascript">document.write("<span onClick=javascript:location.replace('calcmember/login.php?"+document.location+"');>***   ***   ***</span>");</script><span onclick="javascript:location.replace('calcmember/login.php?https://www.ecalc.ch/motorcalc.php');">***   ***   ***</span>
+
+</center>
+
+
+<!-- Frame Abschluss -->
+            </td>
+			<td></td>
+		</tr>
+	</tbody></table>
+</center>	
+
+
+<!--   ----------------- MODAL MESSAGE BOX ---------------- -->
+  
+<div id="modalMessage" class="modal fade " data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">
+		<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+            <span id="modalMessageText">Here Comes the Message</span>
+            </div>
+	        <div class="modal-footer" style="text-align:center;">
+	           <button type="button" class="btn btn-primary" onclick="javascript:$('#modalMessage').modal('hide');">&nbsp;&nbsp;&nbsp;Ok&nbsp;&nbsp;&nbsp;</button>
+	        </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--   ----------------- end MODAL MESSAGE BOX ---------------- -->
+
+
+<!--   ----------------- MODAL CONFIRM BOX ---------------- -->
+
+<div id="modalConfirm" class="modal fade " data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">
+		<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-body">
+            <span id="modalConfirmMessage">Here Comes the Message</span>
+            </div>
+	        <div class="modal-footer">
+	           <button type="button" class="btn btn-primary" id="modalConfirmOk" onclick="">&nbsp;&nbsp;&nbsp;Ok&nbsp;&nbsp;&nbsp;</button>
+	           <button type="button" class="btn btn-secondary" id="modalConfirmNok" onclick="">Cancel</button>
+	        </div>
+        </div>
+
+    </div>
+</div>
+
+<!--   ----------------- end MODAL CONFIRM BOX ---------------- -->
+
+
+<!-- INIT -->
+<script type="text/javascript">
+   if (withPerfCalcButton ) document.getElementById("perfCalc").hidden = false;
+   if (document.getElementById("headerLeft") && isServicePayed) document.getElementById("headerLeft").innerHTML = theShopLogo;
+   if (document.getElementById("headerRight") && isServicePayed) document.getElementById("headerRight").innerHTML = theDonationForm;
+   
+   applyLanguage();
+   // copy header to dynamic table
+   document.getElementById("lblTabDynRpm").innerHTML		= document.getElementById("lblTabRpm").innerHTML;
+   document.getElementById("lblTabRpm").innerHTML 			= document.getElementById("lblPTitel").innerHTML;
+   document.getElementById("uTabDynRpm").innerHTML			= document.getElementById("uTabRpm").innerHTML;
+   document.getElementById("lblTabDynThr").innerHTML		= document.getElementById("lblTabThr").innerHTML;
+   document.getElementById("uTabDynThr").innerHTML			= document.getElementById("uTabThr").innerHTML;
+   document.getElementById("lblTabDynI").innerHTML			= document.getElementById("lblTabI").innerHTML;
+   document.getElementById("uTabDynI").innerHTML			= document.getElementById("uTabI").innerHTML;
+   document.getElementById("lblTabDynU").innerHTML			= document.getElementById("lblTabU").innerHTML;
+   document.getElementById("uTabDynU").innerHTML			= document.getElementById("uTabU").innerHTML;
+   document.getElementById("lblTabDynW").innerHTML			= document.getElementById("lblTabW").innerHTML;
+   document.getElementById("uTabDynW").innerHTML			= document.getElementById("uTabW").innerHTML;
+   document.getElementById("lblTabDynEff").innerHTML		= document.getElementById("lblTabEff").innerHTML;
+   document.getElementById("uTabDynEff").innerHTML			= document.getElementById("uTabEff").innerHTML;
+   document.getElementById("lblTabDynThrust").innerHTML 	= document.getElementById("lblTabThrust").innerHTML;
+   document.getElementById("uTabDynThrust").innerHTML		= document.getElementById("uTabThrust").innerHTML;
+   document.getElementById("uTabDynThrustImp").innerHTML	= document.getElementById("uTabThrustImp").innerHTML;
+   //document.getElementById("lblTabDynSThrust").innerHTML	= document.getElementById("lblTabSThrust").innerHTML;
+   //document.getElementById("uTabDynSThrust").innerHTML		= document.getElementById("uTabSThrust").innerHTML;
+   //document.getElementById("uTabDynSThrustImp").innerHTML	= document.getElementById("uTabSThrustImp").innerHTML;
+   document.getElementById("lblTabDynFT").innerHTML			= document.getElementById("lblTabFT").innerHTML;
+   document.getElementById("uTabDynFT").innerHTML			= document.getElementById("uTabFT").innerHTML;
+
+   
+   plotMotorGraph(false);
+   plotTempGraph("0,0");
+      
+   loadCell(document.theForm);
+   loadEsc(document.theForm);
+   loadMotorTyps(document.theForm);
+   loadPropeller(document.theForm);
+   if (withPreselect) preselectComponents(); 
+   if (isFullVersion && document.getElementById("inGDrag")) document.getElementById("inGDrag").options[1].disabled = false;
+   if (withPreselect) preselectComponents();
+   if (isFullVersion && document.getElementById("BtnSearch")) document.getElementById("BtnSearch").disabled = false;
+   if (isFullVersion && document.getElementById("BtnPropKvWizard")) document.getElementById("BtnPropKvWizard").disabled = false;
+   if (isFullVersion && document.getElementById("csvForm")) {
+      document.getElementById("AddCSV").disabled = false;
+      document.getElementById("DownloadCSV").disabled = false;
+      document.getElementById("ClearCSV").disabled = false;
+   }
+   setThrLabel();
+   drawGauges();
+
+   if (!userStatementAccepted && document.referrer.indexOf("setupfinder.php") == -1) acceptUserStatement3();
+  
+
+   
+</script>
+
+
+
+
+
+
+<iframe name="oauth2relay907874185" id="oauth2relay907874185" src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=https%3A%2F%2Fwww.ecalc.ch&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#rpctoken=907031697&amp;forcesecure=1" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div style="display: block; visibility: hidden; position: absolute; width: 106px; left: -1000px; top: -1000px;"><table cellpadding="0" cellspacing="0" dir="ltr" style="width:106px;" frame="void" rules="none" class=" gc-bubbleDefault pls-container"><tbody><tr class="gc-reset"><td class="pls-topLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td><td class="pls-topTail gc-reset"><img class="pls-tailbottom gc-reset" style="width:15px !important; height:9px !important; max-width: 15px !important; max-height: 9px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerbottom gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-topRight gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td></tr><tr class="gc-reset"><td class="pls-vertShimLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-vertShim gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-vertShimRight gc-reset"><img class="pls-dropTR gc-reset" style="width:5px !important; height:4px !important; max-width: 5px !important; max-height: 4px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-contentLeft gc-reset"><img class="pls-tailright gc-reset" style="width:9px !important; height:15px !important; max-width: 9px !important; max-height: 15px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerright gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-contentWrap gc-reset"><div class="goog-bubble-content gc-reset"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="margin:0px;position:absolute;z-index:1;border-style:none;outline:none;width:100px;" tabindex="0" vspace="0" width="100%" id="I0_1769116382435" name="I0_1769116382435" src="https://www.youtube.com/subscribe_embed?action_card=1&amp;channelid=UCNbWYxm8Ihzi1Pqs-854etA&amp;usegapi=1&amp;usegapi=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.JCOyDvgYZIc.O%2Fd%3D1%2Frs%3DAHpOoo-EwKfAn90Z81SK_j85fzHWT24Cpg%2Fm%3D__features__#id=I0_1769116382435&amp;_gfid=I0_1769116382435&amp;parent=https%3A%2F%2Fwww.ecalc.ch&amp;pfname=&amp;rpctoken=13972043"></iframe></div></td><td class="pls-dropRight gc-reset"><img class="pls-tailleft gc-reset" style="width:12px !important; height:19px !important; max-width: 12px !important; max-height: 19px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacerleft gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-bottomLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif"></td><td class="gc-reset"><table cellpadding="0" cellspacing="0" style="width:100%" class="gc-reset"><tbody><tr class="gc-reset"><td class="pls-vert gc-reset"><img class="pls-dropBL gc-reset" style="width:4px !important; height:5px !important; max-width: 4px !important; max-height: 5px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td><td class="pls-dropBottom gc-reset"><img class="pls-tailtop gc-reset" style="width:19px !important; height:13px !important; max-width: 19px !important; max-height: 13px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"><img class="pls-spacertop gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr></tbody></table></td><td class="pls-vert gc-reset"><img class="pls-dropBR gc-reset" style="width:5px !important; height:5px !important; max-width: 5px !important; max-height: 5px !important;" src="https://ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/spacer.gif"></td></tr></tbody></table></div></body></html>
