@@ -1,11 +1,26 @@
 from automation import ECalAutomator
 import time
+import os
+import json
+
+def load_credentials():
+    email = os.getenv("ECALC_EMAIL")
+    password = os.getenv("ECALC_PASSWORD")
+    if email and password:
+        return {"email": email, "password": password}
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base_dir, "credentials.json")
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            return json.load(f)
+    raise RuntimeError("Credentials not found")
 
 def snapshot_results():
     auto = ECalAutomator(headless=False)
     try:
         auto.start()
-        auto.login("juliramosmello@gmail.com", "MTOW@2026")
+        creds = load_credentials()
+        auto.login(creds["email"], creds["password"])
         auto.page.goto("https://www.ecalc.ch/setupfinder.php")
         
         auto.page.fill("#inAcAuw", "15000")

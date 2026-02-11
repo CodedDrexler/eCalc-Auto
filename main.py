@@ -3,8 +3,22 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from automation import ECalAutomator
 import time
+import os
+import json
 
 app = FastAPI(title="eCalc Automation API")
+
+def load_credentials():
+    email = os.getenv("ECALC_EMAIL")
+    password = os.getenv("ECALC_PASSWORD")
+    if email and password:
+        return {"email": email, "password": password}
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base_dir, "credentials.json")
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            return json.load(f)
+    raise HTTPException(status_code=500, detail="Credentials not found")
 
 class SetupFinderInput(BaseModel):
     weight: str
@@ -44,8 +58,8 @@ def run_calculation(input_data: SetupFinderInput):
     try:
         auto.start()
         
-        # Login (Hardcoded for now as per user instruction)
-        auto.login("juliramosmello@gmail.com", "MTOW@2026")
+        creds = load_credentials()
+        auto.login(creds["email"], creds["password"])
         
         # Prepare inputs
         inputs = {

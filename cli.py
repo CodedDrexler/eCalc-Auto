@@ -15,15 +15,33 @@ from automation import ECalAutomator
 
 console = Console()
 
+def get_resource_base():
+    if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+        return sys._MEIPASS
+    return os.path.dirname(os.path.abspath(__file__))
+
+def get_output_dir():
+    path = os.path.join(os.path.expanduser("~"), "eCalc Auto")
+    os.makedirs(path, exist_ok=True)
+    return path
+
 def load_credentials():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base_dir, "credentials.json")
-    try:
-        with open(path, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        console.print(f"[red]credentials.json not found at {path}![/red]")
-        sys.exit(1)
+    email = os.getenv("ECALC_EMAIL")
+    password = os.getenv("ECALC_PASSWORD")
+    if email and password:
+        return {"email": email, "password": password}
+    candidates = [
+        os.path.join(get_output_dir(), "credentials.json"),
+        os.path.join(get_resource_base(), "credentials.json"),
+    ]
+    for path in candidates:
+        try:
+            with open(path, "r") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            continue
+    console.print(f"[red]credentials.json not found in {candidates}![/red]")
+    sys.exit(1)
 
 def main():
     os.system('cls')
@@ -42,7 +60,7 @@ def main():
     ))
     
     # Load Default Settings
-    base_dir = os.path.dirname(os.path.abspath(__file__))
+    base_dir = get_resource_base()
     defaults = {}
     try:
         path = os.path.join(base_dir, "default_settings.json")
@@ -231,35 +249,33 @@ def main():
                     # Actually, let's keep it simple here.
                     
                     for s in setup_results:
-                         # Manuf Check
-                         pass_manuf = False
-                         if manuf_filter_str.lower() == "all":
-                             pass_manuf = True
-                         else:
-                             s_manuf = s.get("manufacturer", "").lower()
-                             s_motor = s.get("motor_name", "").lower()
-                             for m in m_list:
-                                 if m.lower() in s_manuf or m.lower() in s_motor:
-                                     pass_manuf = True
-                                     break
-                         
-                         # Diam Check
-                         pass_diam = False
-                         if not target_diam_filter:
-                             pass_diam = True
-                         else:
-                             raw_diam = s.get("prop_diam", "")
-                             try:
-                                 if "x" in raw_diam: d_str = raw_diam.split("x")[0].strip()
-                                 elif " " in raw_diam: d_str = raw_diam.split(" ")[0].strip()
-                                 else: d_str = raw_diam
-                                 d_val = float(d_str)
-                                 if abs(d_val - target_diam_filter) < 0.1:
-                                     pass_diam = True
-                             except: pass
-                             
-                         if pass_manuf and pass_diam:
-                             filtered.append(s)
+                        # Manuf Check
+                        pass_manuf = False
+                        if manuf_filter_str.lower() == "all":
+                            pass_manuf = True
+                        else:
+                            s_manuf = auto._normalize_text(s.get("manufacturer", ""))
+                            s_motor = auto._normalize_text(s.get("motor_name", ""))
+                            for m in m_list:
+                                m_norm = auto._normalize_text(m)
+                                if m_norm in s_manuf or m_norm in s_motor:
+                                    pass_manuf = True
+                                    break
+                        
+                        # Diam Check
+                        pass_diam = False
+                        if not target_diam_filter:
+                            pass_diam = True
+                        else:
+                            raw_diam = s.get("prop_diam", "")
+                            try:
+                                d_val = auto._parse_prop_diameter(raw_diam)
+                                if auto._matches_prop_diameter(d_val, target_diam_filter):
+                                    pass_diam = True
+                            except: pass
+                            
+                        if pass_manuf and pass_diam:
+                            filtered.append(s)
 
                 setup_results = filtered
                 progress.console.print(f"[dim]Filtered results to {len(setup_results)} setups based on filters.[/dim]")
@@ -294,9 +310,10 @@ def main():
             }
             
             try:
-                with open("last_run_data.json", "w", encoding="utf-8") as f:
+                output_dir = get_output_dir()
+                with open(os.path.join(output_dir, "last_run_data.json"), "w", encoding="utf-8") as f:
                     json.dump(run_data, f, indent=4, ensure_ascii=False)
-                console.print("[dim]Saved run data to 'last_run_data.json'[/dim]")
+                console.print(f"[dim]Saved run data to '{output_dir}\\last_run_data.json'[/dim]")
             except Exception as e:
                 console.print(f"[red]Failed to save run data: {e}[/red]")
             
@@ -363,10 +380,12 @@ def main():
         
         # Save to CSV (Planilhas)
         try:
-            if not os.path.exists("Planilhas"):
-                os.makedirs("Planilhas")
+            output_dir = get_output_dir()
+            plan_dir = os.path.join(output_dir, "Planilhas")
+            if not os.path.exists(plan_dir):
+                os.makedirs(plan_dir)
                 
-            filename = f"Planilhas/P{analyzed_power} - N{limit}.csv"
+            filename = os.path.join(plan_dir, f"P{analyzed_power} - N{limit}.csv")
             
             with open(filename, "w", newline="", encoding="utf-8-sig") as f:
                 writer = csv.writer(f, delimiter=";", quoting=csv.QUOTE_MINIMAL)

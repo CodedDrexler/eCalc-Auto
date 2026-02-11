@@ -456,39 +456,62 @@ class ECalAutomator:
         - manufacturer: string to match in manufacturer or motor name (case insensitive)
         """
         filtered = []
-        clean_manuf = manufacturer.lower()
+        clean_manuf = self._normalize_text(manufacturer)
         
         print(f"Filtering {len(setups)} setups for Diam~={target_diam} and Manuf='{manufacturer}'")
         
         for s in setups:
             # 1. Filter by Manufacturer
-            s_manuf = s.get("manufacturer", "").lower()
-            s_motor = s.get("motor_name", "").lower()
+            s_manuf = self._normalize_text(s.get("manufacturer", ""))
+            s_motor = self._normalize_text(s.get("motor_name", ""))
             if clean_manuf not in s_manuf and clean_manuf not in s_motor:
                 continue
                 
             # 2. Filter by Diameter
             # Format typically "18x10.0" or "18.0x..."
             raw_diam = s.get("prop_diam", "")
-            try:
-                # Extract the leading number before 'x' or ' '
-                if "x" in raw_diam:
-                    d_str = raw_diam.split("x")[0].strip()
-                elif " " in raw_diam:
-                    d_str = raw_diam.split(" ")[0].strip()
-                else:
-                    d_str = raw_diam
-                
-                d_val = float(d_str)
-                
-                # Allow small tolerance (e.g. 18.0 vs 18)
-                if abs(d_val - target_diam) < 0.1:
-                    filtered.append(s)
-            except:
-                # If parsing fails, skip or check if strict match needed
+            d_val = self._parse_prop_diameter(raw_diam)
+            if d_val is None:
                 continue
+            if self._matches_prop_diameter(d_val, target_diam):
+                filtered.append(s)
                 
         return filtered
+
+    def _normalize_text(self, text: str):
+        try:
+            return "".join([c for c in str(text).lower() if c.isalnum()])
+        except:
+            return ""
+
+    def _parse_prop_diameter(self, raw_diam: str):
+        try:
+            if not raw_diam:
+                return None
+            s = str(raw_diam).strip()
+            num = ""
+            for ch in s:
+                if ch.isdigit() or ch in [".", ","]:
+                    num += ch
+                else:
+                    if num:
+                        break
+            if not num:
+                return None
+            num = num.replace(",", ".")
+            return float(num)
+        except:
+            return None
+
+    def _matches_prop_diameter(self, d_val, target_diam):
+        try:
+            if d_val is None or target_diam is None:
+                return False
+            if abs(target_diam - round(target_diam)) < 0.01:
+                return int(d_val) == int(target_diam)
+            return abs(d_val - target_diam) < 0.1
+        except:
+            return False
 
     def run_prop_calc(self, setup_data: Dict[str, Any]) -> Dict[str, str]:
         print(f"Running Prop Calc for {setup_data.get('motor_name', 'Unknown')}...")
@@ -841,19 +864,88 @@ class ECalAutomator:
                 # 3. Speed Sweep (0 to 135 step 9)
                 # Static Traction (Speed 0) - usually calculated at speed 0 input
                 # Ensure input is 0 first? defaulting usually 0.
+                def _wait_out_text_changed(selector, prev_text, timeout_s=8.0):
+                    deadline = time.time() + timeout_s
+                    last_text = None
+                    while time.time() < deadline:
+                        try:
+                            if self.page.locator(selector).count() == 0:
+                                time.sleep(0.1)
+                                continue
+                            txt = self.page.locator(selector).inner_text().strip()
+                            last_text = txt
+                            if txt and txt != "-" and (prev_text is None or txt != prev_text):
+                                return txt
+                        except:
+                            pass
+                        time.sleep(0.2)
+                    return last_text
+
+                def _wait_calc_ready(timeout_s=10.0):
+                    deadline = time.time() + timeout_s
+                    while time.time() < deadline:
+                        try:
+                            val = self.page.locator("#outTotPout").inner_text().strip()
+                            if val and val != "-" and val != "0":
+                                return True
+                        except:
+                            pass
+                        time.sleep(0.2)
+                    return False
+
+                def _set_flight_speed_kmh(v):
+                    try:
+                        self.page.evaluate(
+                            """(v) => {
+                                var kmh = document.getElementById('inPSpeed');
+                                var mph = document.getElementById('inPSpeedMph');
+                                if (kmh) kmh.value = String(v);
+                                if (mph) {
+                                    if (typeof kmh2mph === 'function' && kmh) {
+                                        kmh2mph(kmh.value, mph);
+                                    } else {
+                                        mph.value = String(Math.round(v * 0.621371 * 10) / 10);
+                                    }
+                                }
+                                if (typeof setThrLabel === 'function') setThrLabel();
+                                var evInput = new Event('input', { bubbles: true });
+                                var evChange = new Event('change', { bubbles: true });
+                                if (kmh) {
+                                    kmh.dispatchEvent(evInput);
+                                    kmh.dispatchEvent(evChange);
+                                }
+                                if (mph) {
+                                    mph.dispatchEvent(evInput);
+                                    mph.dispatchEvent(evChange);
+                                }
+                            }""",
+                            v,
+                        )
+                    except:
+                        try:
+                            self.page.fill("#inPSpeed", str(v))
+                        except:
+                            pass
                 
                 speeds = list(range(0, 136, 9)) # 0, 9, 18 ... 135
                 
                 print(f"Running Speed Sweep: {speeds} km/h")
                 for v in speeds:
                     try:
+                        prev_thrust = None
+                        try:
+                            if self.page.locator("#outPFlightThrust").count() > 0:
+                                prev_thrust = self.page.locator("#outPFlightThrust").inner_text().strip()
+                        except:
+                            prev_thrust = None
+
                         # Set speed
-                        self.page.fill("#inPSpeed", str(v))
+                        _set_flight_speed_kmh(v)
                         # Trigger Calc
                         self.page.evaluate("calculate()")
+                        _wait_calc_ready(timeout_s=10.0)
                         
-                        # Wait for update
-                        time.sleep(0.8) 
+                        _wait_out_text_changed("#outPFlightThrust", prev_thrust, timeout_s=10.0)
                         
                         # Extract Traction
                         if self.page.locator("#outPFlightThrust").count() > 0:
@@ -866,29 +958,86 @@ class ECalAutomator:
                         print(f"Error at speed {v}: {ev}")
                         results[f"traction_{v}"] = "Error"
                 
-                # 4. Efficiency Analysis (Parse #rpmDynTable)
+                # 4. Efficiency Analysis (Parse #rpmTable)
                 # Set speed to 0 for static efficiency calculations
                 try:
-                    self.page.fill("#inPSpeed", "0")
+                    prev_thrust = None
+                    try:
+                        if self.page.locator("#outPFlightThrust").count() > 0:
+                            prev_thrust = self.page.locator("#outPFlightThrust").inner_text().strip()
+                    except:
+                        prev_thrust = None
+
+                    _set_flight_speed_kmh(0)
                     self.page.evaluate("calculate()")
-                    time.sleep(0.8)
+                    _wait_calc_ready(timeout_s=10.0)
+                    _wait_out_text_changed("#outPFlightThrust", prev_thrust, timeout_s=10.0)
                     print("Speed set to 0 for efficiency analysis")
                 except Exception as e:
                     print(f"Error setting speed to 0: {e}")
                 
                 # Ensure table is visible and populated
                 try:
-                    self.page.wait_for_selector("#rpmDynTable tr", timeout=5000)
+                    self.page.wait_for_selector("#rpmTable tr", timeout=5000)
+                    self.page.wait_for_function("""() => {
+                        var table = document.getElementById('rpmTable');
+                        if (!table) return false;
+                        var trs = table.getElementsByTagName('tr');
+                        if (!trs || trs.length < 3) return false;
+                        var cells = trs[2].getElementsByTagName('td');
+                        if (!cells || cells.length < 9) return false;
+                        var pwr = (cells[6].innerText || '').trim();
+                        var thr = (cells[3].innerText || '').trim();
+                        var thrust = (cells[8].innerText || '').trim();
+                        return pwr && pwr !== '-' && thr && thr !== '-' && thrust && thrust !== '-';
+                    }""", timeout=8000)
                 except:
-                    print("Efficiency Table (#rpmDynTable) not found or slow.")
+                    print("Efficiency Table (#rpmTable) not found or slow.")
                 
                 target_power = setup_data.get("analyzed_power", 600)
                 
                 try:
                     eff_data = self.page.evaluate("""(target_power) => {
-                        var table = document.getElementById('rpmDynTable');
+                        var table = document.getElementById('rpmTable');
                         if (!table) return {error: "Table not found"};
                         
+                        var toNum = (v) => {
+                            if (v === null || v === undefined) return NaN;
+                            var s = String(v).trim();
+                            if (!s || s === '-') return NaN;
+                            s = s.replace(/\\s+/g, '');
+                            s = s.replace(/'/g, '');
+                            var lastComma = s.lastIndexOf(',');
+                            var lastDot = s.lastIndexOf('.');
+                            if (lastComma !== -1 && lastDot !== -1) {
+                                if (lastComma > lastDot) {
+                                    s = s.replace(/\\./g, '').replace(',', '.');
+                                } else {
+                                    s = s.replace(/,/g, '');
+                                }
+                            } else if (lastComma !== -1) {
+                                s = s.replace(',', '.');
+                            }
+                            s = s.replace(/[^0-9+\\-\\.]/g, '');
+                            return parseFloat(s);
+                        };
+
+                        var findIdxBySpanId = (id) => {
+                            var el = document.getElementById(id);
+                            if (!el) return -1;
+                            var td = el.closest('td');
+                            if (!td) return -1;
+                            return td.cellIndex;
+                        };
+
+                        var idxThr = findIdxBySpanId('uTabThr');
+                        var idxPwr = findIdxBySpanId('uTabW');
+                        var idxEff = findIdxBySpanId('uTabEff');
+                        var idxThrust = findIdxBySpanId('uTabThrust');
+                        if (idxThr < 0 || idxPwr < 0 || idxEff < 0 || idxThrust < 0) {
+                            return {error: "Table header indices not found"};
+                        }
+
                         var rows = [];
                         // Skip header (row 0) and units (row 1)? snippet implies headers are tr.
                         // We iterate all trs.
@@ -896,19 +1045,14 @@ class ECalAutomator:
                         
                         for (var i = 2; i < trs.length; i++) {
                             var cells = trs[i].getElementsByTagName('td');
-                            if (cells.length < 8) continue;
+                            if (cells.length < 9) continue;
                             
-                            // Cell indices based on snippet:
-                            // 3: Throttle % (16, 21...)
-                            // 6: Power W (70.1, 118.3...)
-                            // 7: Efficiency % (53, 82...)
+                            var thr = toNum(cells[idxThr].innerText);
+                            var pwr = toNum(cells[idxPwr].innerText);
+                            var eff = toNum(cells[idxEff].innerText);
+                            var thrst = toNum(cells[idxThrust].innerText);
                             
-                            var thr = parseFloat(cells[3].innerText);
-                            var pwr = parseFloat(cells[6].innerText);
-                            var eff = parseFloat(cells[7].innerText);
-                            var thrst = parseFloat(cells[8].innerText);
-                            
-                            if (!isNaN(thr)) {
+                            if (!isNaN(thr) && !isNaN(pwr) && !isNaN(thrst)) {
                                 rows.push({throttle: thr, power: pwr, eff: eff, thrust: thrst});
                             }
                         }
@@ -916,12 +1060,13 @@ class ECalAutomator:
                         if (rows.length === 0) return {error: "No data rows"};
                         
                         // 1. Max Throttle
-                        var maxThrRow = rows[rows.length - 1]; // Last row
+                        var maxThrRow = rows[0];
+                        for (var i = 1; i < rows.length; i++) {
+                            if (rows[i].throttle >= maxThrRow.throttle) maxThrRow = rows[i];
+                        }
                         
-                        // 2. Target Power
                         var closestRow = rows[0];
                         var minDiff = Math.abs(rows[0].power - target_power);
-                        
                         for (var i = 1; i < rows.length; i++) {
                             var diff = Math.abs(rows[i].power - target_power);
                             if (diff < minDiff) {
@@ -929,14 +1074,53 @@ class ECalAutomator:
                                 closestRow = rows[i];
                             }
                         }
-                        
+
+                        var powerMin = rows[0].power;
+                        var powerMax = rows[0].power;
+                        for (var i = 1; i < rows.length; i++) {
+                            if (rows[i].power < powerMin) powerMin = rows[i].power;
+                            if (rows[i].power > powerMax) powerMax = rows[i].power;
+                        }
+
+                        var lower = null;
+                        var upper = null;
+                        for (var i = 0; i < rows.length; i++) {
+                            var r = rows[i];
+                            if (r.power <= target_power && (!lower || r.power > lower.power)) lower = r;
+                            if (r.power >= target_power && (!upper || r.power < upper.power)) upper = r;
+                        }
+
+                        var mode = "closest";
+                        var atPower = closestRow;
+                        if (lower && upper && upper.power !== lower.power) {
+                            var t = (target_power - lower.power) / (upper.power - lower.power);
+                            var lerp = (a, b) => a + (b - a) * t;
+                            mode = "interp";
+                            atPower = {
+                                throttle: lerp(lower.throttle, upper.throttle),
+                                power: target_power,
+                                eff: lerp(lower.eff, upper.eff),
+                                thrust: lerp(lower.thrust, upper.thrust)
+                            };
+                        }
+
+                        var maxAllowedDiff = Math.max(50, target_power * 0.15);
+                        if (mode === "closest" && minDiff > maxAllowedDiff) {
+                            return {error: "Target power too far", closest_power_diff: minDiff, row_count: rows.length, power_min: powerMin, power_max: powerMax};
+                        }
+
                         return {
                             eff_max_throttle: maxThrRow.eff,
                             max_throttle_val: maxThrRow.throttle,
-                            eff_at_power: closestRow.eff,
-                            power_at_eff: closestRow.power,
-                            throttle_at_power: closestRow.throttle,
-                            thrust_at_power: closestRow.thrust
+                            eff_at_power: atPower.eff,
+                            power_at_eff: atPower.power,
+                            throttle_at_power: atPower.throttle,
+                            thrust_at_power: atPower.thrust,
+                            at_power_mode: mode,
+                            closest_power_diff: minDiff,
+                            row_count: rows.length,
+                            power_min: powerMin,
+                            power_max: powerMax
                         };
                     }""", target_power)
                     
@@ -946,6 +1130,16 @@ class ECalAutomator:
                         results["power_at_eff"] = str(eff_data.get("power_at_eff", "N/A"))
                         results["thr_at_power"] = str(eff_data.get("throttle_at_power", "N/A"))
                         results["thrust_at_power"] = str(eff_data.get("thrust_at_power", "N/A"))
+                        try:
+                            results["eff_row_count"] = str(eff_data.get("row_count", ""))
+                            results["eff_closest_power_diff"] = str(eff_data.get("closest_power_diff", ""))
+                            results["eff_at_power_mode"] = str(eff_data.get("at_power_mode", ""))
+                        except:
+                            pass
+                        try:
+                            print(f"Eff @~{target_power}W: pwr={results.get('power_at_eff')}W thr={results.get('thr_at_power')}% thrust={results.get('thrust_at_power')}g (mode={eff_data.get('at_power_mode')}, Δ={eff_data.get('closest_power_diff')}, rows={eff_data.get('row_count')}, range={eff_data.get('power_min')}..{eff_data.get('power_max')})")
+                        except:
+                            pass
                     else:
                         results["eff_max_throttle"] = "Err"
                         results["eff_at_power"] = "Err"
