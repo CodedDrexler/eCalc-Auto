@@ -1082,30 +1082,10 @@ class ECalAutomator:
                             if (rows[i].power > powerMax) powerMax = rows[i].power;
                         }
 
-                        var lower = null;
-                        var upper = null;
-                        for (var i = 0; i < rows.length; i++) {
-                            var r = rows[i];
-                            if (r.power <= target_power && (!lower || r.power > lower.power)) lower = r;
-                            if (r.power >= target_power && (!upper || r.power < upper.power)) upper = r;
-                        }
-
-                        var mode = "closest";
                         var atPower = closestRow;
-                        if (lower && upper && upper.power !== lower.power) {
-                            var t = (target_power - lower.power) / (upper.power - lower.power);
-                            var lerp = (a, b) => a + (b - a) * t;
-                            mode = "interp";
-                            atPower = {
-                                throttle: lerp(lower.throttle, upper.throttle),
-                                power: target_power,
-                                eff: lerp(lower.eff, upper.eff),
-                                thrust: lerp(lower.thrust, upper.thrust)
-                            };
-                        }
 
                         var maxAllowedDiff = Math.max(50, target_power * 0.15);
-                        if (mode === "closest" && minDiff > maxAllowedDiff) {
+                        if (minDiff > maxAllowedDiff) {
                             return {error: "Target power too far", closest_power_diff: minDiff, row_count: rows.length, power_min: powerMin, power_max: powerMax};
                         }
 
@@ -1116,7 +1096,7 @@ class ECalAutomator:
                             power_at_eff: atPower.power,
                             throttle_at_power: atPower.throttle,
                             thrust_at_power: atPower.thrust,
-                            at_power_mode: mode,
+                            at_power_mode: "closest",
                             closest_power_diff: minDiff,
                             row_count: rows.length,
                             power_min: powerMin,

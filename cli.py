@@ -21,7 +21,7 @@ def get_resource_base():
     return os.path.dirname(os.path.abspath(__file__))
 
 def get_output_dir():
-    path = os.path.join(os.path.expanduser("~"), "eCalc Auto")
+    path = os.path.dirname(os.path.abspath(__file__))
     os.makedirs(path, exist_ok=True)
     return path
 

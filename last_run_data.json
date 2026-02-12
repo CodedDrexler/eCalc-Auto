@@ -20,24 +20,14 @@
     },
     "setups_to_analyze": [
         {
-            "prop_diam": "20",
-            "prop_pitch": "12.0",
+            "prop_diam": "18",
+            "prop_pitch": "10.0",
             "manufacturer_id": "46",
-            "motor_id": "V505-260",
-            "motor_kv": "260",
-            "motor_name": "T-Motor V505-260",
+            "motor_id": "MN505-S KV320",
+            "motor_kv": "320",
+            "motor_name": "T-Motor MN505-S KV320",
             "manufacturer": "T-Motor",
-            "drive_weight": "80"
-        },
-        {
-            "prop_diam": "20",
-            "prop_pitch": "11.0",
-            "manufacturer_id": "46",
-            "motor_id": "U7-280 V2",
-            "motor_kv": "280",
-            "motor_name": "T-Motor U7-280 V2",
-            "manufacturer": "T-Motor",
-            "drive_weight": "77"
+            "drive_weight": "73"
         }
     ]
 }
